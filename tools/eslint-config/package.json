@@ -1,0 +1,15 @@
+{
+  "name": "eslint-config-vercel-ai",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "eslint-config-next": "^14.2.3",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-turbo": "^1.13.3",
+    "eslint-plugin-react": "7.34.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "env": [],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "type-check": {
+      "dependsOn": ["^build", "build"]
+    },
+    "test": {
+      "dependsOn": ["^build", "build"]
+    },
+    "publint": {
+      "dependsOn": ["^build", "build"]
+    },
+    "clean": {
+      "dependsOn": ["^clean"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "prettier-check": {},
+    "integration-test": {
+      "dependsOn": ["^build", "build"]
+    }
+  },
+  "globalEnv": ["CI", "PORT"]
+}

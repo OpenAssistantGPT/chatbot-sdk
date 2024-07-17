@@ -1,0 +1,62 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "changeset": "changeset",
+    "clean": "turbo clean",
+    "dev": "turbo dev --no-cache  --concurrency 16 --continue",
+    "lint": "turbo lint",
+    "prepare": "husky install",
+    "prettier-check": "prettier --check \"**/*.{js,ts,tsx,md,mdx}\"",
+    "type-check": "turbo type-check",
+    "prettier-fix": "prettier --write \"**/*.{js,ts,tsx,md,mdx}\"",
+    "publint": "turbo publint",
+    "test": "turbo test",
+    "ci:release": "turbo clean && turbo build && changeset publish",
+    "ci:version": "changeset version && node .github/scripts/cleanup-examples-changesets.mjs && pnpm install --no-frozen-lockfile",
+    "clean-examples": "node .github/scripts/cleanup-examples-changesets.mjs && pnpm install --no-frozen-lockfile",
+    "check-docs-links": "node ./check-docs-links.js"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --ignore-unknown --write"
+    ]
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.22.0",
+    "@playwright/test": "^1.44.1",
+    "chalk": "^5.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-vercel-ai": "workspace:*",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.4",
+    "next": "15.0.0-canary.23",
+    "playwright": "^1.44.1",
+    "prettier": "2.8.8",
+    "publint": "0.1.11",
+    "react": "19.0.0-rc-cc1ec60d0d-20240607",
+    "react-dom": "19.0.0-rc-cc1ec60d0d-20240607",
+    "turbo": "^1.10.13",
+    "vitest": "1.6.0"
+  },
+  "homepage": "https://sdk.vercel.ai/docs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vercel/ai.git"
+  },
+  "license": "Apache License",
+  "bugs": {
+    "url": "https://github.com/vercel/ai/issues"
+  },
+  "keywords": [
+    "ai"
+  ],
+  "packageManager": "pnpm@8.6.9",
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "arrowParens": "avoid",
+    "trailingComma": "all"
+  }
+}
