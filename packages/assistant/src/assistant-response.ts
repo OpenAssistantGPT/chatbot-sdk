@@ -136,6 +136,7 @@ export function AssistantResponse(
                       // @ts-ignore
                       formatStreamPart(
                         'message_annotations',
+                        // @ts-ignore
                         content.text.annotations,
                       ),
                     ),
