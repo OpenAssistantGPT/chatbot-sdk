@@ -48,6 +48,7 @@ export async function POST(req: Request) {
     if (data.filename !== '') {
       // @ts-ignore
       const file = new File([data.file], data.filename, {
+        // @ts-ignore
         type: data.file.type,
       });
 

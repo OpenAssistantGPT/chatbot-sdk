@@ -1,11 +1,11 @@
 name: Bug report
-description: Create a bug report for the AI SDK.
+description: Create a bug report for the OpenAssistantGPT SDK.
 labels: []
 body:
   - type: markdown
     attributes:
       value: |
-        This template is to report bugs for the AI SDK. If you need help with your own project, feel free to [start a new thread in our discussions](https://github.com/vercel/ai/discussions).
+        This template is to report bugs for the OpenAsistantGPT SDK. If you need help with your own project, feel free to [start a new thread in our discussions](https://github.com/vercel/ai/discussions).
   - type: textarea
     attributes:
       label: Description
@@ -20,7 +20,7 @@ body:
       description: Provide an example code snippet that has the problem
       placeholder: |
         import OpenAI from 'openai';
-        import { OpenAIStream, StreamingTextResponse } from 'ai';
+        import { Chatbot } from '@openassistantgpt/ui';
         ...
   - type: textarea
     attributes:

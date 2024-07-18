@@ -1,11 +1,11 @@
 name: Feature Request
-description: Propose a new feature for the AI SDK.
+description: Propose a new feature for the OpenAssistantGPT SDK.
 labels: []
 body:
   - type: markdown
     attributes:
       value: |
-        This template is to propose new features for the AI SDK. If you need help with your own project, feel free to [start a new thread in our discussions](https://github.com/vercel/ai/discussions).
+        This template is to propose new features for the OpenAssistantGPT SDK. If you need help with your own project, feel free to [start a new thread in our discussions](https://github.com/vercel/ai/discussions).
   - type: textarea
     attributes:
       label: Feature Description

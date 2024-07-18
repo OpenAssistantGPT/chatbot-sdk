@@ -33,7 +33,7 @@ import { ChatHistory } from '@/components/chat-history';
 interface ChatbotProps {
   chatbot: any;
   defaultMessage: string;
-  apiUrl: string;
+  path: string;
   className?: string;
   withExitX?: boolean;
   clientSidePrompt?: string;
@@ -42,7 +42,7 @@ interface ChatbotProps {
 export function Chat({
   chatbot,
   defaultMessage,
-  apiUrl,
+  path,
   className,
   withExitX = false,
   clientSidePrompt,
@@ -74,7 +74,7 @@ export function Chat({
     deleteThreadFromHistory,
   } = useAssistant({
     id: chatbot.id,
-    api: apiUrl.replace('%ID%', chatbot.id),
+    api: path,
     inputFile: inputFileRef.current?.files
       ? inputFileRef.current.files[0]
       : undefined,
@@ -356,7 +356,11 @@ export function Chat({
                       <span className="font-sm text-gray-800 truncate">
                         {inputFileRef.current?.files![0].name}
                       </span>
-                      <span className="text-sm text-gray-500">Document</span>
+                      <span className="text-sm text-gray-500">
+                        {inputFileRef.current?.files![0].type === 'image/jpeg'
+                          ? 'Image'
+                          : 'Document'}
+                      </span>
                     </div>
                     <Button
                       type="button"

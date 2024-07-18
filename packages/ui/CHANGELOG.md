@@ -1,1 +1,1 @@
-# @ai-sdk/react
+# @openassistantgpt/ui
