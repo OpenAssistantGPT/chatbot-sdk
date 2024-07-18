@@ -30,22 +30,13 @@ export default function ChatPage() {
       'https://gwetfkan2dovfoiz.public.blob.vercel-storage.com/search-8jZhOvOBPxuTmohrup5TPvSzrjsyog.png',
     chatInputStyle: 'default',
 
-    inquiryEnabled: false,
-
-    inquiryLinkText: 'Contact our support team',
-    inquiryTitle: 'Contact our support team',
-    inquirySubtitle:
-      'Our team is here to help you with any questions you may have. Please provide us with your email and a brief message so we can assist you.',
-    inquiryEmailLabel: 'Email',
-    inquiryMessageLabel: 'Message',
-    inquirySendButtonText: 'Send message',
-    inquiryAutomaticReplyText:
-      'Your inquiry has been sent. Our team will get back to you shortly. Thank you!',
-    inquiryDisplayLinkAfterXMessage: 1,
 
     chatHistoryEnabled: true,
-    displayBranding: true,
-    chatFileAttachementEnabled: false,
+    chatFileAttachementEnabled: true,
+
+    displayFooterText: true,
+    footerLink: 'https://www.openassistantgpt.io',
+    footerTextName: 'OpenAssistantGPT',
   };
 
   return (

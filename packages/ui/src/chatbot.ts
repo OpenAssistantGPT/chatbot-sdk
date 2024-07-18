@@ -23,17 +23,10 @@ export type ChatbotConfig = {
 
   chatInputStyle: string;
 
-  inquiryEnabled: boolean;
-  inquiryLinkText: string;
-  inquiryTitle: string;
-  inquirySubtitle: string;
-  inquiryEmailLabel: string;
-  inquiryMessageLabel: string;
-  inquirySendButtonText: string;
-  inquiryAutomaticReplyText: string;
-  inquiryDisplayLinkAfterXMessage: number;
-
   chatHistoryEnabled: boolean;
-  displayBranding: boolean;
   chatFileAttachementEnabled: boolean;
+
+  displayFooterText: boolean;
+  footerTextName: string;
+  footerLink: string;
 };

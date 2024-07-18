@@ -18,20 +18,12 @@ import {
 } from '@/components/ui/tooltip';
 import { FooterText } from '@/components/chat-footer-text';
 import { ChatMessage } from '@/components/chat-message';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
 import { useEnterSubmit } from '@/hooks/use-enter-submit';
 import { ChatHistory } from '@/components/chat-history';
+import { ChatbotConfig } from '@/src/chatbot';
 
 interface ChatbotProps {
-  chatbot: any;
+  chatbot: ChatbotConfig;
   defaultMessage: string;
   path: string;
   className?: string;
@@ -48,15 +40,6 @@ export function Chat({
   clientSidePrompt,
   ...props
 }: ChatbotProps) {
-  const [open, setOpen] = useState(false);
-
-  // inquiry
-  const [hideInquiry, setHideInquiry] = useState(false);
-  const [sendInquiry, setSendInquiry] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const [userMessage, setUserMessage] = useState('');
-  const [inquiryLoading, setInquiryLoading] = useState(false);
-
   let inputFileRef = useRef<HTMLInputElement>(null);
 
   const { formRef, onKeyDown } = useEnterSubmit();
@@ -122,43 +105,6 @@ export function Chat({
     document.documentElement.scrollTop =
       document.getElementById('end')!.offsetTop;
   }, [messages]);
-
-  async function handleInquirySubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setInquiryLoading(true);
-
-    const response = await fetch(`/api/chatbots/${chatbot.id}/inquiries`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chatbotId: chatbot.id,
-        threadId: threadId || '',
-        email: userEmail,
-        inquiry: userMessage,
-      }),
-    });
-
-    if (response.ok) {
-      setSendInquiry(false);
-      messages.push({
-        id: String(messages.length + 1),
-        role: 'assistant',
-        content: chatbot.inquiryAutomaticReplyText,
-      });
-    } else {
-      console.error(`Failed to send inquiry: ${response}`);
-      toast({
-        title: 'Error',
-        description: 'Failed to send inquiry',
-        variant: 'destructive',
-      });
-    }
-    // close dialog
-    setOpen(false);
-    setInquiryLoading(false);
-  }
 
   useEffect(() => {
     if (defaultMessage !== '') {
@@ -282,69 +228,7 @@ export function Chat({
             }`}
           >
             <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 px-4 ">
-              {chatbot.inquiryEnabled &&
-                !hideInquiry &&
-                messages.length >= chatbot.inquiryDisplayLinkAfterXMessage && (
-                  <div className="relative">
-                    <button
-                      onClick={() => {
-                        setHideInquiry(true);
-                      }}
-                      className="bg-zinc-100 shadow hover:bg-zinc-200 border rounded absolute top-0 right-0 -mt-1 -mr-1"
-                    >
-                      <Icons.close className="h-4 w-4" />
-                    </button>
-                    <Dialog open={open} onOpenChange={setOpen}>
-                      <DialogTrigger asChild>
-                        <Button className="w-full bg-white" variant="outline">
-                          {chatbot.inquiryLinkText}
-                        </Button>
-                      </DialogTrigger>
-                      <DialogContent className="sm:max-w-[425px]">
-                        <form onSubmit={handleInquirySubmit}>
-                          <DialogHeader>
-                            <DialogTitle>{chatbot.inquiryTitle}</DialogTitle>
-                            <DialogDescription>
-                              {chatbot.inquirySubtitle}
-                            </DialogDescription>
-                          </DialogHeader>
-                          <div className="grid gap-4 py-4 w-full">
-                            <div className="gap-4">
-                              <Label htmlFor="name" className="text-right">
-                                {chatbot.inquiryEmailLabel}
-                              </Label>
-                              <Input
-                                onChange={e => setUserEmail(e.target.value)}
-                                className="bg-white"
-                                id="email"
-                                pattern=".+@.+\..+"
-                                type="email"
-                              />
-                            </div>
-                            <div className="gap-4">
-                              <Label htmlFor="username" className="text-right">
-                                {chatbot.inquiryMessageLabel}
-                              </Label>
-                              <Textarea
-                                onChange={e => setUserMessage(e.target.value)}
-                                className="min-h-[100px]"
-                                id="message"
-                              />
-                            </div>
-                          </div>
-                          <DialogFooter>
-                            <Button type="submit" disabled={inquiryLoading}>
-                              {chatbot.inquirySendButtonText}
-                              {inquiryLoading && (
-                                <Icons.spinner className="ml-2 mr-2 h-5 w-5 animate-spin" />
-                              )}
-                            </Button>
-                          </DialogFooter>
-                        </form>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
-                )}
+            { /** here we can put chatbot extensions like inquiry, message prompt etc... */} 
             </div>
 
             <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl md:py-4">
@@ -358,6 +242,10 @@ export function Chat({
                       </span>
                       <span className="text-sm text-gray-500">
                         {inputFileRef.current?.files![0].type === 'image/jpeg'
+                          ? 'Image'
+                          : inputFileRef.current?.files![0].type === 'image/png'
+                          ? 'Image'
+                          : inputFileRef.current?.files![0].type === 'image/svg+xml'
                           ? 'Image'
                           : 'Document'}
                       </span>
@@ -386,7 +274,7 @@ export function Chat({
                     <div className="">
                       <Label htmlFor="file" className="">
                         <div
-                          className={`size-9 absolute left-0 top-[12px] size-8 rounded-full bg-background p-0 sm:left-4 border border-input hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background`}
+                          className={`p-2 absolute left-0 top-[12px] size-8 rounded-full bg-background p-0 sm:left-4 border border-input hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background`}
                         >
                           <Icons.paperclip className="text-muted-foreground h-4 w-4" />
                         </div>
@@ -441,8 +329,8 @@ export function Chat({
                     </Tooltip>
                   </div>
                 </div>
-                {chatbot.displayBranding && (
-                  <FooterText className="block my-2" />
+                {chatbot.displayFooterText && (
+                  <FooterText link={chatbot.footerLink} name={chatbot.footerTextName} className="block my-2" />
                 )}
               </form>
             </div>
