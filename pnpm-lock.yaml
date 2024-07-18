@@ -39,8 +39,8 @@ importers:
         specifier: 2.8.8
         version: 2.8.8
       publint:
-        specifier: 0.1.11
-        version: 0.1.11
+        specifier: 0.2.9
+        version: 0.2.9
       react:
         specifier: 19.0.0-rc-cc1ec60d0d-20240607
         version: 19.0.0-rc-cc1ec60d0d-20240607
@@ -67,7 +67,7 @@ importers:
         version: link:../../packages/ui
       ai:
         specifier: latest
-        version: 3.2.25(openai@4.52.7)(react@18.2.0)(svelte@4.2.18)(vue@3.4.31)(zod@3.23.8)
+        version: 3.2.29(openai@4.52.7)(react@18.2.0)(svelte@4.2.18)(vue@3.4.31)(zod@3.23.8)
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
@@ -468,8 +468,8 @@ packages:
       zod: 3.23.8
     dev: false
 
-  /@ai-sdk/react@0.0.22(react@18.2.0)(zod@3.23.8):
-    resolution: {integrity: sha512-r84qhn08GHtVGjvbveMekP1CeXDs5sIrdDvMaoxhCL8o90HjYTWBSDywuRJU1Jk1uPE/BwZWQu9f5bqaIx6AgA==}
+  /@ai-sdk/react@0.0.23(react@18.2.0)(zod@3.23.8):
+    resolution: {integrity: sha512-lkZXUWF/hayHKa2ySs2ATqI+dWMzAtp+0Cvd2OlFUZtijZWVo48oKzy4CCZRcBkMqgVPBO5UjShX4kVRjFhPbw==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^18 || ^19
@@ -481,7 +481,7 @@ packages:
         optional: true
     dependencies:
       '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.14(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.15(zod@3.23.8)
       react: 18.2.0
       swr: 2.2.0(react@18.2.0)
       zod: 3.23.8
@@ -501,8 +501,8 @@ packages:
       - zod
     dev: false
 
-  /@ai-sdk/solid@0.0.16(zod@3.23.8):
-    resolution: {integrity: sha512-rhBTHLY2fx+weF/vrNmYY8S+D6Gcni77YlDDq9kANpNycL99WQo1hRy9fVJ44ICMJCpVrY/kHIl3Jlumdy3oPw==}
+  /@ai-sdk/solid@0.0.17(zod@3.23.8):
+    resolution: {integrity: sha512-5T+Yv3VeIwDBbnS8vxYVOVbI410GBn+qmU7On33CBG2Rh7xa8yqTYM33QfuKOrKEs+DFViyMsXkVpy3btsYFSA==}
     engines: {node: '>=18'}
     peerDependencies:
       solid-js: ^1.7.7
@@ -510,7 +510,7 @@ packages:
       solid-js:
         optional: true
     dependencies:
-      '@ai-sdk/ui-utils': 0.0.14(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.15(zod@3.23.8)
     transitivePeerDependencies:
       - zod
     dev: false
@@ -532,8 +532,8 @@ packages:
       - zod
     dev: false
 
-  /@ai-sdk/svelte@0.0.17(svelte@4.2.18)(zod@3.23.8):
-    resolution: {integrity: sha512-dkN8tTMNq7U4Ya02aKd1nH2gZLj0BdleuSY6PAeIQ3huo2Z8Ixgf90ZdnWEf1BSUtdIuXwkkVz6gn+jbh3IbQQ==}
+  /@ai-sdk/svelte@0.0.18(svelte@4.2.18)(zod@3.23.8):
+    resolution: {integrity: sha512-9ECGDUVm4CiYsDuWWejMPQT6coqIUUHPcnWgiXMEiKOwBQ5UWODf7Jewqr1+EiQQm3D7ElH7DAkiIP2aNC8Dag==}
     engines: {node: '>=18'}
     peerDependencies:
       svelte: ^3.0.0 || ^4.0.0
@@ -542,7 +542,7 @@ packages:
         optional: true
     dependencies:
       '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.14(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.15(zod@3.23.8)
       sswr: 2.1.0(svelte@4.2.18)
       svelte: 4.2.18
     transitivePeerDependencies:
@@ -577,8 +577,8 @@ packages:
       zod: 3.23.8
     dev: false
 
-  /@ai-sdk/ui-utils@0.0.14(zod@3.23.8):
-    resolution: {integrity: sha512-mm9jAkdZW+UTrSLMGwRcT7o8pHGO7Z5FmmLC0B1NH7BRzLfh1/t0ZuF1U6T7GQbmRQXwQUWjdjnlpY83kc62zw==}
+  /@ai-sdk/ui-utils@0.0.15(zod@3.23.8):
+    resolution: {integrity: sha512-NzdAkFPTq+qJ6D1u4VQpyDg2TIF2XeTPTCBZiU8pqP0Mkpj8hMeVKjbRACq0lOXyFNMCvUiLoF05fKuuC0Ak/A==}
     engines: {node: '>=18'}
     peerDependencies:
       zod: ^3.0.0
@@ -608,8 +608,8 @@ packages:
       - zod
     dev: false
 
-  /@ai-sdk/vue@0.0.17(vue@3.4.31)(zod@3.23.8):
-    resolution: {integrity: sha512-DoWimMtYNQbqaZZZT00NlfR/G/hEMZLwOZLC58Jp0iIxagJnAcamMJlS1rSR4+vd2UWNk4iPdgsMFdkpDvD9aA==}
+  /@ai-sdk/vue@0.0.18(vue@3.4.31)(zod@3.23.8):
+    resolution: {integrity: sha512-WmxUYyXzFpPr5gyjgFqqoc+JwNZYNUpoKf3XtTjubk0nbJsbQv22Xv+2E1DrsoV8ApJnbSUHUYaq6XU2k8Pcxg==}
     engines: {node: '>=18'}
     peerDependencies:
       vue: ^3.3.4
@@ -618,7 +618,7 @@ packages:
         optional: true
     dependencies:
       '@ai-sdk/provider-utils': 0.0.14(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.14(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.15(zod@3.23.8)
       swrv: 1.0.4(vue@3.4.31)
       vue: 3.4.31(typescript@5.1.3)
     transitivePeerDependencies:
@@ -3223,8 +3223,8 @@ packages:
       - vue
     dev: false
 
-  /ai@3.2.25(openai@4.52.7)(react@18.2.0)(svelte@4.2.18)(vue@3.4.31)(zod@3.23.8):
-    resolution: {integrity: sha512-cjTgTRnj6mTcBAum90k4klipzGxVuEZ+6TSf6Lvsw3/zoVYviSYJPshm+dxN5Hc7lSV/Vods0rF81omDRyzkrA==}
+  /ai@3.2.29(openai@4.52.7)(react@18.2.0)(svelte@4.2.18)(vue@3.4.31)(zod@3.23.8):
+    resolution: {integrity: sha512-WgVzVkk3U5X66pAiL6+OHIK7kPUujOfuaxhXQ6T7lyKTSkH/R5P9WspWmTsrLBvi2kL7ZmjZYXMFMWCrBA09AQ==}
     engines: {node: '>=18'}
     peerDependencies:
       openai: ^4.42.0
@@ -3243,11 +3243,11 @@ packages:
     dependencies:
       '@ai-sdk/provider': 0.0.12
       '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
-      '@ai-sdk/react': 0.0.22(react@18.2.0)(zod@3.23.8)
-      '@ai-sdk/solid': 0.0.16(zod@3.23.8)
-      '@ai-sdk/svelte': 0.0.17(svelte@4.2.18)(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.14(zod@3.23.8)
-      '@ai-sdk/vue': 0.0.17(vue@3.4.31)(zod@3.23.8)
+      '@ai-sdk/react': 0.0.23(react@18.2.0)(zod@3.23.8)
+      '@ai-sdk/solid': 0.0.17(zod@3.23.8)
+      '@ai-sdk/svelte': 0.0.18(svelte@4.2.18)(zod@3.23.8)
+      '@ai-sdk/ui-utils': 0.0.15(zod@3.23.8)
+      '@ai-sdk/vue': 0.0.18(vue@3.4.31)(zod@3.23.8)
       '@opentelemetry/api': 1.9.0
       eventsource-parser: 1.1.2
       json-schema: 0.4.0
@@ -7297,13 +7297,13 @@ packages:
     resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==}
     dev: true
 
-  /publint@0.1.11:
-    resolution: {integrity: sha512-sD0rtIEadks83MkpomJswBO/YHExJLkta1TyqUhb0/aVV+o3ZlVnwsDPjCAow8tpfxmLGutCSLWq32yfhPB98w==}
+  /publint@0.2.9:
+    resolution: {integrity: sha512-nITKS1NSwD68PQlts0ntryhxrWObep6P0CCycwi1lgXI+K7uKyacMYRRCQi7hTae8imkI3FCi0FlgnwLxjM8yA==}
     engines: {node: '>=16'}
     hasBin: true
     dependencies:
       npm-packlist: 5.1.3
-      picocolors: 1.0.0
+      picocolors: 1.0.1
       sade: 1.8.1
     dev: true
 
