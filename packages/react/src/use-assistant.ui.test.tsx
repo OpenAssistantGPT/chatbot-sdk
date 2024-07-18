@@ -18,7 +18,7 @@ describe('stream data stream', () => {
     return (
       <div>
         <div data-testid="status">{status}</div>
-        {error ? <div data-testid="error">{error.toString()}</div> : <></>} 
+        {error ? <div data-testid="error">{error.toString()}</div> : <></>}
         {messages.map((m, idx) => (
           <div data-testid={`message-${idx}`} key={idx}>
             {m.role === 'user' ? 'User: ' : 'AI: '}
