@@ -34,7 +34,7 @@
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.2",
-    "@tailwindcss/typography": "github:tailwindcss/typography",
+    "@tailwindcss/typography": "^0.5.13",
     "better-react-mathjax": "^2.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
