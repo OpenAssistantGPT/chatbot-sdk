@@ -12,6 +12,8 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
+  permissions:
+    contents: writes
   release:
     name: Release
     runs-on: ubuntu-latest
