@@ -12,9 +12,9 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  permissions:
-    contents: writes
   release:
+    permissions:
+      contents: writes
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 10
