@@ -131,7 +131,7 @@ export function ChatMessage({
                       ) {
                         return (
                           <MathJaxContext>
-                            { /*@ts-ignore*/ }
+                            {/*@ts-ignore*/}
                             <MathJax>{children || ''}</MathJax>
                           </MathJaxContext>
                         );
