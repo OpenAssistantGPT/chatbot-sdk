@@ -31,7 +31,7 @@ interface ChatbotProps {
   clientSidePrompt?: string;
 }
 
-export function Chat({
+export function OpenAssistantGPTChat({
   chatbot,
   defaultMessage,
   path,

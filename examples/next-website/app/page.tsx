@@ -1,6 +1,10 @@
 'use client';
 
-import { Chat, TooltipProvider, ChatbotConfig } from '@openassistantgpt/ui';
+import {
+  OpenAssistantGPTChat,
+  TooltipProvider,
+  ChatbotConfig,
+} from '@openassistantgpt/ui';
 
 export default function ChatPage() {
   const bot: ChatbotConfig = {
@@ -40,7 +44,11 @@ export default function ChatPage() {
 
   return (
     <TooltipProvider>
-      <Chat chatbot={bot} path="/api/chat/assistant" defaultMessage="" />
+      <OpenAssistantGPTChat
+        chatbot={bot}
+        path="/api/chat/assistant"
+        defaultMessage=""
+      />
     </TooltipProvider>
   );
 }

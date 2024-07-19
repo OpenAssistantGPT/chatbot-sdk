@@ -181,7 +181,7 @@ export function ChatHistory({
                 </svg>
               </Button>
             </CardHeader>
-            <CardContent className="max-h-[500px] overflow-y-auto">
+            <CardContent className="max-h-[90%] overflow-y-auto">
               <div className="grid gap-4 pr-10">
                 {todayThreads.length === 0 &&
                   yesterdayThreads.length === 0 &&
