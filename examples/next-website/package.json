@@ -9,12 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@openassistantgpt/assistant": "latest",
-    "@openassistantgpt/react": "latest",
-    "@openassistantgpt/ui": "latest",
-    "ai": "latest",
+    "@openassistantgpt/assistant": "0.0.1",
+    "@openassistantgpt/react": "0.0.1",
+    "@openassistantgpt/ui": "0.0.1",
+    "ai": "3.2.32",
     "buffer": "^6.0.3",
-    "next": "latest",
+    "next": "14.2.5",
     "openai": "4.52.7",
     "react": "^18",
     "react-dom": "^18",
