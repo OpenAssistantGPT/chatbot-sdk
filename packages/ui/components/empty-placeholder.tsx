@@ -26,8 +26,8 @@ export function EmptyPlaceholder({
 }
 
 interface EmptyPlaceholderIconProps
-    extends Partial<React.SVGProps<SVGSVGElement>> {
-    name: string;
+  extends Partial<React.SVGProps<SVGSVGElement>> {
+  name: string;
 }
 
 EmptyPlaceholder.Icon = function EmptyPlaceHolderIcon({
