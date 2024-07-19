@@ -5,8 +5,8 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Vercel AI SDK - Next.js OpenAI Examples',
-  description: 'Examples of using the Vercel AI SDK with Next.js and OpenAI.',
+  title: 'OpenAssistantGPT SDK Example',
+  description: 'Example of using OpenAssistantGPT SDK in a Next.js website',
 };
 
 export default function RootLayout({

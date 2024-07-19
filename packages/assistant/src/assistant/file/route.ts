@@ -3,14 +3,18 @@ import { z } from 'zod';
 
 const routeContextSchema = z.object({
   params: z.object({
-    fileId: z.string(),
+    openassistantgpt: z.array(z.string()),
   }),
 });
 
-export async function GET(
+export async function handleFile(
   request: Request,
   context: z.infer<typeof routeContextSchema>,
 ) {
+  if (request.method !== 'GET') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
   const { params } = routeContextSchema.parse(context);
 
   const openai = new OpenAI({
@@ -19,8 +23,12 @@ export async function GET(
   });
 
   const [file, fileContent] = await Promise.all([
-    openai.files.retrieve(params.fileId),
-    openai.files.content(params.fileId),
+    openai.files.retrieve(
+      params.openassistantgpt[params.openassistantgpt.length - 1],
+    ),
+    openai.files.content(
+      params.openassistantgpt[params.openassistantgpt.length - 1],
+    ),
   ]);
 
   return new Response(fileContent.body, {

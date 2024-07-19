@@ -1,18 +1,17 @@
 import OpenAI from 'openai';
 
 import { z } from 'zod';
-import { AssistantResponse } from '@openassistantgpt/assistant';
+import { AssistantResponse } from '../assistant-response';
 import { zfd } from 'zod-form-data';
 import {
   codeInterpreterExtensionList,
   fileSearchExtensionList,
-} from '@openassistantgpt/assistant';
+} from '../file-extensions-list';
 import {
   CodeInterpreterTool,
   FileSearchTool,
 } from 'openai/resources/beta/assistants';
-
-export const maxDuration = 300;
+import path from 'path';
 
 const schema = zfd.formData({
   threadId: z.string().or(z.undefined()),
@@ -22,11 +21,12 @@ const schema = zfd.formData({
   filename: z.string(),
 });
 
-export async function OPTIONS(req: Request) {
-  return new Response('Ok', { status: 200 });
-}
+export async function handleAssistant(basePath: string, req: Request) {
+  console.log('handleAssistant');
+  if (req.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
 
-export async function POST(req: Request) {
   try {
     const openai = new OpenAI({
       // eslint-disable-next-line turbo/no-undeclared-env-vars
@@ -102,11 +102,11 @@ export async function POST(req: Request) {
     );
 
     return AssistantResponse(
-      // @ts-ignore
       {
+        // @ts-ignore
         threadId,
         messageId: createdMessage.id,
-        fileUrlPath: '/api/assistant/file/%ID%',
+        fileUrlPath: path.join(basePath, '/assistant/file/%ID%'),
       },
       async ({ sendMessage, forwardStream, sendDataMessage }) => {
         try {

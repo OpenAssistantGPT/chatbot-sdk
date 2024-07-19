@@ -40,7 +40,7 @@ export default function ChatPage() {
 
   return (
     <TooltipProvider>
-      <Chat chatbot={bot} path="/api/assistant" defaultMessage="" />
+      <Chat chatbot={bot} path="/api/chat/assistant" defaultMessage="" />
     </TooltipProvider>
   );
 }
