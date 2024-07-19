@@ -14,7 +14,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   release:
     permissions:
-      contents: writes
+      contents: write
     name: Release
     runs-on: ubuntu-latest
     timeout-minutes: 10
