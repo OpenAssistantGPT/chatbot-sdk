@@ -30,7 +30,6 @@ export default function ChatPage() {
       'https://gwetfkan2dovfoiz.public.blob.vercel-storage.com/search-8jZhOvOBPxuTmohrup5TPvSzrjsyog.png',
     chatInputStyle: 'default',
 
-
     chatHistoryEnabled: true,
     chatFileAttachementEnabled: true,
 

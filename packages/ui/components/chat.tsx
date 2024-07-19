@@ -228,7 +228,7 @@ export function Chat({
             }`}
           >
             <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 px-4 ">
-            { /** here we can put chatbot extensions like inquiry, message prompt etc... */} 
+              {/** here we can put chatbot extensions like inquiry, message prompt etc... */}
             </div>
 
             <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl md:py-4">
@@ -245,7 +245,8 @@ export function Chat({
                           ? 'Image'
                           : inputFileRef.current?.files![0].type === 'image/png'
                           ? 'Image'
-                          : inputFileRef.current?.files![0].type === 'image/svg+xml'
+                          : inputFileRef.current?.files![0].type ===
+                            'image/svg+xml'
                           ? 'Image'
                           : 'Document'}
                       </span>
@@ -330,7 +331,11 @@ export function Chat({
                   </div>
                 </div>
                 {chatbot.displayFooterText && (
-                  <FooterText link={chatbot.footerLink} name={chatbot.footerTextName} className="block my-2" />
+                  <FooterText
+                    link={chatbot.footerLink}
+                    name={chatbot.footerTextName}
+                    className="block my-2"
+                  />
                 )}
               </form>
             </div>

@@ -103,7 +103,11 @@ export async function POST(req: Request) {
 
     return AssistantResponse(
       // @ts-ignore
-      { threadId, messageId: createdMessage.id, fileUrlPath: '/api/assistant/file/%ID%' },
+      {
+        threadId,
+        messageId: createdMessage.id,
+        fileUrlPath: '/api/assistant/file/%ID%',
+      },
       async ({ sendMessage, forwardStream, sendDataMessage }) => {
         try {
           // Run the assistant on the thread
