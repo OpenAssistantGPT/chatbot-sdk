@@ -1,6 +1,5 @@
 ![hero illustration](./assets/hero.gif)
 
-
 # OpenAssistantGPT SDK
 
 This SDK is an extension of the vercel/ai SDK with more features, addapted to our use case and maintained by the OpenAssistantGPT team.
@@ -27,16 +26,18 @@ npm install @openassistantgpt/assistant
 ```
 
 Then you have to setup you environment variables by creating your `.env` file
+
 ```
 OPENAI_API_KEY=xxxxxxx
 OPENAI_ASSISTANT_ID=xxxxxx
 ```
 
 Once the package is installed and your environment variables are configured create the route file `/api/chat/[[...openassistantgpt]]/route.ts`
+
 ```js
 import { OpenAssistantGPT } from '@openassistantgpt/assistant';
 
-// In OpenAssistantGPT handler you must enter your base path. 
+// In OpenAssistantGPT handler you must enter your base path.
 // The base path is everything before the [[...openassistantgpt]] part of the route.
 const httpHandler = new OpenAssistantGPT('/api/chat/').handler;
 
@@ -52,6 +53,7 @@ npm install @openassistantgpt/ui
 ```
 
 Once the UI package is installed create the `page.tsx` file and configure your chatbot like you want.
+
 ```js
 'use client';
 
