@@ -8,7 +8,7 @@ import {
 
 export default function ChatPage() {
   const bot: ChatbotConfig = {
-    id: 'clq6m06gc000114hm42s838g2',
+    id: '12345',
     name: 'OpenAssistantGPT',
 
     chatTitle: 'Chat with OpenAssistantGPT',
