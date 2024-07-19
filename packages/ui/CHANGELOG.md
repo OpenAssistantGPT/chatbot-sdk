@@ -1,5 +1,13 @@
 # @openassistantgpt/ui
 
+## 0.0.2
+
+### Patch Changes
+
+- fcacff1: Update all Git repository link
+- Updated dependencies [fcacff1]
+  - @openassistantgpt/react@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes

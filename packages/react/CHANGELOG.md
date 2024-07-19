@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.0.2
+
+### Patch Changes
+
+- fcacff1: Update all Git repository link
+
 ## 0.0.1
 
 ### Patch Changes
