@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@openassistantgpt/assistant": "0.0.1",
-    "@openassistantgpt/react": "0.0.1",
-    "@openassistantgpt/ui": "0.0.1",
+    "@openassistantgpt/assistant": "0.0.2",
+    "@openassistantgpt/react": "0.0.2",
+    "@openassistantgpt/ui": "0.0.2",
     "ai": "3.2.32",
     "buffer": "^6.0.3",
     "next": "14.2.5",

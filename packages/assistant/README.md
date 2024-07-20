@@ -1,7 +1,5 @@
-# Vercel AI SDK: React provider
+# OpenAssistantGPT SDK: Assistant
 
-[React](https://react.dev/) UI components for the [Vercel AI SDK](https://sdk.vercel.ai/docs):
+The object to use as an Assistant Response
 
-- [`useChat`](https://sdk.vercel.ai/docs/reference/ai-sdk-ui/use-chat) hook
-- [`useCompletion`](https://sdk.vercel.ai/docs/reference/ai-sdk-ui/use-completion) hook
-- [`useAssistant`](https://sdk.vercel.ai/docs/reference/ai-sdk-ui/use-assistant) hook
+- AssistantResponse
