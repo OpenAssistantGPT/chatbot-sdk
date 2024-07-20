@@ -7,6 +7,12 @@ If you want more information about OpenAssistantGPT you can find it [here](https
 
 We also provide our chatbot with our [hosted version](https://www.openassistantgpt.io/), with adavanced analytics, crawling for custom content and advanced security.
 
+# Deploy example
+
+Deploy our basic example using [Vercel](https://vercel.com):
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenAssistantGPT%2FOpenAssistantGPT-SDK%2Ftree%2Fmain%2Fexamples%2Fnext-website&env=OPENAI_ASSISTANT_ID,OPENAI_API_KEY&envDescription=Find%20all%20informations%20in%20OpenAI%20Platform.&envLink=https%3A%2F%2Fplatform.openai.com%2F)
+
 # Installation
 
 You will need Node.js 18+ and pnpm install on your local development machine.
@@ -117,7 +123,7 @@ The OpenAssistantGPT SDK community can be found on [GitHub Discussions](https://
 
 ## Contributing
 
-Contributions to the OpenAssistantGPT SDK are welcome and highly appreciated. However, before you jump right into it, we would like you to review our [Contribution Guidelines](https://github.com/OpenAssistantGPT/OpenAssistantGPT-SDK/blob/main/CONTRIBUTING.md) to make sure you have smooth experience contributing to Vercel AI SDK.
+Contributions to the OpenAssistantGPT SDK are welcome and highly appreciated. However, before you jump right into it, we would like you to review our [Contribution Guidelines](https://github.com/OpenAssistantGPT/OpenAssistantGPT-SDK/blob/main/CONTRIBUTING.md) to make sure you have smooth experience contributing to OpenAssistantGPT SDK.
 
 ## Authors
 

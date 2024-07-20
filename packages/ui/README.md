@@ -1,5 +1,5 @@
-# OpenAssistantGPT SDK: React provider
+# OpenAssistantGPT SDK: UI
 
-[React](https://react.dev/) UI components:
+[React](https://react.dev/) UI components
 
-- useAssistant
+- OpenAssistantGPTChat

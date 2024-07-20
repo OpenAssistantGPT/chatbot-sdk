@@ -17,15 +17,6 @@ We're always looking for suggestions to make our project better. If you have an 
 1. **Check the Issue Tracker**: Similar to bug reports, please check if someone else has already suggested the enhancement. If so, feel free to add your thoughts to the existing issue.
 2. **Create a New Issue**: If your enhancement hasn't been suggested yet, create a new issue. Provide a detailed description of your suggested enhancement and how it would benefit the project.
 
-## Improving Documentation
-
-Documentation is crucial for understanding and using our project effectively.
-You can find the content of our docs under [`content`](https://github.com/vercel/ai/tree/main/content).
-
-To fix smaller typos, you can edit the code directly in GitHub or use Github.dev (press `.` in Github).
-
-If you want to make larger changes, please check out the Code Contributions section below. It also explains how to fix prettier issues that you might encounter during your docs changes.
-
 ## Code Contributions
 
 We welcome your contributions to our code and documentation. Here's how you can contribute:
