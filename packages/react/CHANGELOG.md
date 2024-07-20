@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.0.3
+
+### Patch Changes
+
+- 2a9002e: finish last doc update, fix latest bug there is no new feature in this release
+
 ## 0.0.2
 
 ### Patch Changes
