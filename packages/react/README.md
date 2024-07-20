@@ -1,4 +1,3 @@
 # OpenAssistantGPT SDK: React
 
-
 - useAssistant
