@@ -1,6 +1,6 @@
 {
-  "name": "ls",
-  "version": "0.1.0",
+  "name": "sdk-website",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
