@@ -26,7 +26,7 @@ export function LandingPage({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <body className={inter.className} >
+    <body className={inter.className}>
       <header
         className={`z-40 ${
           isHeaderTransparent

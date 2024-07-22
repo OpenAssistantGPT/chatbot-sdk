@@ -21,8 +21,8 @@ export function Hero() {
                 Easiest Chatbot SDK to use
               </h1>
               <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                Fastest and easiest way to build a chatbot using Next.JS for your website using the OpenAI
-                Assistant API.
+                Fastest and easiest way to build a chatbot using Next.JS for
+                your website using the OpenAI Assistant API.
               </p>
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
