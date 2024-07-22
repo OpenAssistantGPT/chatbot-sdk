@@ -7,7 +7,7 @@ import {
 } from '@openassistantgpt/ui';
 
 export default function ChatPage() {
-  const bot: ChatbotConfig = {
+  const chatbot: ChatbotConfig = {
     id: '12345',
     name: 'OpenAssistantGPT',
 
@@ -45,7 +45,7 @@ export default function ChatPage() {
   return (
     <TooltipProvider>
       <OpenAssistantGPTChat
-        chatbot={bot}
+        chatbot={chatbot}
         path="/api/chat/assistant"
         defaultMessage=""
       />

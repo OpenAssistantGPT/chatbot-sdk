@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.containerCode {
+  background: #23223a;
+  width: 30rem;
+  border-radius: 5px;
+  padding: 1.7rem;
+}
+
+.code {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: white;
+}
+
+.code .imas {
+  font-size: 0.9rem;
+  color: rgb(255, 255, 255);
+  display: inline;
+}
+
+.c2 {
+  display: inline-block;
+  margin-top: 5%;
+}
+
+.typed-out {
+  overflow: hidden;
+  border-right: .15em solid rgb(40, 77, 245);
+  white-space: nowrap;
+  margin-top: 10%;
+  font-size: 0.9rem;
+  color: cyan;
+  animation:
+    typing 1.5s steps(20, end) forwards,
+    blinking .75s infinite;
+  width: 0;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blinking {
+  from {
+    border-color: transparent
+  }
+
+  to {
+    border-color: orange;
+  }
+}

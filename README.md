@@ -18,7 +18,8 @@ Deploy our basic example using [Vercel](https://vercel.com):
 You will need Node.js 18+ and pnpm install on your local development machine.
 
 ```bash
-npm install @openassistantgpt
+npm install @openassistantgpt/assistant
+npm install @openassistantgpt/ui
 ```
 
 # Usage
