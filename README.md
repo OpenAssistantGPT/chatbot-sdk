@@ -66,10 +66,7 @@ Once the UI package is installed create the `page.tsx` file and configure your c
 ```js
 'use client';
 
-import {
-  OpenAssistantGPTChat,
-  ChatbotConfig,
-} from '@openassistantgpt/ui';
+import { OpenAssistantGPTChat, ChatbotConfig } from '@openassistantgpt/ui';
 
 export default function ChatPage() {
   const chatbot: ChatbotConfig = {
@@ -108,11 +105,11 @@ export default function ChatPage() {
   };
 
   return (
-      <OpenAssistantGPTChat
-        chatbot={chatbot}
-        path="/api/chat/assistant"
-        defaultMessage=""
-      />
+    <OpenAssistantGPTChat
+      chatbot={chatbot}
+      path="/api/chat/assistant"
+      defaultMessage=""
+    />
   );
 }
 ```
