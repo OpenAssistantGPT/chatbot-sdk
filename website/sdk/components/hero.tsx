@@ -27,7 +27,7 @@ export function Hero() {
             </div>
             <div className="flex flex-col gap-2 min-[400px]:flex-row">
               <Link
-                href={siteConfig.links.github}
+                href="https://github.com/OpenAssistantGPT/chatbot-sdk"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
@@ -36,7 +36,7 @@ export function Hero() {
               </Link>
 
               <Link
-                href="https://github.com/OpenAssistantGPT/chatbot-sdk"
+                href="https://github.com/OpenAssistantGPT/chatbot-sdk?tab=readme-ov-file#openassistantgpt-sdk"
                 className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
                 prefetch={false}
               >

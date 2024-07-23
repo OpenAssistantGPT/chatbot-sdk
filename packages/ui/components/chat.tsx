@@ -14,6 +14,7 @@ import { toast } from '@/components/ui/use-toast';
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { FooterText } from '@/components/chat-footer-text';
@@ -121,227 +122,238 @@ export function OpenAssistantGPTChat({
 
   return (
     <>
-      {chatbot.chatHistoryEnabled && (
-        <ChatHistory
-          threads={threads}
-          setThreadId={setThreadId}
-          threadId={threadId}
-          deleteThreadFromHistory={deleteThreadFromHistory}
-        ></ChatHistory>
-      )}
-      <CardHeader
-        style={{ background: chatbot.chatHeaderBackgroundColor }}
-        className="sticky z-30 top-0 border-b p-4"
-      >
-        <div className="flex flex-row justify-between items-center">
-          <h2 className="text-xl font-bold flex items-center h-10 gap-2">
-            <div style={{ color: chatbot.chatHeaderTextColor }}>
-              {chatbot.chatTitle}
+      <TooltipProvider>
+        {chatbot.chatHistoryEnabled && (
+          <ChatHistory
+            threads={threads}
+            setThreadId={setThreadId}
+            threadId={threadId}
+            deleteThreadFromHistory={deleteThreadFromHistory}
+          ></ChatHistory>
+        )}
+        <CardHeader
+          style={{ background: chatbot.chatHeaderBackgroundColor }}
+          className="sticky z-30 top-0 border-b p-4"
+        >
+          <div className="flex flex-row justify-between items-center">
+            <h2 className="text-xl font-bold flex items-center h-10 gap-2">
+              <div style={{ color: chatbot.chatHeaderTextColor }}>
+                {chatbot.chatTitle}
+              </div>
+            </h2>
+            <div className="flex flex-row items-center">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    variant={'nothing'}
+                    className="cursor-pointer"
+                    size={'icon'}
+                    onClick={() => {
+                      window.location.reload();
+                    }}
+                  >
+                    <Icons.reload
+                      style={{ color: chatbot.chatHeaderTextColor }}
+                      className="h-4 w-4"
+                    />
+                    <span className="sr-only">New Chat</span>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipContent>New Chat</TooltipContent>
+              </Tooltip>
+              {withExitX && (
+                <div className="items-end">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        onClick={closeChat}
+                        variant="nothing"
+                        className="cursor-pointer"
+                      >
+                        <Icons.close
+                          style={{ color: chatbot.chatHeaderTextColor }}
+                          className="h-5 w-5 text-gray-500"
+                        />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>Exit Chat</TooltipContent>
+                  </Tooltip>
+                </div>
+              )}
             </div>
-          </h2>
-          <div className="flex flex-row items-center">
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant={'nothing'}
-                  className="cursor-pointer"
-                  size={'icon'}
-                  onClick={() => {
-                    window.location.reload();
-                  }}
-                >
-                  <Icons.reload
-                    style={{ color: chatbot.chatHeaderTextColor }}
-                    className="h-4 w-4"
+          </div>
+        </CardHeader>
+
+        <div className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]">
+          <div
+            className={cn(
+              'pb-[200px] overflow-auto pl-6 sm:pl-20 pr-6 sm:pr-20 md:pb-[200px] pt-4 md:pt-10',
+              className,
+            )}
+          >
+            <ChatMessage
+              isFirst={true}
+              chatbot={chatbot}
+              message={{
+                id: '0',
+                role: 'assistant',
+                content: chatbot.welcomeMessage,
+              }}
+            />
+            <div className="flex-grow overflow-y-auto space-y-6 flex flex-col order-2">
+              {messages.map((message: Message, index) => {
+                return (
+                  <ChatMessage
+                    chatbot={chatbot}
+                    key={index}
+                    message={message}
                   />
-                  <span className="sr-only">New Chat</span>
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>New Chat</TooltipContent>
-            </Tooltip>
-            {withExitX && (
-              <div className="items-end">
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      onClick={closeChat}
-                      variant="nothing"
-                      className="cursor-pointer"
-                    >
-                      <Icons.close
-                        style={{ color: chatbot.chatHeaderTextColor }}
-                        className="h-5 w-5 text-gray-500"
-                      />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>Exit Chat</TooltipContent>
-                </Tooltip>
+                );
+              })}
+            </div>
+            {status !== 'awaiting_message' && (
+              <div className="mt-4">
+                <ChatMessage
+                  chatbot={chatbot}
+                  message={{
+                    id: 'waiting',
+                    role: 'assistant',
+                    content: 'loading',
+                  }}
+                />
               </div>
             )}
-          </div>
-        </div>
-      </CardHeader>
-
-      <div className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]">
-        <div
-          className={cn(
-            'pb-[200px] overflow-auto pl-6 sm:pl-20 pr-6 sm:pr-20 md:pb-[200px] pt-4 md:pt-10',
-            className,
-          )}
-        >
-          <ChatMessage
-            isFirst={true}
-            chatbot={chatbot}
-            message={{
-              id: '0',
-              role: 'assistant',
-              content: chatbot.welcomeMessage,
-            }}
-          />
-          <div className="flex-grow overflow-y-auto space-y-6 flex flex-col order-2">
-            {messages.map((message: Message, index) => {
-              return (
-                <ChatMessage chatbot={chatbot} key={index} message={message} />
-              );
-            })}
-          </div>
-          {status !== 'awaiting_message' && (
-            <div className="mt-4">
-              <ChatMessage
-                chatbot={chatbot}
-                message={{
-                  id: 'waiting',
-                  role: 'assistant',
-                  content: 'loading',
-                }}
-              />
+            <div id="end" ref={containerRef}>
+              {' '}
             </div>
-          )}
-          <div id="end" ref={containerRef}>
-            {' '}
           </div>
-        </div>
-        <div className="fixed inset-x-0 bottom-0 w-full ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
-          <div
-            className={`mx-auto ${
-              chatbot.chatInputStyle === 'default' ? 'sm:max-w-2xl sm:px-4' : ''
-            }`}
-          >
-            <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 px-4 ">
-              {/** here we can put chatbot extensions like inquiry, message prompt etc... */}
-            </div>
+          <div className="fixed inset-x-0 bottom-0 w-full ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
+            <div
+              className={`mx-auto ${
+                chatbot.chatInputStyle === 'default'
+                  ? 'sm:max-w-2xl sm:px-4'
+                  : ''
+              }`}
+            >
+              <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 px-4 ">
+                {/** here we can put chatbot extensions like inquiry, message prompt etc... */}
+              </div>
 
-            <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl md:py-4">
-              <form onSubmit={handleSubmitMessage} {...props} ref={formRef}>
-                {fileUploaded && (
-                  <div className="flex w-full sm:w-1/2 items-center p-2 bg-white border rounded-lg shadow-sm">
-                    <Icons.document className="text-gray-400 w-6 h-6 flex-shrink-0" />
-                    <div className="flex flex-col pl-3 pr-6 flex-1 min-w-0">
-                      <span className="font-sm text-gray-800 truncate">
-                        {inputFileRef.current?.files![0].name}
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {inputFileRef.current?.files![0].type === 'image/jpeg'
-                          ? 'Image'
-                          : inputFileRef.current?.files![0].type === 'image/png'
-                          ? 'Image'
-                          : inputFileRef.current?.files![0].type ===
-                            'image/svg+xml'
-                          ? 'Image'
-                          : 'Document'}
-                      </span>
-                    </div>
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      className="flex-shrink-0"
-                      onClick={() => {
-                        inputFileRef.current!.value = '';
-                        setFileUploaded(false);
-                      }}
-                    >
-                      <Icons.close className="text-gray-400 w-4 h-4" />
-                    </Button>
-                  </div>
-                )}
-                <div
-                  className={`relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background ${
-                    chatbot.chatFileAttachementEnabled
-                      ? 'px-8 sm:px-12'
-                      : 'px-2 sm:px-2'
-                  }`}
-                >
-                  {chatbot.chatFileAttachementEnabled && (
-                    <div className="">
-                      <Label htmlFor="file" className="">
-                        <div
-                          className={`p-2 absolute left-0 top-[12px] size-8 rounded-full bg-background p-0 sm:left-4 border border-input hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background`}
-                        >
-                          <Icons.paperclip className="text-muted-foreground h-4 w-4" />
-                        </div>
-                      </Label>
-                      <Input
-                        ref={inputFileRef}
-                        id="file"
-                        type="file"
-                        className="hidden"
-                        onChange={() => {
-                          setFileUploaded(true);
+              <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl md:py-4">
+                <form onSubmit={handleSubmitMessage} {...props} ref={formRef}>
+                  {fileUploaded && (
+                    <div className="flex w-full sm:w-1/2 items-center p-2 bg-white border rounded-lg shadow-sm">
+                      <Icons.document className="text-gray-400 w-6 h-6 flex-shrink-0" />
+                      <div className="flex flex-col pl-3 pr-6 flex-1 min-w-0">
+                        <span className="font-sm text-gray-800 truncate">
+                          {inputFileRef.current?.files![0].name}
+                        </span>
+                        <span className="text-sm text-gray-500">
+                          {inputFileRef.current?.files![0].type === 'image/jpeg'
+                            ? 'Image'
+                            : inputFileRef.current?.files![0].type ===
+                              'image/png'
+                            ? 'Image'
+                            : inputFileRef.current?.files![0].type ===
+                              'image/svg+xml'
+                            ? 'Image'
+                            : 'Document'}
+                        </span>
+                      </div>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        className="flex-shrink-0"
+                        onClick={() => {
+                          inputFileRef.current!.value = '';
+                          setFileUploaded(false);
                         }}
-                      />
+                      >
+                        <Icons.close className="text-gray-400 w-4 h-4" />
+                      </Button>
                     </div>
                   )}
                   <div
-                    className={
-                      chatbot.chatFileAttachementEnabled ? `pl-4` : `` + ` pr-8`
-                    }
+                    className={`relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background ${
+                      chatbot.chatFileAttachementEnabled
+                        ? 'px-8 sm:px-12'
+                        : 'px-2 sm:px-2'
+                    }`}
                   >
-                    <Textarea
-                      ref={inputRef}
-                      tabIndex={0}
-                      onKeyDown={onKeyDown}
-                      placeholder={chatbot.chatMessagePlaceHolder}
-                      className="border-0 border-gray-300 rounded-lg min-h-[60px] w-full resize-none bg-white pl-4 py-[1rem] sm:text-sm shadow-sm focus-visible:ring-0"
-                      spellCheck={false}
-                      autoComplete="off"
-                      autoCorrect="off"
-                      name="message"
-                      rows={1}
-                      value={input}
-                      onChange={handleInputChange}
+                    {chatbot.chatFileAttachementEnabled && (
+                      <div className="">
+                        <Label htmlFor="file" className="">
+                          <div
+                            className={`p-2 absolute left-0 top-[12px] size-8 rounded-full bg-background p-0 sm:left-4 border border-input hover:bg-accent hover:text-accent-foreground inline-flex items-center justify-center rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background`}
+                          >
+                            <Icons.paperclip className="text-muted-foreground h-4 w-4" />
+                          </div>
+                        </Label>
+                        <Input
+                          ref={inputFileRef}
+                          id="file"
+                          type="file"
+                          className="hidden"
+                          onChange={() => {
+                            setFileUploaded(true);
+                          }}
+                        />
+                      </div>
+                    )}
+                    <div
+                      className={
+                        chatbot.chatFileAttachementEnabled
+                          ? `pl-4`
+                          : `` + ` pr-8`
+                      }
+                    >
+                      <Textarea
+                        ref={inputRef}
+                        tabIndex={0}
+                        onKeyDown={onKeyDown}
+                        placeholder={chatbot.chatMessagePlaceHolder}
+                        className="border-0 border-gray-300 rounded-lg min-h-[60px] w-full resize-none bg-white pl-4 py-[1rem] sm:text-sm shadow-sm focus-visible:ring-0"
+                        spellCheck={false}
+                        autoComplete="off"
+                        autoCorrect="off"
+                        name="message"
+                        rows={1}
+                        value={input}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div className={`absolute top-[14px] right-0`}>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            id="submit"
+                            disabled={
+                              status !== 'awaiting_message' || input === ''
+                            }
+                            type="submit"
+                            size="icon"
+                          >
+                            <Icons.arrowRight />
+                            <span className="sr-only">Send message</span>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>Send message</TooltipContent>
+                      </Tooltip>
+                    </div>
+                  </div>
+                  {chatbot.displayFooterText && (
+                    <FooterText
+                      link={chatbot.footerLink}
+                      name={chatbot.footerTextName}
+                      className="block my-2"
                     />
-                  </div>
-                  <div className={`absolute top-[14px] right-0`}>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          id="submit"
-                          disabled={
-                            status !== 'awaiting_message' || input === ''
-                          }
-                          type="submit"
-                          size="icon"
-                        >
-                          <Icons.arrowRight />
-                          <span className="sr-only">Send message</span>
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent>Send message</TooltipContent>
-                    </Tooltip>
-                  </div>
-                </div>
-                {chatbot.displayFooterText && (
-                  <FooterText
-                    link={chatbot.footerLink}
-                    name={chatbot.footerTextName}
-                    className="block my-2"
-                  />
-                )}
-              </form>
+                  )}
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </TooltipProvider>
     </>
   );
 }
