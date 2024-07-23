@@ -25,7 +25,7 @@
     }
   },
   "dependencies": {
-    "@ai-sdk/provider-utils": "1.0.2",
+    "@ai-sdk/provider-utils": "1.0.3",
     "@ai-sdk/ui-utils": "0.0.12",
     "@vitejs/plugin-react": "^4.3.1",
     "ai": "^3.2.24",
