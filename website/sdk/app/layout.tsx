@@ -1,12 +1,8 @@
-import type { Metadata } from 'next';
 import './globals.css';
 import { LandingPage } from '@/components/landing-page';
+import { constructMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
-  title: 'OpenAssistantGPT SDK',
-  description:
-    'SDK created by the OpenAssistantGPT team to help you build smart chatbots using OpenAI Assistant API.',
-};
+export const metadata = constructMetadata();
 
 export default function RootLayout({
   children,
