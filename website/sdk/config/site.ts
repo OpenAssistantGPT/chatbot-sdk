@@ -9,6 +9,6 @@ export const siteConfig: SiteConfig = {
   links: {
     twitter: 'https://twitter.com/oassistantgpt',
     github: 'https://github.com/OpenAssistantGPT',
-    productHunt: 'https://www.producthunt.com/posts/openassistantgpt',
+    productHunt: 'https://www.producthunt.com/posts/openassistantgpt-sdk',
   },
 };
