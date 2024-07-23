@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.0.4
+
+### Patch Changes
+
+- e14ba89: The tooltip component is now wrapped in the chat component, it is not exported anymore
+
 ## 0.0.3
 
 ### Patch Changes
