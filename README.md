@@ -13,6 +13,8 @@ Deploy our basic example using [Vercel](https://vercel.com):
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenAssistantGPT%2FOpenAssistantGPT-SDK%2Ftree%2Fmain%2Fexamples%2Fnext-website&env=OPENAI_ASSISTANT_ID,OPENAI_API_KEY&envDescription=Find%20all%20informations%20in%20OpenAI%20Platform.&envLink=https%3A%2F%2Fplatform.openai.com%2F)
 
+For more information about the example give a look at this [README.md](https://github.com/OpenAssistantGPT/chatbot-sdk/tree/main/examples/next-website#openassistantgpt-sdk-nextjs-and-openai-chat-example).
+
 # Installation
 
 You will need Node.js 18+ and pnpm install on your local development machine.
