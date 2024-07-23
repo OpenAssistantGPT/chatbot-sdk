@@ -14,6 +14,7 @@ import { toast } from '@/components/ui/use-toast';
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { FooterText } from '@/components/chat-footer-text';
@@ -121,6 +122,7 @@ export function OpenAssistantGPTChat({
 
   return (
     <>
+    <TooltipProvider>
       {chatbot.chatHistoryEnabled && (
         <ChatHistory
           threads={threads}
@@ -342,6 +344,7 @@ export function OpenAssistantGPTChat({
           </div>
         </div>
       </div>
+      </TooltipProvider>
     </>
   );
 }
