@@ -46,7 +46,7 @@ export function Hero() {
           </div>
           <div className="flex justify-center">
             <Image
-              src="/image.png"
+              src="/hero.png"
               alt="Hero Image"
               width={1200}
               height={1200}

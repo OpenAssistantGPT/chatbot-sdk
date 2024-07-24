@@ -36,9 +36,9 @@ export function LandingPage({ children }: { children: React.ReactNode }) {
             : 'bg-white/75 backdrop-blur-lg border-b'
         } sticky inset-x-0 top-0 w-full transition-all duration-1000`}
       >
-        <div className="container flex h-20 items-center justify-between px-12 py-6 mx-5 ">
+        <div className="container flex h-20 items-center justify-between px-12 py-6 ">
           <MainNav items={marketingConfig.mainNav} />
-          <nav className="flex flex-row space-x-4">
+          <nav className="flex flex-row space-x-4 ml-4">
             <a
               href="https://www.producthunt.com/posts/openassistantgpt-sdk?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-openassistantgpt&#0045;sdk"
               target="_blank"
@@ -51,7 +51,7 @@ export function LandingPage({ children }: { children: React.ReactNode }) {
             </a>
             <Link
               href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FOpenAssistantGPT%2FOpenAssistantGPT-SDK%2Ftree%2Fmain%2Fexamples%2Fnext-website&env=OPENAI_ASSISTANT_ID,OPENAI_API_KEY&envDescription=Find%20all%20informations%20in%20OpenAI%20Platform.&envLink=https%3A%2F%2Fplatform.openai.com%2F"
-              className="inline-flex h-10 mt-2 pt-1 pb-1 items-center justify-center rounded-md border border-input bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+              className="hidden sm:flex inline-flex h-10 mt-2 pt-1 pb-1 items-center justify-center rounded-md border border-input bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
               prefetch={false}
             >
               <Image

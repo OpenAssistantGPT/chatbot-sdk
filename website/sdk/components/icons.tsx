@@ -42,11 +42,15 @@ import {
   RefreshCcw,
   Paperclip,
   Lock,
+  History,
+  PenToolIcon,
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
 
 export const Icons = {
+  pen: PenToolIcon,
+  history: History,
   lock: Lock,
   document: File,
   paperclip: Paperclip,
