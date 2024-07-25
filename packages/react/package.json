@@ -30,7 +30,7 @@
     "@vitejs/plugin-react": "^4.3.1",
     "ai": "^3.2.24",
     "openai": "^4.52.7",
-    "swr": "2.2.0"
+    "swr": "2.2.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.5",
