@@ -121,8 +121,8 @@ importers:
   packages/assistant:
     dependencies:
       '@ai-sdk/provider-utils':
-        specifier: 1.0.2
-        version: 1.0.2(zod@3.23.8)
+        specifier: 1.0.4
+        version: 1.0.4(zod@3.23.8)
       '@ai-sdk/ui-utils':
         specifier: 0.0.12
         version: 0.0.12(zod@3.23.8)
@@ -191,8 +191,8 @@ importers:
   packages/react:
     dependencies:
       '@ai-sdk/provider-utils':
-        specifier: 1.0.2
-        version: 1.0.2(zod@3.23.8)
+        specifier: 1.0.4
+        version: 1.0.4(zod@3.23.8)
       '@ai-sdk/ui-utils':
         specifier: 0.0.12
         version: 0.0.12(zod@3.23.8)
@@ -261,8 +261,8 @@ importers:
   packages/ui:
     dependencies:
       '@ai-sdk/provider-utils':
-        specifier: 1.0.2
-        version: 1.0.2(zod@3.23.8)
+        specifier: 1.0.4
+        version: 1.0.4(zod@3.23.8)
       '@ai-sdk/ui-utils':
         specifier: 0.0.12
         version: 0.0.12(zod@3.23.8)
@@ -498,6 +498,22 @@ packages:
       zod: 3.23.8
     dev: false
 
+  /@ai-sdk/provider-utils@1.0.4(zod@3.23.8):
+    resolution: {integrity: sha512-2TldHn54+HrvVHMCos9lrSMcDIp3cgnpphpYT/95RXcIzcGwAFM5MioDWnsrki3noplU5pVld6ylD3Vu/Xt3Vw==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+    dependencies:
+      '@ai-sdk/provider': 0.0.13
+      eventsource-parser: 1.1.2
+      nanoid: 3.3.6
+      secure-json-parse: 2.7.0
+      zod: 3.23.8
+    dev: false
+
   /@ai-sdk/provider@0.0.10:
     resolution: {integrity: sha512-NzkrtREQpHID1cTqY/C4CI30PVOaXWKYytDR2EcytmFgnP7Z6+CrGIA/YCnNhYAuUm6Nx+nGpRL/Hmyrv7NYzg==}
     engines: {node: '>=18'}
@@ -507,6 +523,13 @@ packages:
 
   /@ai-sdk/provider@0.0.12:
     resolution: {integrity: sha512-oOwPQD8i2Ynpn22cur4sk26FW3mSy6t6/X/K1Ay2yGBKYiSpRyLfObhOrZEGsXDx+3euKy4nEZ193R36NM+tpQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      json-schema: 0.4.0
+    dev: false
+
+  /@ai-sdk/provider@0.0.13:
+    resolution: {integrity: sha512-RBstpG/3RqVBBJgTvjZpou/+1fNQMDIwB9enqQPXqr0MoCrJHscLD2Zsfr6cKM5HFfY1D4KhdSPTycCDebVGlQ==}
     engines: {node: '>=18'}
     dependencies:
       json-schema: 0.4.0
