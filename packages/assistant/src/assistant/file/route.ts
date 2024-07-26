@@ -1,4 +1,5 @@
 import { OpenAI } from 'openai';
+import { i } from 'vitest/dist/reporters-yx5ZTtEV';
 import { z } from 'zod';
 
 const routeContextSchema = z.object({
@@ -10,6 +11,7 @@ const routeContextSchema = z.object({
 export async function handleFile(
   request: Request,
   context: z.infer<typeof routeContextSchema>,
+  openai: OpenAI,
 ) {
   if (request.method !== 'GET') {
     return new Response('Method Not Allowed', { status: 405 });
@@ -17,18 +19,16 @@ export async function handleFile(
 
   const { params } = routeContextSchema.parse(context);
 
-  const openai = new OpenAI({
-    // eslint-disable-next-line turbo/no-undeclared-env-vars
-    apiKey: process.env.OPENAI_API_KEY,
-  });
+  return handleFileFunction(
+    openai,
+    params.openassistantgpt[params.openassistantgpt.length - 1],
+  );
+}
 
+export async function handleFileFunction(openai: OpenAI, fileId: string) {
   const [file, fileContent] = await Promise.all([
-    openai.files.retrieve(
-      params.openassistantgpt[params.openassistantgpt.length - 1],
-    ),
-    openai.files.content(
-      params.openassistantgpt[params.openassistantgpt.length - 1],
-    ),
+    openai.files.retrieve(fileId),
+    openai.files.content(fileId),
   ]);
 
   return new Response(fileContent.body, {

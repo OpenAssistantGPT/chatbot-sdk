@@ -47,7 +47,7 @@ export function ChatMessage({
           >
             <svg
               fill={chatbot.userReplyBackgroundColor}
-              className="absolute bottom-[0px] right-10"
+              className="absolute bottom-[0px] right-11"
               height="14"
               width="13"
             >
