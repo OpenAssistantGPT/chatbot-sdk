@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.0.5
+
+### Patch Changes
+
+- 4737746: Update handlers to support parameters instead of having to use environment variable. You can now provide assistantId and OpenAI object in the function parameters.
+
 ## 0.0.4
 
 ### Patch Changes
