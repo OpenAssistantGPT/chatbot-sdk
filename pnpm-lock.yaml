@@ -188,8 +188,8 @@ importers:
         specifier: 1.0.4
         version: 1.0.4(zod@3.23.8)
       '@ai-sdk/ui-utils':
-        specifier: 0.0.12
-        version: 0.0.12(zod@3.23.8)
+        specifier: 0.0.20
+        version: 0.0.20(zod@3.23.8)
       ai:
         specifier: ^3.2.24
         version: 3.2.24(openai@4.52.7)(react@18.2.0)(svelte@4.2.18)(vue@3.4.33)(zod@3.23.8)
@@ -258,8 +258,8 @@ importers:
         specifier: 1.0.4
         version: 1.0.4(zod@3.23.8)
       '@ai-sdk/ui-utils':
-        specifier: 0.0.12
-        version: 0.0.12(zod@3.23.8)
+        specifier: 0.0.20
+        version: 0.0.20(zod@3.23.8)
       '@vitejs/plugin-react':
         specifier: ^4.3.1
         version: 4.3.1(vite@5.3.4)
@@ -328,8 +328,8 @@ importers:
         specifier: 1.0.4
         version: 1.0.4(zod@3.23.8)
       '@ai-sdk/ui-utils':
-        specifier: 0.0.12
-        version: 0.0.12(zod@3.23.8)
+        specifier: 0.0.20
+        version: 0.0.20(zod@3.23.8)
       '@openassistantgpt/react':
         specifier: workspace:^
         version: link:../react
@@ -578,6 +578,22 @@ packages:
       zod: 3.23.8
     dev: false
 
+  /@ai-sdk/provider-utils@1.0.5(zod@3.23.8):
+    resolution: {integrity: sha512-XfOawxk95X3S43arn2iQIFyWGMi0DTxsf9ETc6t7bh91RPWOOPYN1tsmS5MTKD33OGJeaDQ/gnVRzXUCRBrckQ==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+    dependencies:
+      '@ai-sdk/provider': 0.0.14
+      eventsource-parser: 1.1.2
+      nanoid: 3.3.6
+      secure-json-parse: 2.7.0
+      zod: 3.23.8
+    dev: false
+
   /@ai-sdk/provider@0.0.10:
     resolution: {integrity: sha512-NzkrtREQpHID1cTqY/C4CI30PVOaXWKYytDR2EcytmFgnP7Z6+CrGIA/YCnNhYAuUm6Nx+nGpRL/Hmyrv7NYzg==}
     engines: {node: '>=18'}
@@ -594,6 +610,13 @@ packages:
 
   /@ai-sdk/provider@0.0.13:
     resolution: {integrity: sha512-RBstpG/3RqVBBJgTvjZpou/+1fNQMDIwB9enqQPXqr0MoCrJHscLD2Zsfr6cKM5HFfY1D4KhdSPTycCDebVGlQ==}
+    engines: {node: '>=18'}
+    dependencies:
+      json-schema: 0.4.0
+    dev: false
+
+  /@ai-sdk/provider@0.0.14:
+    resolution: {integrity: sha512-gaQ5Y033nro9iX1YUjEDFDRhmMcEiCk56LJdIUbX5ozEiCNCfpiBpEqrjSp/Gp5RzBS2W0BVxfG7UGW6Ezcrzg==}
     engines: {node: '>=18'}
     dependencies:
       json-schema: 0.4.0
@@ -699,20 +722,6 @@ packages:
       - zod
     dev: false
 
-  /@ai-sdk/ui-utils@0.0.12(zod@3.23.8):
-    resolution: {integrity: sha512-ivveEuneZPOUKqcIqZRCr2NUD+LJC8mYfL7jJRWaCr+JZqdYZ+5uR/nc8GKCly2TcC9/qoF3zxQuZEn0c5805g==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      zod: ^3.0.0
-    peerDependenciesMeta:
-      zod:
-        optional: true
-    dependencies:
-      '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
-      secure-json-parse: 2.7.0
-      zod: 3.23.8
-    dev: false
-
   /@ai-sdk/ui-utils@0.0.13(zod@3.23.8):
     resolution: {integrity: sha512-BUPlYgWGns2X0JFNpwywhgcrXwmW+mW3NYIMx9JREAsT6PwE1dtgeykSIZOra/+pLkHqMlZs1HRDXbD7Da6DBg==}
     engines: {node: '>=18'}
@@ -737,6 +746,20 @@ packages:
         optional: true
     dependencies:
       '@ai-sdk/provider-utils': 1.0.2(zod@3.23.8)
+      secure-json-parse: 2.7.0
+      zod: 3.23.8
+    dev: false
+
+  /@ai-sdk/ui-utils@0.0.20(zod@3.23.8):
+    resolution: {integrity: sha512-6MRWigzXfuxUcAYEFMLP6cLbALJkg12Iz1Sl+wuPMpB6aw7di2ePiTuNakFUYjgP7TNsW4UxzpypBqqJ1KNB0A==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      zod: ^3.0.0
+    peerDependenciesMeta:
+      zod:
+        optional: true
+    dependencies:
+      '@ai-sdk/provider-utils': 1.0.5(zod@3.23.8)
       secure-json-parse: 2.7.0
       zod: 3.23.8
     dev: false
