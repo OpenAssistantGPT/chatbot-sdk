@@ -40,7 +40,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@vercel/ai-tsconfig": "workspace:*",
-    "eslint": "^7.32.0",
+    "eslint": "^9.7.0",
     "eslint-config-vercel-ai": "workspace:*",
     "jsdom": "^24.1.0",
     "msw": "2.3.1",
