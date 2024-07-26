@@ -15,6 +15,11 @@ Deploy our basic example using [Vercel](https://vercel.com):
 
 For more information about the example give a look at this [README.md](https://github.com/OpenAssistantGPT/chatbot-sdk/tree/main/examples/next-website#openassistantgpt-sdk-nextjs-and-openai-chat-example).
 
+All examples
+
+- [Basic Website](./examples/next-website/README.md)
+- [Window Style Integration](./examples/website-chatbot-window/README.md)
+
 # Installation
 
 You will need Node.js 18+ and pnpm install on your local development machine.

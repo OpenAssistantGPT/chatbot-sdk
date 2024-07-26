@@ -1,0 +1,35 @@
+{
+  "name": "website-chatbot-window",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@openassistantgpt/assistant": "latest",
+    "@openassistantgpt/react": "latest",
+    "@openassistantgpt/ui": "latest",
+    "ai": "3.2.32",
+    "buffer": "^6.0.3",
+    "next": "14.2.5",
+    "openai": "4.52.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "zod": "3.23.8",
+    "zod-form-data": "^2.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8.4.39",
+    "tailwindcss": "^3.4.6",
+    "typescript": "5.1.3"
+  }
+}
