@@ -5,4 +5,3 @@ import { OpenAssistantGPTButton } from '@/components/chatbot-button';
 
 export { type ChatbotConfig };
 export { OpenAssistantGPTChat, OpenAssistantGPTButton };
-
