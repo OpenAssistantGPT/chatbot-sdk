@@ -30,5 +30,5 @@
       "dependsOn": ["^build", "build"]
     }
   },
-  "globalEnv": ["CI", "PORT"]
+  "globalEnv": ["CI", "PORT", "OPENAI_ASSISTANT_ID", "OPENAI_API_KEY"]
 }

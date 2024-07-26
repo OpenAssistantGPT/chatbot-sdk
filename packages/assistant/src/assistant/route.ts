@@ -21,20 +21,18 @@ const schema = zfd.formData({
   filename: z.string(),
 });
 
-export async function handleAssistant(basePath: string, req: Request) {
-  console.log('handleAssistant');
+export async function handleAssistant(
+  basePath: string,
+  req: Request,
+  openai: OpenAI,
+  assistantId: string,
+) {
   if (req.method !== 'POST') {
     return new Response('Method Not Allowed', { status: 405 });
   }
 
   try {
-    const openai = new OpenAI({
-      // eslint-disable-next-line turbo/no-undeclared-env-vars
-      apiKey: process.env.OPENAI_API_KEY,
-    });
-
     const input = await req.formData();
-
     const data = schema.parse(input);
 
     // Create a thread if needed
@@ -112,8 +110,7 @@ export async function handleAssistant(basePath: string, req: Request) {
         try {
           // Run the assistant on the thread
           const runStream = openai.beta.threads.runs.stream(threadId!, {
-            // eslint-disable-next-line turbo/no-undeclared-env-vars
-            assistant_id: process.env.OPENAI_ASSISTANT_ID!,
+            assistant_id: assistantId,
             instructions: (data.clientSidePrompt || '').replace('+', '') || '',
             tools: [{ type: 'file_search' }, { type: 'code_interpreter' }],
           });

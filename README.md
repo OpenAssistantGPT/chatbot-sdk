@@ -19,6 +19,7 @@ All examples
 
 - [Basic Website](./examples/next-website/README.md)
 - [Window Style Integration](./examples/website-chatbot-window/README.md)
+- [Custom API](./examples/website-custom-api//README.md)
 
 # Installation
 
