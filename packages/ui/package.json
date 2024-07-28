@@ -26,7 +26,7 @@
     "./dist/index.css": "./dist/index.css"
   },
   "dependencies": {
-    "@ai-sdk/provider-utils": "1.0.4",
+    "@ai-sdk/provider-utils": "1.0.5",
     "@ai-sdk/ui-utils": "0.0.20",
     "@openassistantgpt/react": "workspace:^",
     "@radix-ui/react-dialog": "^1.1.1",
