@@ -1,9 +1,16 @@
 {
-  "extends": ["//"],
-  "pipeline": {
+  "extends": [
+    "//"
+  ],
+  "globalEnv": [
+    "OPENAI_API_KEY",
+    "OPENAI_ASSISTANT_ID"
+  ],
+  "tasks": {
     "build": {
-      "outputs": ["**/dist/**"]
+      "outputs": [
+        "**/dist/**"
+      ]
     }
-  },
-  "globalEnv": ["OPENAI_API_KEY", "OPENAI_ASSISTANT_ID"]
+  }
 }

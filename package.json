@@ -36,7 +36,7 @@
     "publint": "0.2.9",
     "react": "19.0.0-rc-cc1ec60d0d-20240607",
     "react-dom": "19.0.0-rc-cc1ec60d0d-20240607",
-    "turbo": "^1.10.13",
+    "turbo": "^2.0.9",
     "vitest": "1.6.0"
   },
   "homepage": "https://openassistantgpt.io",
@@ -58,5 +58,6 @@
     "singleQuote": true,
     "arrowParens": "avoid",
     "trailingComma": "all"
-  }
+  },
+  "name": "openassistantgpt-sdk"
 }
