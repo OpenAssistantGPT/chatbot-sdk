@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.0.5
+
+### Patch Changes
+
+- 3189cf8: Remove tool override when running stream.
+
 ## 0.0.4
 
 ### Patch Changes
