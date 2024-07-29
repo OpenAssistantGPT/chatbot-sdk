@@ -112,7 +112,6 @@ export async function handleAssistant(
           const runStream = openai.beta.threads.runs.stream(threadId!, {
             assistant_id: assistantId,
             instructions: (data.clientSidePrompt || '').replace('+', '') || '',
-            tools: [{ type: 'file_search' }, { type: 'code_interpreter' }],
           });
 
           let runResult = await forwardStream(runStream);
