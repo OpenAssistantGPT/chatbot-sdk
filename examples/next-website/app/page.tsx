@@ -11,7 +11,7 @@ export default function ChatPage() {
     welcomeMessage:
       "Welcome to OpenAssistantGPT! 🚀 I'm your AI assistant, crafted using this platform. How may I assist you today?",
     chatMessagePlaceHolder: 'Ask us any question...',
-
+    
     rightToLeftLanguage: false,
 
     bubbleColor: 'linear-gradient(to top left, #003366, #336699)',
@@ -43,6 +43,7 @@ export default function ChatPage() {
       chatbot={chatbot}
       path="/api/chat/assistant"
       defaultMessage=""
+      withExitX={true}
     />
   );
 }
