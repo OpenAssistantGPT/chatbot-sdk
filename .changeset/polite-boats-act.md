@@ -1,5 +1,4 @@
 ---
-'next-website': patch
 'eslint-config-openassistantgpt': patch
 '@openassistantgpt/assistant': patch
 '@openassistantgpt/react': patch

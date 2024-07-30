@@ -119,7 +119,11 @@ export function OpenAssistantGPTChat({
   }
 
   function downloadTranscript() {
-    const transcript = `assistant: ${chatbot.welcomeMessage}\n\n` + messages.map((msg: Message) => `${msg.role}: ${msg.content}`).join('\n\n');
+    const transcript =
+      `assistant: ${chatbot.welcomeMessage}\n\n` +
+      messages
+        .map((msg: Message) => `${msg.role}: ${msg.content}`)
+        .join('\n\n');
     const blob = new Blob([transcript], { type: 'text/plain' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -190,22 +194,22 @@ export function OpenAssistantGPTChat({
                 <TooltipContent>Download Transcript</TooltipContent>
               </Tooltip>
               {withExitX && (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        onClick={closeChat}
-                        variant="nothing"
-                        size={'icon'}
-                        className="cursor-pointer"
-                      >
-                        <Icons.close
-                          style={{ color: chatbot.chatHeaderTextColor }}
-                          className="h-5 w-5"
-                        />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>Exit Chat</TooltipContent>
-                  </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Button
+                      onClick={closeChat}
+                      variant="nothing"
+                      size={'icon'}
+                      className="cursor-pointer"
+                    >
+                      <Icons.close
+                        style={{ color: chatbot.chatHeaderTextColor }}
+                        className="h-5 w-5"
+                      />
+                    </Button>
+                  </TooltipTrigger>
+                  <TooltipContent>Exit Chat</TooltipContent>
+                </Tooltip>
               )}
             </div>
           </div>
