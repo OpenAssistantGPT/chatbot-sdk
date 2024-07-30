@@ -94,7 +94,7 @@ export function ChatMessage({
             ) : (
               <>
                 <MemoizedReactMarkdown
-                  className="w-full prose text-sm break-words prose-p:leading-relaxed prose-pre:p-0"
+                  className="w-full text-sm break-words prose-p:leading-relaxed prose-pre:p-0"
                   remarkPlugins={[remarkGfm, remarkMath]}
                   components={{
                     a({ node, children, ...props }) {

@@ -43,6 +43,7 @@ export default function ChatPage() {
       chatbot={chatbot}
       path="/api/chat/assistant"
       defaultMessage=""
+      withExitX={true}
     />
   );
 }
