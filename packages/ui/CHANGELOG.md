@@ -1,5 +1,13 @@
 # @openassistantgpt/ui
 
+## 0.0.6
+
+### Patch Changes
+
+- df7561e: Add download transcript option and fix width of assistant reply
+- Updated dependencies [df7561e]
+  - @openassistantgpt/react@0.0.4
+
 ## 0.0.5
 
 ### Patch Changes

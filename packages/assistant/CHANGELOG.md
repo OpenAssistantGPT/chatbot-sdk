@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.0.6
+
+### Patch Changes
+
+- df7561e: Add download transcript option and fix width of assistant reply
+
 ## 0.0.5
 
 ### Patch Changes
