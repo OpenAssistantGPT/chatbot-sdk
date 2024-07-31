@@ -26,8 +26,7 @@ All examples
 You will need Node.js 18+ and pnpm install on your local development machine.
 
 ```bash
-npm install @openassistantgpt/assistant
-npm install @openassistantgpt/ui
+npm install openassistantgpt
 ```
 
 # Usage
