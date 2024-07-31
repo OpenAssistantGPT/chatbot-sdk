@@ -74,9 +74,9 @@ module.exports = {
         DEFAULT: {
           css: {
             maxWidth: '100%', // add required value here
-          }
-        }
-      }
+          },
+        },
+      },
     },
   },
   content: [
