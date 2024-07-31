@@ -1,6 +1,6 @@
 'use client';
 
-import { OpenAssistantGPTChat, ChatbotConfig } from '@openassistantgpt/ui';
+import { ChatbotConfig, OpenAssistantGPTChat } from 'openassistantgpt';
 
 export default function ChatPage() {
   const chatbot: ChatbotConfig = {
