@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.0.7
+
+### Patch Changes
+
+- ba1155a: Override max width of attribute prose
+
 ## 0.0.6
 
 ### Patch Changes
