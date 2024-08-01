@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.1.1
+
+### Patch Changes
+
+- 4b57e1e: add support for extensions in the chat and improve mobile UX
+
 ## 0.1.0
 
 ### Minor Changes

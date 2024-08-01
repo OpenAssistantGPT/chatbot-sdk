@@ -1,5 +1,11 @@
 # eslint-config-openassistantgpt
 
+## 0.0.4
+
+### Patch Changes
+
+- 4d7e93f: update version
+
 ## 0.0.2
 
 ### Patch Changes
