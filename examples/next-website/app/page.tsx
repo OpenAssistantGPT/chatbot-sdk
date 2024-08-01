@@ -1,8 +1,14 @@
 'use client';
 
-import { ChatbotConfig, OpenAssistantGPTChat } from 'openassistantgpt';
+import { ChatbotConfig, Message, OpenAssistantGPTChat } from 'openassistantgpt';
+import { useEffect, useState } from 'react';
+import { SupportInquiry } from './components/inquiry';
+import { Button } from './components/ui/button';
 
 export default function ChatPage() {
+  const [count, setMessagesCount] = useState(0);
+  const [defaultMessage, setDefaultMessage] = useState('');
+
   const chatbot: ChatbotConfig = {
     id: '12345',
     name: 'OpenAssistantGPT',
@@ -38,12 +44,68 @@ export default function ChatPage() {
     footerTextName: 'OpenAssistantGPT',
   };
 
+  useEffect(() => {
+    console.log('Messages count:', count);
+  }, [count]);
+
+  function handleMessagesChange(messages: Message[]) {
+    setMessagesCount(messages.length);
+  }
+
   return (
     <OpenAssistantGPTChat
       chatbot={chatbot}
       path="/api/chat/assistant"
-      defaultMessage=""
+      defaultMessage={defaultMessage}
       withExitX={true}
+      onMessagesChange={handleMessagesChange}
+      extensions={[
+        count == 0 && (
+          <Button
+            key="1"
+            className="w-full bg-white"
+            variant="outline"
+            onClick={() =>
+              setDefaultMessage('How many chatbot can I created on free plan?')
+            }
+          >
+            How many chatbot can I created on free plan?
+          </Button>
+        ),
+        count == 0 && (
+          <Button
+            key="2"
+            className="w-full bg-white"
+            variant="outline"
+            onClick={() => setDefaultMessage('How to create a chatbot?')}
+          >
+            How to create a chatbot?
+          </Button>
+        ),
+        count == 0 && (
+          <Button
+            key="3"
+            className="w-full bg-white"
+            variant="outline"
+            onClick={() =>
+              setDefaultMessage('How to integrate chatbot in website?')
+            }
+          >
+            How to integrate chatbot in website?
+          </Button>
+        ),
+        count == 0 && (
+          <Button
+            key="4"
+            className="w-full bg-white"
+            variant="outline"
+            onClick={() => setDefaultMessage('What is a SDK?')}
+          >
+            What is a SDK?
+          </Button>
+        ),
+        count > 1 && <SupportInquiry key="5" />,
+      ]}
     />
   );
 }
