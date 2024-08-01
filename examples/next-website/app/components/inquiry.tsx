@@ -1,3 +1,4 @@
+import { LucideLoader2, LucideX } from 'lucide-react';
 import { Button } from './ui/button';
 import {
   Dialog,
@@ -8,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from './ui/dialog';
-import { Icons } from './icons';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Textarea } from './ui/textarea';
@@ -44,7 +44,7 @@ export function SupportInquiry() {
         }}
         className="bg-zinc-100 shadow hover:bg-zinc-200 border rounded absolute top-0 right-0 -mt-1 -mr-1"
       >
-        <Icons.close className="h-4 w-4" />
+        <LucideX className="h-4 w-4" />
       </button>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
@@ -89,7 +89,7 @@ export function SupportInquiry() {
               <Button type="submit" disabled={inquiryLoading}>
                 Send
                 {inquiryLoading && (
-                  <Icons.spinner className="ml-2 mr-2 h-5 w-5 animate-spin" />
+                  <LucideLoader2 className="ml-2 mr-2 h-5 w-5 animate-spin" />
                 )}
               </Button>
             </DialogFooter>
