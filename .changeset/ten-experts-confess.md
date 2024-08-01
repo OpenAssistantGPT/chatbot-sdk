@@ -5,4 +5,4 @@
 '@openassistantgpt/ui': minor
 ---
 
-Add feature to support extensions in our chat compoenent, improve chat header in mobile mode
+Add feature to support extensions in our chat compoenent, improve chat header in mobile mode.
