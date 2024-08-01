@@ -5,7 +5,6 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
-import { CardHeader } from '@/components/ui/card';
 import { useAssistant, Message } from '@openassistantgpt/react';
 import { useEffect, useRef, useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
@@ -20,6 +19,7 @@ import { ChatMessage } from '@/components/chat-message';
 import { useEnterSubmit } from '@/hooks/use-enter-submit';
 import { ChatHistory } from '@/components/chat-history';
 import { ChatbotConfig } from '@/src/chatbot';
+import { ChatHeader } from '@/components/chat-header';
 
 interface ChatbotProps {
   chatbot: ChatbotConfig;
@@ -28,6 +28,8 @@ interface ChatbotProps {
   className?: string;
   withExitX?: boolean;
   clientSidePrompt?: string;
+  extensions?: React.ReactNode[];
+  onMessagesChange?: (messages: Message[]) => void;
 }
 
 export function OpenAssistantGPTChat({
@@ -37,6 +39,8 @@ export function OpenAssistantGPTChat({
   className,
   withExitX = false,
   clientSidePrompt,
+  onMessagesChange,
+  extensions,
   ...props
 }: ChatbotProps) {
   let inputFileRef = useRef<HTMLInputElement>(null);
@@ -103,6 +107,10 @@ export function OpenAssistantGPTChat({
     // Scroll to the bottom of the container on messages update
     document.documentElement.scrollTop =
       document.getElementById('end')!.offsetTop;
+
+    if (onMessagesChange) {
+      onMessagesChange(messages);
+    }
   }, [messages]);
 
   useEffect(() => {
@@ -112,7 +120,7 @@ export function OpenAssistantGPTChat({
           target: { value: defaultMessage },
         } as React.ChangeEvent<HTMLInputElement>);
     }
-  }, []);
+  }, [defaultMessage]);
 
   function closeChat() {
     window.parent.postMessage('closeChat', '*');
@@ -146,74 +154,12 @@ export function OpenAssistantGPTChat({
             deleteThreadFromHistory={deleteThreadFromHistory}
           ></ChatHistory>
         )}
-        <CardHeader
-          style={{ background: chatbot.chatHeaderBackgroundColor }}
-          className="sticky z-30 top-0 border-b p-4"
-        >
-          <div className="flex flex-row justify-between items-center">
-            <h2 className="text-xl font-bold flex items-center h-10 gap-2">
-              <div style={{ color: chatbot.chatHeaderTextColor }}>
-                {chatbot.chatTitle}
-              </div>
-            </h2>
-            <div className="flex flex-row items-center space-x-4">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant={'nothing'}
-                    className="cursor-pointer"
-                    size={'icon'}
-                    onClick={() => {
-                      window.location.reload();
-                    }}
-                  >
-                    <Icons.reload
-                      style={{ color: chatbot.chatHeaderTextColor }}
-                      className="h-4 w-4"
-                    />
-                    <span className="sr-only">New Chat</span>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>New Chat</TooltipContent>
-              </Tooltip>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button
-                    variant={'nothing'}
-                    className="cursor-pointer"
-                    size={'icon'}
-                    onClick={downloadTranscript}
-                  >
-                    <Icons.download
-                      style={{ color: chatbot.chatHeaderTextColor }}
-                      className="h-4 w-4"
-                    />
-                    <span className="sr-only">Download Transcript</span>
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>Download Transcript</TooltipContent>
-              </Tooltip>
-              {withExitX && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      onClick={closeChat}
-                      variant="nothing"
-                      size={'icon'}
-                      className="cursor-pointer"
-                    >
-                      <Icons.close
-                        style={{ color: chatbot.chatHeaderTextColor }}
-                        className="h-5 w-5"
-                      />
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>Exit Chat</TooltipContent>
-                </Tooltip>
-              )}
-            </div>
-          </div>
-        </CardHeader>
+        <ChatHeader
+          chatbot={chatbot}
+          withExitX={withExitX}
+          downloadTranscript={downloadTranscript}
+          closeChat={closeChat}
+        />
 
         <div className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]">
           <div
@@ -267,7 +213,7 @@ export function OpenAssistantGPTChat({
               }`}
             >
               <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 px-4 ">
-                {/** here we can put chatbot extensions like inquiry, message prompt etc... */}
+                {extensions}
               </div>
 
               <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl md:py-4">

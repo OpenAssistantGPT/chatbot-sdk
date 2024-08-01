@@ -1,7 +1,4 @@
-import {
-  OpenAssistantGPTChat as chat,
-  ChatbotConfig as chatbotConfig,
-} from '@openassistantgpt/ui';
+import { OpenAssistantGPTChat as chat } from '@openassistantgpt/ui';
 export const OpenAssistantGPTChat = chat;
 export type { ChatbotConfig } from '@openassistantgpt/ui';
 
