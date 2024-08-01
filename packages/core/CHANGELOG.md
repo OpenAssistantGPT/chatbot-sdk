@@ -1,5 +1,18 @@
 # core
 
+## 0.1.0
+
+### Minor Changes
+
+- 9aaa198: Add feature to support extensions in our chat compoenent, improve chat header in mobile mode.
+
+### Patch Changes
+
+- Updated dependencies [9aaa198]
+  - @openassistantgpt/assistant@0.1.0
+  - @openassistantgpt/react@0.1.0
+  - @openassistantgpt/ui@0.1.0
+
 ## 0.0.1
 
 ### Patch Changes

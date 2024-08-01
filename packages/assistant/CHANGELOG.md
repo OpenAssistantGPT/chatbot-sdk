@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.1.0
+
+### Minor Changes
+
+- 9aaa198: Add feature to support extensions in our chat compoenent, improve chat header in mobile mode.
+
 ## 0.0.6
 
 ### Patch Changes
