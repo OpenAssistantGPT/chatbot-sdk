@@ -1,5 +1,15 @@
 # core
 
+## 0.1.1
+
+### Patch Changes
+
+- 4b57e1e: add support for extensions in the chat and improve mobile UX
+- Updated dependencies [4b57e1e]
+  - @openassistantgpt/assistant@0.1.1
+  - @openassistantgpt/react@0.1.1
+  - @openassistantgpt/ui@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
