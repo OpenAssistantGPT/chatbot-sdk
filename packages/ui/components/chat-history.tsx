@@ -143,7 +143,7 @@ export function ChatHistory({
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
-          <Card className="h-full overflow-hidden">
+          <Card className="h-full overflow-auto">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>Chat History</CardTitle>
               <div className="flex flex-row items-center">
