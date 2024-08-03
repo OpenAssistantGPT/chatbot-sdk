@@ -97,8 +97,7 @@ export function ChatHistory({
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={() => {
-                        console.log('delete thread', threadId);
+                      onClick={(e) => {
                         deleteThreadFromHistory(mapThreadId);
                       }}
                     >
@@ -116,7 +115,7 @@ export function ChatHistory({
 
   return (
     <>
-      <div className="fixed left-0 top-1/2 transform -translate-y-1/2">
+      <div className="overflow-auto fixed left-0 top-1/2 transform -translate-y-1/2">
         <Button onClick={toggleMenu} size="icon" variant="ghost">
           <svg
             className="h-5 w-5 text-muted-foreground"
@@ -144,7 +143,7 @@ export function ChatHistory({
             isMenuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >
-          <Card className="h-full">
+          <Card className="h-full overflow-hidden">
             <CardHeader className="flex flex-row items-center justify-between">
               <CardTitle>Chat History</CardTitle>
               <div className="flex flex-row items-center">
@@ -181,7 +180,7 @@ export function ChatHistory({
                 </svg>
               </Button>
             </CardHeader>
-            <CardContent className="max-h-[90%] overflow-y-auto">
+            <CardContent className="h-[calc(100%-84px)] overflow-y-auto"> {/* Adjust height to consider header */}
               <div className="grid gap-4 pr-10">
                 {todayThreads.length === 0 &&
                   yesterdayThreads.length === 0 &&
