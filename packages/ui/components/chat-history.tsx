@@ -97,7 +97,7 @@ export function ChatHistory({
                     <Button
                       variant="ghost"
                       size="icon"
-                      onClick={(e) => {
+                      onClick={e => {
                         deleteThreadFromHistory(mapThreadId);
                       }}
                     >
@@ -180,7 +180,9 @@ export function ChatHistory({
                 </svg>
               </Button>
             </CardHeader>
-            <CardContent className="h-[calc(100%-84px)] overflow-y-auto"> {/* Adjust height to consider header */}
+            <CardContent className="h-[calc(100%-84px)] overflow-y-auto">
+              {' '}
+              {/* Adjust height to consider header */}
               <div className="grid gap-4 pr-10">
                 {todayThreads.length === 0 &&
                   yesterdayThreads.length === 0 &&
