@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.1.3
+
+### Patch Changes
+
+- 675d106: Fix more scrolling issue
+
 ## 0.1.2
 
 ### Patch Changes
