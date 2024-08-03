@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.1.2
+
+### Patch Changes
+
+- 4e5c500: Fix issue when chat history wasnt showing all items
+
 ## 0.1.1
 
 ### Patch Changes
