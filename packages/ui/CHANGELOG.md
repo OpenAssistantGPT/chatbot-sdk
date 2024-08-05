@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.1.5
+
+### Patch Changes
+
+- 2635c63: Fix type error from String to string
+
 ## 0.1.4
 
 ### Patch Changes
