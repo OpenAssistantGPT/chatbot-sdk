@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.1.4
+
+### Patch Changes
+
+- 7303695: add parameters to support threadId changes
+
 ## 0.1.3
 
 ### Patch Changes
