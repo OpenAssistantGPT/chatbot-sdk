@@ -30,7 +30,7 @@ interface ChatbotProps {
   clientSidePrompt?: string;
   extensions?: React.ReactNode[];
   onMessagesChange?: (messages: Message[]) => void;
-  onThreadIdChange?: (threadId: String | undefined) => void;
+  onThreadIdChange?: (threadId: string | undefined) => void;
 }
 
 export function OpenAssistantGPTChat({
