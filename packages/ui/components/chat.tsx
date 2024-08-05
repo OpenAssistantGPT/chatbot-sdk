@@ -30,6 +30,7 @@ interface ChatbotProps {
   clientSidePrompt?: string;
   extensions?: React.ReactNode[];
   onMessagesChange?: (messages: Message[]) => void;
+  onThreadIdChange?: (threadId: String | undefined) => void;
 }
 
 export function OpenAssistantGPTChat({
@@ -40,6 +41,7 @@ export function OpenAssistantGPTChat({
   withExitX = false,
   clientSidePrompt,
   onMessagesChange,
+  onThreadIdChange,
   extensions,
   ...props
 }: ChatbotProps) {
@@ -102,6 +104,12 @@ export function OpenAssistantGPTChat({
       });
     }
   }, [error]);
+
+  useEffect(() => {
+    if (onThreadIdChange) {
+      onThreadIdChange(threadId);
+    }
+  }, [threadId]);
 
   useEffect(() => {
     // Scroll to the bottom of the container on messages update
