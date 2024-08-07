@@ -60,7 +60,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "eslint": "^7.32.0",
+    "eslint": "^9.8.0",
     "eslint-config-openassistantgpt": "workspace:*",
     "jsdom": "^24.1.0",
     "msw": "2.3.1",
