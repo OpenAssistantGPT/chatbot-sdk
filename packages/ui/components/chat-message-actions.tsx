@@ -1,11 +1,9 @@
-'use client';
-
 import { type Message } from '@openassistantgpt/react';
 
 import { Button } from '@/components/ui/button';
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 import { cn } from '@/lib/utils';
-import { Icons } from '@/components/icons';
+import { CheckIcon, CopyIcon } from 'lucide-react';
 
 interface ChatMessageActionsProps extends React.ComponentProps<'div'> {
   message: Message;
@@ -33,9 +31,9 @@ export function ChatMessageActions({
     >
       <Button variant="nothing" size="xs" onClick={onCopy}>
         {isCopied ? (
-          <Icons.check className="text-muted-foreground h-3 w-3" />
+          <CopyIcon className="text-muted-foreground h-3 w-3" />
         ) : (
-          <Icons.copy className="text-muted-foreground h-3 w-3" />
+          <CheckIcon className="text-muted-foreground h-3 w-3" />
         )}
         <span className="sr-only">Copy message</span>
       </Button>

@@ -42,7 +42,7 @@ export default function ChatPage() {
     <OpenAssistantGPTChat
       chatbot={chatbot}
       defaultMessage=""
-      path="/api/1234"
+      path="/api/1234/assistant"
     />
   );
 }
