@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.1.7
+
+### Patch Changes
+
+- dadc8fd: Update icons
+
 ## 0.1.6
 
 ### Patch Changes
