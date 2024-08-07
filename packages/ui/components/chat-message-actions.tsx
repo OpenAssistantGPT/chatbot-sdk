@@ -31,9 +31,9 @@ export function ChatMessageActions({
     >
       <Button variant="nothing" size="xs" onClick={onCopy}>
         {isCopied ? (
-          <CopyIcon className="text-muted-foreground h-3 w-3" />
-        ) : (
           <CheckIcon className="text-muted-foreground h-3 w-3" />
+        ) : (
+          <CopyIcon className="text-muted-foreground h-3 w-3" />
         )}
         <span className="sr-only">Copy message</span>
       </Button>
