@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Icons } from '@/components/icons';
 import { Message } from '@openassistantgpt/react';
 import { EmptyPlaceholder } from '@/components/empty-placeholder';
+import { LucidePlus, LucideTrash } from 'lucide-react';
 
 export function ChatHistory({
   threads,
@@ -101,7 +101,7 @@ export function ChatHistory({
                         deleteThreadFromHistory(mapThreadId);
                       }}
                     >
-                      <Icons.trash className="h-4 w-4" />
+                      <LucideTrash className="h-4 w-4" />
                       <span className="sr-only">Delete</span>
                     </Button>
                   </div>
@@ -155,7 +155,7 @@ export function ChatHistory({
                     setMenuOpen(false);
                   }}
                 >
-                  <Icons.add className="h-5 w-5" />
+                  <LucidePlus className="lucide lucide-plus h-5 w-5" />
                 </Button>
               </div>
               <Button
