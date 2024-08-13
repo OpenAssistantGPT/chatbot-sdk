@@ -1,5 +1,13 @@
 # core
 
+## 0.1.8
+
+### Patch Changes
+
+- a55c6e7: Add option to stop the message generation when it is being generated
+- Updated dependencies [a55c6e7]
+  - @openassistantgpt/ui@0.1.8
+
 ## 0.1.7
 
 ### Patch Changes
