@@ -340,8 +340,8 @@ export function OpenAssistantGPTChat({
                                   y="6"
                                   width="12"
                                   height="12"
-                                  rx="4"
-                                  ry="4"
+                                  rx="2"
+                                  ry="2"
                                 />
                               </svg>
                               <span className="sr-only">Stop message</span>
