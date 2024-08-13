@@ -43,7 +43,7 @@
     "eslint": "^7.32.0",
     "eslint-config-openassistantgpt": "workspace:*",
     "jsdom": "^24.1.0",
-    "msw": "2.3.1",
+    "msw": "2.3.5",
     "react-dom": "^18",
     "tsup": "^7.2.0",
     "typescript": "5.1.3",
