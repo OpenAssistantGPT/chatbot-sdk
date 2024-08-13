@@ -60,6 +60,7 @@ export function OpenAssistantGPTChat({
     setThreadId,
     threads,
     deleteThreadFromHistory,
+    stop,
   } = useAssistant({
     id: chatbot.id,
     api: path,
@@ -310,19 +311,48 @@ export function OpenAssistantGPTChat({
                     <div className={`absolute top-[14px] right-0`}>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <Button
-                            id="submit"
-                            disabled={
-                              status !== 'awaiting_message' || input === ''
-                            }
-                            type="submit"
-                            size="icon"
-                          >
-                            <Icons.arrowRight />
-                            <span className="sr-only">Send message</span>
-                          </Button>
+                          {status === 'awaiting_message' ? (
+                            <Button
+                              id="submit"
+                              disabled={input === ''}
+                              type="submit"
+                              size="icon"
+                            >
+                              <Icons.arrowRight />
+                              <span className="sr-only">Send message</span>
+                            </Button>
+                          ) : (
+                            <Button
+                              id="stop"
+                              onClick={stop}
+                              size="icon"
+                              type="submit"
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="currentColor"
+                              >
+                                <rect
+                                  x="6"
+                                  y="6"
+                                  width="12"
+                                  height="12"
+                                  rx="2"
+                                  ry="2"
+                                />
+                              </svg>
+                              <span className="sr-only">Stop message</span>
+                            </Button>
+                          )}
                         </TooltipTrigger>
-                        <TooltipContent>Send message</TooltipContent>
+                        <TooltipContent>
+                          {status === 'awaiting_message'
+                            ? 'Send message'
+                            : 'Stop message'}
+                        </TooltipContent>
                       </Tooltip>
                     </div>
                   </div>
