@@ -31,6 +31,14 @@ npm install openassistantgpt
 
 # Usage
 
+## Import Default CSS
+
+Import the default CSS files to ensure correct styling is applied. For NextJS apps - this should be added to your [layout file](https://github.com/OpenAssistantGPT/chatbot-sdk/blob/main/examples/next-website/app/layout.tsx#L1).
+
+```
+import "@openassistantgpt/ui/dist/index.css"
+```
+
 ## @openassistantgpt/assistant
 
 First you need to import our library and configure the POST and GET method. This will setup the backend correctly.
