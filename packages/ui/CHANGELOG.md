@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.1.9
+
+### Patch Changes
+
+- e4d2713: add feature to configure the fontsize
+
 ## 0.1.8
 
 ### Patch Changes
