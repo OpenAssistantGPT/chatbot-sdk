@@ -33,6 +33,8 @@ export default function ChatPage() {
     chatHistoryEnabled: true,
     chatFileAttachementEnabled: true,
 
+    fontSize: '14px',
+
     displayFooterText: true,
     footerLink: 'https://www.openassistantgpt.io',
     footerTextName: 'OpenAssistantGPT',
