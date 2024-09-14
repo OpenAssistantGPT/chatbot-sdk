@@ -97,8 +97,7 @@ export function ChatMessage({
             ) : (
               <>
                 <MemoizedReactMarkdown
-                  className="w-full prose break-words prose-p:leading-relaxed prose-pre:p-0"
-                  style={{ fontSize }} // Apply font size in pixels here
+                  className={`w-full prose break-words prose-p:leading-relaxed prose-pre:p-0 text-${chatbot.fontSize}`}
                   remarkPlugins={[remarkGfm, remarkMath]}
                   components={{
                     a({ node, children, ...props }) {
