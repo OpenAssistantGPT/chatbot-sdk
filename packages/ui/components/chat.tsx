@@ -185,6 +185,7 @@ export function OpenAssistantGPTChat({
                 role: 'assistant',
                 content: chatbot.welcomeMessage,
               }}
+              fontSize={chatbot.fontSize}
             />
             <div className="flex-grow overflow-y-auto space-y-6 flex flex-col order-2">
               {messages.map((message: Message, index) => {
@@ -193,6 +194,7 @@ export function OpenAssistantGPTChat({
                     chatbot={chatbot}
                     key={index}
                     message={message}
+                    fontSize={chatbot.fontSize}
                   />
                 );
               })}
@@ -206,6 +208,7 @@ export function OpenAssistantGPTChat({
                     role: 'assistant',
                     content: 'loading',
                   }}
+                  fontSize={chatbot.fontSize}
                 />
               </div>
             )}
@@ -298,7 +301,8 @@ export function OpenAssistantGPTChat({
                         tabIndex={0}
                         onKeyDown={onKeyDown}
                         placeholder={chatbot.chatMessagePlaceHolder}
-                        className="border-0 border-gray-300 rounded-lg min-h-[60px] w-full resize-none bg-white pl-4 py-[1rem] sm:text-sm shadow-sm focus-visible:ring-0"
+                        className="border-0 border-gray-300 rounded-lg min-h-[60px] w-full resize-none bg-white pl-4 py-[1rem] shadow-sm focus-visible:ring-0"
+                        style={{ fontSize: chatbot.fontSize }}
                         spellCheck={false}
                         autoComplete="off"
                         autoCorrect="off"

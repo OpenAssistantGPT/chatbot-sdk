@@ -26,6 +26,8 @@ export type ChatbotConfig = {
   chatHistoryEnabled: boolean;
   chatFileAttachementEnabled: boolean;
 
+  fontSize: string;
+
   displayFooterText: boolean;
   footerTextName: string;
   footerLink: string;

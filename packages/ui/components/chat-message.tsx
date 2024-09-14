@@ -19,6 +19,7 @@ export interface ChatMessageProps {
   children?: React.ReactNode;
   chatbot: ChatbotConfig;
   isFirst?: boolean;
+  fontSize: string; // Keep as string for pixel values
 }
 
 const getDirection = (isRTL: boolean) => (isRTL ? 'rtl' : 'ltr');
@@ -28,6 +29,7 @@ export function ChatMessage({
   children,
   chatbot,
   isFirst,
+  fontSize = '16px', // Default font size in pixels
   ...props
 }: ChatMessageProps) {
   return (
@@ -41,8 +43,9 @@ export function ChatMessage({
             style={{
               color: chatbot.userReplyTextColor,
               background: chatbot.userReplyBackgroundColor,
+              fontSize, // Apply font size in pixels here
             }}
-            className="p-2 text-sm rounded-lg mr-4 whitespace-pre-wrap"
+            className="p-2 rounded-lg mr-4 whitespace-pre-wrap"
             dir={getDirection(chatbot.rightToLeftLanguage)} // Set text direction
           >
             <svg
@@ -94,7 +97,8 @@ export function ChatMessage({
             ) : (
               <>
                 <MemoizedReactMarkdown
-                  className="w-full prose text-sm break-words prose-p:leading-relaxed prose-pre:p-0"
+                  className="w-full prose break-words prose-p:leading-relaxed prose-pre:p-0"
+                  style={{ fontSize }} // Apply font size in pixels here
                   remarkPlugins={[remarkGfm, remarkMath]}
                   components={{
                     a({ node, children, ...props }) {
@@ -108,6 +112,7 @@ export function ChatMessage({
                       return (
                         <p
                           className="mb-2 last:mb-0"
+                          style={{ fontSize }} // Apply font size in pixels here
                           dir={getDirection(chatbot.rightToLeftLanguage)}
                         >
                           {children}
