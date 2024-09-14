@@ -33,7 +33,7 @@
     "zod-form-data": "^2.0.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^6.4.5",
+    "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.1",
     "@types/node": "^20",
