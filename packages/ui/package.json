@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@ai-sdk/provider-utils": "1.0.5",
-    "@ai-sdk/ui-utils": "0.0.20",
+    "@ai-sdk/ui-utils": "0.0.44",
     "@openassistantgpt/react": "workspace:^",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",
