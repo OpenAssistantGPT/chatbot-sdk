@@ -162,7 +162,7 @@ export async function handleAssistant(
     }
 
     if (error instanceof OpenAI.APIError) {
-      return new Response(error.message, { status: 401 });
+      return new Response(error.message, { status: 400 });
     }
 
     return new Response(null, { status: 500 });
