@@ -1,5 +1,12 @@
 # core
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies [b29c271]
+  - @openassistantgpt/assistant@0.1.2
+
 ## 0.1.9
 
 ### Patch Changes
