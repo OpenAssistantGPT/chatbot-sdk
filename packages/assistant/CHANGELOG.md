@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.1.2
+
+### Patch Changes
+
+- b29c271: Change on error return status code when chatting
+
 ## 0.1.1
 
 ### Patch Changes
