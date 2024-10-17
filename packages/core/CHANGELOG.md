@@ -1,5 +1,13 @@
 # core
 
+## 0.2.1
+
+### Patch Changes
+
+- bed19ad: Use path in file upload
+- Updated dependencies [bed19ad]
+  - @openassistantgpt/ui@0.2.1
+
 ## 0.2.0
 
 ### Minor Changes

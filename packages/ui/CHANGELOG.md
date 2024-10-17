@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.2.1
+
+### Patch Changes
+
+- bed19ad: Use path in file upload
+
 ## 0.2.0
 
 ### Minor Changes
