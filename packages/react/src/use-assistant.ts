@@ -6,6 +6,7 @@ import {
   Message,
   readDataStream,
   generateId,
+  Attachment,
 } from 'ai';
 
 export type { Message };
@@ -39,13 +40,14 @@ export type UseAssistantHelpers = {
   ) => Promise<void>;
   status: AssistantStatus;
   error: undefined | unknown;
+  attachments: Attachment[];
+  setAttachments: React.Dispatch<React.SetStateAction<Attachment[]>>;
 };
 
 export function useAssistant({
   id,
   api,
   threadId: threadIdParam,
-  inputFile,
   credentials,
   clientSidePrompt,
   headers,
@@ -59,6 +61,9 @@ export function useAssistant({
   const [currentThreadId, setCurrentThreadId] = useState<string | undefined>(
     undefined,
   );
+
+  const [attachments, setAttachments] = useState<Attachment[]>([]);
+
   const [status, setStatus] = useState<AssistantStatus>('awaiting_message');
   const [error, setError] = useState<undefined | Error>(undefined);
 
@@ -121,31 +126,33 @@ export function useAssistant({
       {
         ...message,
         id: message.id ?? generateId(),
+        experimental_attachments: [...attachments]
       },
     ]);
 
     setInput('');
+    setAttachments([])
 
     const abortController = new AbortController();
 
     try {
       abortControllerRef.current = abortController;
 
-      const formData = new FormData();
-      formData.append('message', message.content);
-      formData.append('threadId', threadIdParam ?? currentThreadId ?? '');
-      formData.append('file', inputFile || '');
-      formData.append(
-        'filename',
-        inputFile !== undefined ? inputFile.name : '',
-      );
-      formData.append('clientSidePrompt', clientSidePrompt || '');
-
       const result = await fetch(api, {
         method: 'POST',
         credentials,
         signal: abortController.signal,
-        body: formData,
+        headers: { 'Content-Type': 'application/json', ...headers },
+        body: JSON.stringify({
+          ...body,
+          // always use user-provided threadId when available:
+          threadId: threadIdParam ?? currentThreadId ?? null,
+          message: message.content,
+          clientSidePrompt: clientSidePrompt,
+          files: attachments.map(a => a.url),
+          // optional request data:
+          data: requestOptions?.data,
+        }),
       });
 
       if (result.body == null) {
@@ -315,5 +322,7 @@ export function useAssistant({
     status,
     error,
     stop,
+    attachments,
+    setAttachments
   };
 }

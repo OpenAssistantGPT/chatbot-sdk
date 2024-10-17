@@ -1,5 +1,4 @@
 import { OpenAI } from 'openai';
-import { i } from 'vitest/dist/reporters-yx5ZTtEV';
 import { z } from 'zod';
 
 const routeContextSchema = z.object({

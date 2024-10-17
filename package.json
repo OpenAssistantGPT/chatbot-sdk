@@ -30,7 +30,7 @@
     "eslint-config-openassistantgpt": "workspace:*",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.9",
-    "next": "15.0.0-canary.23",
+    "next": "14.2.15",
     "playwright": "^1.46.0",
     "prettier": "2.8.8",
     "publint": "0.2.9",
