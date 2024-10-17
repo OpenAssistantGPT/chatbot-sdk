@@ -13,6 +13,7 @@ import {
   handleAssistant as assistantHandler,
   handleFile as fileHandler,
   handleFileFunction as fileFunction,
+  handleFileUpload as fileUpload,
 } from '@openassistantgpt/assistant';
 
 export const AssistantResponse = response;
@@ -20,6 +21,7 @@ export const codeInterpreterExtensionList = codeInterpreterList;
 export const handleAssistant = assistantHandler;
 export const handleFile = fileHandler;
 export const handleFileFunction = fileFunction;
+export const handleFileUpload = fileUpload;
 export const fileSearchExtensionList = fileSearchList;
 
 export type { OpenAssistantGPT } from '@openassistantgpt/assistant';
