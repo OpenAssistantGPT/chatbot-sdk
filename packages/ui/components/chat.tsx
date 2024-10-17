@@ -257,7 +257,7 @@ export function OpenAssistantGPTChat({
                     key={index}
                     message={message}
                     fontSize={chatbot.fontSize}
-                    attachments={message.experimental_attachments}
+                  //attachments={message.experimental_attachments}
                   />
                 );
               })}
@@ -294,8 +294,16 @@ export function OpenAssistantGPTChat({
                 <form onSubmit={handleSubmitMessage} {...props} ref={formRef}>
                   {(attachments.length > 0 || uploadQueue.length > 0) && (
                     <div className="flex flex-row gap-2 overflow-x-scroll">
-                      {attachments.map((attachment: { url: string }) => (
-                        <PreviewAttachment key={attachment.url} attachment={attachment} />
+                      {attachments.map((attachment: { url: string }, index) => (
+                        <div key={attachment.url} className="relative">
+                          <PreviewAttachment attachment={attachment} />
+                          <button
+                            className="z-100 bg-zinc-100 shadow hover:bg-zinc-200 border rounded absolute top-0 right-0"
+                            onClick={() => setAttachments(attachments.filter((a) => a.url !== attachment.url))}
+                          >
+                            <Icons.close className="h-4 w-4" />
+                          </button>
+                        </div>
                       ))}
                       {uploadQueue.map((filename: string) => (
                         <PreviewAttachment
@@ -310,6 +318,7 @@ export function OpenAssistantGPTChat({
                       ))}
                     </div>
                   )}
+
                   <div
                     className={`relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background ${chatbot.chatFileAttachementEnabled
                       ? 'px-8 sm:px-12'
