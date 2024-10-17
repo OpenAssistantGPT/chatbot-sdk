@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.2.3
+
+### Patch Changes
+
+- 994197f: Add scroll when there is too much attachments
+
 ## 0.2.2
 
 ### Patch Changes
