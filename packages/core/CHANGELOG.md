@@ -1,5 +1,18 @@
 # core
 
+## 0.2.0
+
+### Minor Changes
+
+- 3f4f1d7: Support upload of multiple attachments and improve validation
+
+### Patch Changes
+
+- Updated dependencies [3f4f1d7]
+  - @openassistantgpt/assistant@0.2.0
+  - @openassistantgpt/react@0.2.0
+  - @openassistantgpt/ui@0.2.0
+
 ## 0.1.10
 
 ### Patch Changes

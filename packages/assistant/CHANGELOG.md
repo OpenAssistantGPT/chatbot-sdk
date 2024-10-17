@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.2.0
+
+### Minor Changes
+
+- 3f4f1d7: Support upload of multiple attachments and improve validation
+
 ## 0.1.2
 
 ### Patch Changes
