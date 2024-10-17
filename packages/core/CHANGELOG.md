@@ -1,5 +1,13 @@
 # core
 
+## 0.2.5
+
+### Patch Changes
+
+- 8d41f18: Update file type
+- Updated dependencies [8d41f18]
+  - @openassistantgpt/assistant@0.2.1
+
 ## 0.2.4
 
 ### Patch Changes
