@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.2.2
+
+### Patch Changes
+
+- d9169e0: Add max height and width to attachment preview
+
 ## 0.2.1
 
 ### Patch Changes
