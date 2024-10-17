@@ -11,7 +11,7 @@
   "dependencies": {
     "@openassistantgpt/assistant": "latest",
     "@openassistantgpt/react": "latest",
-    "@openassistantgpt/ui": "workspace:*",
+    "@openassistantgpt/ui": "latest",
     "ai": "3.2.32",
     "buffer": "^6.0.3",
     "next": "14.2.5",
@@ -22,14 +22,14 @@
     "zod-form-data": "^2.0.2"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
+    "@types/node": "^20.16.12",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
     "eslint": "^7.32.0",
     "eslint-config-next": "14.2.3",
-    "postcss": "^8.4.39",
-    "tailwindcss": "^3.4.6",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
     "typescript": "5.1.3"
   }
 }
