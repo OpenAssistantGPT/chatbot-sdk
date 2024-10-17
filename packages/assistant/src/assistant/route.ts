@@ -35,33 +35,42 @@ export async function handleAssistant(
     const data = schema.parse(requestBody);
 
     // Create a thread if needed
-    const threadId =
-      data.threadId
-        ? data.threadId
-        : (await openai.beta.threads.create({})).id;
+    const threadId = data.threadId
+      ? data.threadId
+      : (await openai.beta.threads.create({})).id;
 
     let openAiFiles: OpenAI.Files.FileObject[] | null = null;
     if (data.files.length > 0) {
-      openAiFiles = await Promise.all(data.files.map(async (fileUrl) => {
-        const response = await fetch(fileUrl);
-        const fileBuffer = await response.arrayBuffer();
-        const filename = fileUrl.split('/').pop() || 'unknown_file';
-        const file = new File([fileBuffer], filename, {
-          type: response.headers.get('Content-Type') || 'application/octet-stream',
-        });
+      openAiFiles = await Promise.all(
+        data.files.map(async fileUrl => {
+          const response = await fetch(fileUrl);
+          const fileBuffer = await response.arrayBuffer();
+          const filename = fileUrl.split('/').pop() || 'unknown_file';
+          const file = new File([fileBuffer], filename, {
+            type:
+              response.headers.get('Content-Type') ||
+              'application/octet-stream',
+          });
 
-        return await openai.files.create({
-          file,
-          purpose: 'assistants',
-        });
-      }));
+          return await openai.files.create({
+            file,
+            purpose: 'assistants',
+          });
+        }),
+      );
     }
 
     const attachments = openAiFiles?.map(file => ({
       file_id: file.id,
       tools: [
-        codeInterpreterExtensionList.includes(file.filename.split('.').pop()?.toLocaleLowerCase()!) ? { type: 'code_interpreter' } : null,
-        fileSearchExtensionList.includes(file.filename.split('.').pop()!) ? { type: 'file_search' } : null,
+        codeInterpreterExtensionList.includes(
+          file.filename.split('.').pop()?.toLocaleLowerCase()!,
+        )
+          ? { type: 'code_interpreter' }
+          : null,
+        fileSearchExtensionList.includes(file.filename.split('.').pop()!)
+          ? { type: 'file_search' }
+          : null,
       ].filter(Boolean),
     }));
 
@@ -74,7 +83,10 @@ export async function handleAssistant(
         attachments: openAiFiles
           ? attachments?.map(attachment => ({
               ...attachment,
-              tools: attachment.tools.filter(tool => tool !== null) as (CodeInterpreterTool | FileSearchTool)[],
+              tools: attachment.tools.filter(tool => tool !== null) as (
+                | CodeInterpreterTool
+                | FileSearchTool
+              )[],
             }))
           : [],
       },

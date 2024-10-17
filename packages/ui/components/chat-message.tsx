@@ -13,7 +13,7 @@ import { Icons } from '@/components/icons';
 import { ExternalLink } from '@/components/external-link';
 import { ChatMessageActions } from '@/components/chat-message-actions';
 import { ChatbotConfig } from '@/src';
-import { Attachment } from '@/types/attachements'
+import { Attachment } from '@/types/attachements';
 import { PreviewAttachment } from '@/components/preview-attachement';
 
 export interface ChatMessageProps {
@@ -160,8 +160,11 @@ export function ChatMessage({
                 </MemoizedReactMarkdown>
                 {attachments && (
                   <div className="flex flex-row gap-2">
-                    {attachments.map((attachment) => (
-                      <PreviewAttachment key={attachment.url} attachment={attachment} />
+                    {attachments.map(attachment => (
+                      <PreviewAttachment
+                        key={attachment.url}
+                        attachment={attachment}
+                      />
                     ))}
                   </div>
                 )}

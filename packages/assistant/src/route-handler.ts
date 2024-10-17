@@ -37,9 +37,8 @@ export class OpenAssistantGPT {
       pathParts[pathParts.length - 1] === 'upload' &&
       pathParts[pathParts.length - 2] === 'assistant'
     ) {
-      return handleFileUpload(req)
-    }
-    else {
+      return handleFileUpload(req);
+    } else {
       return new Response('Not Found', { status: 404 });
     }
   };

@@ -126,12 +126,12 @@ export function useAssistant({
       {
         ...message,
         id: message.id ?? generateId(),
-        experimental_attachments: [...attachments]
+        //experimental_attachments: [...attachments],
       },
     ]);
 
     setInput('');
-    setAttachments([])
+    setAttachments([]);
 
     const abortController = new AbortController();
 
@@ -323,6 +323,6 @@ export function useAssistant({
     error,
     stop,
     attachments,
-    setAttachments
+    setAttachments,
   };
 }

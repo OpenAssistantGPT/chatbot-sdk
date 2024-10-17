@@ -1,7 +1,5 @@
-
-import { Attachment } from '@/types/attachements'
-import { LoaderIcon } from "lucide-react";
-
+import { Attachment } from '@/types/attachements';
+import { LoaderIcon } from 'lucide-react';
 
 export const PreviewAttachment = ({
   attachment,
@@ -16,12 +14,12 @@ export const PreviewAttachment = ({
     <div className="flex flex-col gap-2 max-w-25">
       <div className="h-20 m-w-25 w-25 bg-muted rounded-md relative flex flex-col items-center justify-center">
         {contentType ? (
-          contentType.startsWith("image") ? (
+          contentType.startsWith('image') ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               key={url}
               src={url}
-              alt={name ?? "An image attachment"}
+              alt={name ?? 'An image attachment'}
               className="rounded-md size-full object-cover"
             />
           ) : (
