@@ -54,7 +54,7 @@ export async function handleFileUpload(request: Request) {
 
   try {
     const formData = await request.formData();
-    const file = formData.get('file') as File;
+    const file = formData.get('file') as any;
 
     if (!file) {
       return new Response('No file uploaded', { status: 400 });
