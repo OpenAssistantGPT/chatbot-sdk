@@ -4,7 +4,7 @@ import { randomUUID } from 'crypto';
 
 const FileSchema = z.object({
   file: z
-    .instanceof(File)
+    .any()
     .refine(file => file.size <= 5 * 1024 * 1024, {
       message: 'File size should be less than 5MB',
     })
@@ -54,7 +54,7 @@ export async function handleFileUpload(request: Request) {
 
   try {
     const formData = await request.formData();
-    const file = formData.get('file') as File;
+    const file = formData.get('file') as any;
 
     if (!file) {
       return new Response('No file uploaded', { status: 400 });
