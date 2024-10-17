@@ -8,7 +8,7 @@ export const metadata = constructMetadata();
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: any
+  children: any;
 }>) {
   return (
     <html lang="en">
