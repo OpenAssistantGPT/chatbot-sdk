@@ -1,5 +1,11 @@
 # core
 
+## 0.2.2
+
+### Patch Changes
+
+- 3a968cd: export handle file upload
+
 ## 0.2.1
 
 ### Patch Changes
