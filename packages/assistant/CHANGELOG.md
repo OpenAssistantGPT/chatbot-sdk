@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.2.1
+
+### Patch Changes
+
+- 8d41f18: Update file type
+
 ## 0.2.0
 
 ### Minor Changes
