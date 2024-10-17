@@ -2,7 +2,6 @@ import OpenAI from 'openai';
 
 import { z } from 'zod';
 import { AssistantResponse } from '../assistant-response';
-import { zfd } from 'zod-form-data';
 import {
   codeInterpreterExtensionList,
   fileSearchExtensionList,
@@ -13,12 +12,12 @@ import {
 } from 'openai/resources/beta/assistants';
 import path from 'path';
 
-const schema = zfd.formData({
-  threadId: z.string().or(z.undefined()),
-  message: zfd.text(),
+const schema = z.object({
+  threadId: z.string().or(z.null()),
+  message: z.string(),
   clientSidePrompt: z.string().or(z.undefined()),
-  file: z.instanceof(Blob).or(z.string()),
-  filename: z.string(),
+  files: z.array(z.string()),
+  data: z.record(z.string()).or(z.undefined()),
 });
 
 export async function handleAssistant(
@@ -32,52 +31,48 @@ export async function handleAssistant(
   }
 
   try {
-    const input = await req.formData();
-    const data = schema.parse(input);
+    const requestBody = await req.json();
+    const data = schema.parse(requestBody);
 
     // Create a thread if needed
-    const threadId =
-      data.threadId != ''
-        ? data.threadId
-        : (await openai.beta.threads.create({})).id;
+    const threadId = data.threadId
+      ? data.threadId
+      : (await openai.beta.threads.create({})).id;
 
-    let openAiFile: OpenAI.Files.FileObject | null = null;
+    let openAiFiles: OpenAI.Files.FileObject[] | null = null;
+    if (data.files.length > 0) {
+      openAiFiles = await Promise.all(
+        data.files.map(async fileUrl => {
+          const response = await fetch(fileUrl);
+          const fileBuffer = await response.arrayBuffer();
+          const filename = fileUrl.split('/').pop() || 'unknown_file';
+          const file = new File([fileBuffer], filename, {
+            type:
+              response.headers.get('Content-Type') ||
+              'application/octet-stream',
+          });
 
-    if (data.filename !== '') {
-      // @ts-ignore
-      const file = new File([data.file], data.filename, {
-        // @ts-ignore
-        type: data.file.type,
-      });
-
-      // @ts-ignore
-      if (data.file.size > 0) {
-        openAiFile = await openai.files.create({
-          file,
-          purpose: 'assistants',
-        });
-      }
+          return await openai.files.create({
+            file,
+            purpose: 'assistants',
+          });
+        }),
+      );
     }
 
-    let fileInterpreter = false;
-    let fileSearch = false;
-    if (openAiFile) {
-      if (
+    const attachments = openAiFiles?.map(file => ({
+      file_id: file.id,
+      tools: [
         codeInterpreterExtensionList.includes(
-          data.filename.split('.').pop()?.toLocaleLowerCase()!,
+          file.filename.split('.').pop()?.toLocaleLowerCase()!,
         )
-      ) {
-        fileInterpreter = true;
-      }
-      if (fileSearchExtensionList.includes(data.filename.split('.').pop()!)) {
-        fileSearch = true;
-      }
-    }
-
-    const toolList = [
-      fileInterpreter ? { type: 'code_interpreter' } : null,
-      fileSearch ? { type: 'file_search' } : null,
-    ].filter(Boolean);
+          ? { type: 'code_interpreter' }
+          : null,
+        fileSearchExtensionList.includes(file.filename.split('.').pop()!)
+          ? { type: 'file_search' }
+          : null,
+      ].filter(Boolean),
+    }));
 
     // Add a message to the thread
     const createdMessage = await openai.beta.threads.messages.create(
@@ -85,16 +80,14 @@ export async function handleAssistant(
       {
         role: 'user' as 'user' | 'assistant',
         content: data.message.toString(),
-        attachments: openAiFile
-          ? [
-              {
-                file_id: openAiFile.id,
-                tools: toolList.filter(tool => tool !== null) as (
-                  | CodeInterpreterTool
-                  | FileSearchTool
-                )[],
-              },
-            ]
+        attachments: openAiFiles
+          ? attachments?.map(attachment => ({
+              ...attachment,
+              tools: attachment.tools.filter(tool => tool !== null) as (
+                | CodeInterpreterTool
+                | FileSearchTool
+              )[],
+            }))
           : [],
       },
     );

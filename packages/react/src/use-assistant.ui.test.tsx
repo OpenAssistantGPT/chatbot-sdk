@@ -77,7 +77,7 @@ describe('stream data stream', () => {
     );
 
     // check that correct information was sent to the server:
-    expect(await requestBody).toBeTypeOf('object');
+    expect(typeof requestBody).toBe('object');
   });
 
   it('should show error response', async () => {

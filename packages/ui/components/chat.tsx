@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
 
 import { useAssistant, Message } from '@openassistantgpt/react';
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { toast } from '@/components/ui/use-toast';
 import {
   Tooltip,
@@ -20,6 +20,8 @@ import { useEnterSubmit } from '@/hooks/use-enter-submit';
 import { ChatHistory } from '@/components/chat-history';
 import { ChatbotConfig } from '@/src/chatbot';
 import { ChatHeader } from '@/components/chat-header';
+import { PreviewAttachment } from './preview-attachement';
+import { Attachment } from '@/types/attachements';
 
 interface ChatbotProps {
   chatbot: ChatbotConfig;
@@ -61,12 +63,11 @@ export function OpenAssistantGPTChat({
     threads,
     deleteThreadFromHistory,
     stop,
+    attachments,
+    setAttachments,
   } = useAssistant({
     id: chatbot.id,
     api: path,
-    inputFile: inputFileRef.current?.files
-      ? inputFileRef.current.files[0]
-      : undefined,
     clientSidePrompt: clientSidePrompt,
   });
 
@@ -74,11 +75,6 @@ export function OpenAssistantGPTChat({
     e.preventDefault();
 
     submitMessage();
-
-    setFileUploaded(false);
-    if (inputFileRef.current) {
-      inputFileRef.current.value = '';
-    }
   }
 
   useEffect(() => {
@@ -91,8 +87,6 @@ export function OpenAssistantGPTChat({
 
   const containerRef = useRef(null);
   const inputRef = useRef(null);
-
-  const [fileUploaded, setFileUploaded] = useState(false);
 
   useEffect(() => {
     if (error) {
@@ -152,6 +146,73 @@ export function OpenAssistantGPTChat({
     window.URL.revokeObjectURL(url);
   }
 
+  // files
+  const uploadFile = async (file: File) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch(`/api/chat/assistant/upload`, {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const { url, pathname, contentType } = data;
+        console.log(data);
+
+        return {
+          url,
+          name: pathname,
+          contentType: contentType,
+        };
+      } else {
+        const { error } = await response.json();
+        toast({
+          title: 'Error',
+          description: error.message,
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: 'Error',
+        description: 'Failed to upload file, please try again!',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  const [uploadQueue, setUploadQueue] = useState<Array<string>>([]);
+
+  const handleFileChange = useCallback(
+    async (event: ChangeEvent<HTMLInputElement>) => {
+      const files = Array.from(event.target.files || []);
+
+      setUploadQueue(files.map(file => file.name));
+
+      try {
+        const uploadPromises = files.map(file => uploadFile(file));
+        const uploadedAttachments = await Promise.all(uploadPromises);
+        // @ts-ignore
+        const successfullyUploadedAttachments: Attachment[] =
+          uploadedAttachments.filter(attachment => attachment !== undefined);
+
+        setAttachments((currentAttachments: Array<Attachment>) => [
+          ...currentAttachments,
+          ...successfullyUploadedAttachments,
+        ]);
+      } catch (error) {
+        console.error('Error uploading files!', error);
+      } finally {
+        setUploadQueue([]);
+      }
+    },
+    [setAttachments],
+  );
+
   return (
     <>
       <TooltipProvider>
@@ -195,6 +256,7 @@ export function OpenAssistantGPTChat({
                     key={index}
                     message={message}
                     fontSize={chatbot.fontSize}
+                    //attachments={message.experimental_attachments}
                   />
                 );
               })}
@@ -230,38 +292,39 @@ export function OpenAssistantGPTChat({
 
               <div className="space-y-4 border-t bg-background px-4 py-2 shadow-lg sm:rounded-t-xl md:py-4">
                 <form onSubmit={handleSubmitMessage} {...props} ref={formRef}>
-                  {fileUploaded && (
-                    <div className="flex w-full sm:w-1/2 items-center p-2 bg-white border rounded-lg shadow-sm">
-                      <Icons.document className="text-gray-400 w-6 h-6 flex-shrink-0" />
-                      <div className="flex flex-col pl-3 pr-6 flex-1 min-w-0">
-                        <span className="font-sm text-gray-800 truncate">
-                          {inputFileRef.current?.files![0].name}
-                        </span>
-                        <span className="text-sm text-gray-500">
-                          {inputFileRef.current?.files![0].type === 'image/jpeg'
-                            ? 'Image'
-                            : inputFileRef.current?.files![0].type ===
-                              'image/png'
-                            ? 'Image'
-                            : inputFileRef.current?.files![0].type ===
-                              'image/svg+xml'
-                            ? 'Image'
-                            : 'Document'}
-                        </span>
-                      </div>
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        className="flex-shrink-0"
-                        onClick={() => {
-                          inputFileRef.current!.value = '';
-                          setFileUploaded(false);
-                        }}
-                      >
-                        <Icons.close className="text-gray-400 w-4 h-4" />
-                      </Button>
+                  {(attachments.length > 0 || uploadQueue.length > 0) && (
+                    <div className="flex flex-row gap-2 overflow-x-scroll">
+                      {attachments.map((attachment: { url: string }, index) => (
+                        <div key={attachment.url} className="relative">
+                          <PreviewAttachment attachment={attachment} />
+                          <button
+                            className="z-100 bg-zinc-100 shadow hover:bg-zinc-200 border rounded absolute top-0 right-0"
+                            onClick={() =>
+                              setAttachments(
+                                attachments.filter(
+                                  a => a.url !== attachment.url,
+                                ),
+                              )
+                            }
+                          >
+                            <Icons.close className="h-4 w-4" />
+                          </button>
+                        </div>
+                      ))}
+                      {uploadQueue.map((filename: string) => (
+                        <PreviewAttachment
+                          key={filename}
+                          attachment={{
+                            url: '',
+                            name: filename,
+                            contentType: '',
+                          }}
+                          isUploading={true}
+                        />
+                      ))}
                     </div>
                   )}
+
                   <div
                     className={`relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background ${
                       chatbot.chatFileAttachementEnabled
@@ -283,9 +346,9 @@ export function OpenAssistantGPTChat({
                           id="file"
                           type="file"
                           className="hidden"
-                          onChange={() => {
-                            setFileUploaded(true);
-                          }}
+                          multiple
+                          onChange={handleFileChange}
+                          tabIndex={-1}
                         />
                       </div>
                     )}

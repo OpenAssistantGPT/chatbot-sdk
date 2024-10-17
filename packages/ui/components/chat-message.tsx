@@ -13,11 +13,14 @@ import { Icons } from '@/components/icons';
 import { ExternalLink } from '@/components/external-link';
 import { ChatMessageActions } from '@/components/chat-message-actions';
 import { ChatbotConfig } from '@/src';
+import { Attachment } from '@/types/attachements';
+import { PreviewAttachment } from '@/components/preview-attachement';
 
 export interface ChatMessageProps {
   message: Message;
   children?: React.ReactNode;
   chatbot: ChatbotConfig;
+  attachments?: Array<Attachment>;
   isFirst?: boolean;
   fontSize: string; // Keep as string for pixel values
 }
@@ -29,6 +32,7 @@ export function ChatMessage({
   children,
   chatbot,
   isFirst,
+  attachments,
   fontSize = '16px', // Default font size in pixels
   ...props
 }: ChatMessageProps) {
@@ -154,6 +158,16 @@ export function ChatMessage({
                 >
                   {message.content.replace(/\【.*?】/g, '')}
                 </MemoizedReactMarkdown>
+                {attachments && (
+                  <div className="flex flex-row gap-2">
+                    {attachments.map(attachment => (
+                      <PreviewAttachment
+                        key={attachment.url}
+                        attachment={attachment}
+                      />
+                    ))}
+                  </div>
+                )}
                 {!isFirst ? (
                   <ChatMessageActions message={message} />
                 ) : (

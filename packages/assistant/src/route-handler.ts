@@ -1,6 +1,7 @@
 import { handleAssistant } from './assistant/route';
 import { handleFile } from './assistant/file/route';
 import OpenAI from 'openai';
+import { handleFileUpload } from './assistant/upload/route';
 
 export class OpenAssistantGPT {
   constructor(private basePath: string) {
@@ -31,6 +32,12 @@ export class OpenAssistantGPT {
     ) {
       // Handle /api/assistant/file/[fileId]
       return handleFile(req, res, openai);
+    } else if (
+      // handle /api/assistant/upload
+      pathParts[pathParts.length - 1] === 'upload' &&
+      pathParts[pathParts.length - 2] === 'assistant'
+    ) {
+      return handleFileUpload(req);
     } else {
       return new Response('Not Found', { status: 404 });
     }
