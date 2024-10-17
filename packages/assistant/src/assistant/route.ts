@@ -11,7 +11,6 @@ import {
   FileSearchTool,
 } from 'openai/resources/beta/assistants';
 import path from 'path';
-import { File } from 'buffer';
 
 const schema = z.object({
   threadId: z.string().or(z.null()),
