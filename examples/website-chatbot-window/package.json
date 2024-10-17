@@ -9,9 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@openassistantgpt/assistant": "workspace:*",
-    "@openassistantgpt/react": "workspace:*",
-    "@openassistantgpt/ui": "workspace:*",
+    "@openassistantgpt/assistant": "latest",
+    "@openassistantgpt/react": "latest",
+    "@openassistantgpt/ui": "latest",
     "ai": "3.2.32",
     "buffer": "^6.0.3",
     "next": "14.2.5",
