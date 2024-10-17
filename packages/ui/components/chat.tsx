@@ -152,7 +152,7 @@ export function OpenAssistantGPTChat({
     formData.append('file', file);
 
     try {
-      const response = await fetch(`/api/chat/assistant/upload`, {
+      const response = await fetch(`${path}/upload`, {
         method: 'POST',
         body: formData,
       });
