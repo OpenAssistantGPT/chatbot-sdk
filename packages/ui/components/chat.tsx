@@ -295,23 +295,25 @@ export function OpenAssistantGPTChat({
                   {(attachments.length > 0 || uploadQueue.length > 0) && (
                     <div className="flex flex-row gap-2 overflow-x-auto">
                       <div className="flex flex-row gap-2">
-                        {attachments.map((attachment: { url: string }, index) => (
-                          <div key={attachment.url} className="relative">
-                            <PreviewAttachment attachment={attachment} />
-                            <button
-                              className="z-100 bg-zinc-100 shadow hover:bg-zinc-200 border rounded absolute top-0 right-0"
-                              onClick={() =>
-                                setAttachments(
-                                  attachments.filter(
-                                    a => a.url !== attachment.url,
-                                  ),
-                                )
-                              }
-                            >
-                              <Icons.close className="h-4 w-4" />
-                            </button>
-                          </div>
-                        ))}
+                        {attachments.map(
+                          (attachment: { url: string }, index) => (
+                            <div key={attachment.url} className="relative">
+                              <PreviewAttachment attachment={attachment} />
+                              <button
+                                className="z-100 bg-zinc-100 shadow hover:bg-zinc-200 border rounded absolute top-0 right-0"
+                                onClick={() =>
+                                  setAttachments(
+                                    attachments.filter(
+                                      a => a.url !== attachment.url,
+                                    ),
+                                  )
+                                }
+                              >
+                                <Icons.close className="h-4 w-4" />
+                              </button>
+                            </div>
+                          ),
+                        )}
                         {uploadQueue.map((filename: string) => (
                           <PreviewAttachment
                             key={filename}
