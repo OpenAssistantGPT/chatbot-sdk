@@ -11,6 +11,7 @@ import {
   FileSearchTool,
 } from 'openai/resources/beta/assistants';
 import path from 'path';
+import { File } from 'buffer';
 
 const schema = z.object({
   threadId: z.string().or(z.null()),
@@ -46,6 +47,7 @@ export async function handleAssistant(
           const response = await fetch(fileUrl);
           const fileBuffer = await response.arrayBuffer();
           const filename = fileUrl.split('/').pop() || 'unknown_file';
+
           const file = new File([fileBuffer], filename, {
             type:
               response.headers.get('Content-Type') ||
