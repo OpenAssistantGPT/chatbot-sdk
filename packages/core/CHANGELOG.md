@@ -1,5 +1,13 @@
 # core
 
+## 0.2.6
+
+### Patch Changes
+
+- 0387c04: Export toast to be able to use them in app
+- Updated dependencies [0387c04]
+  - @openassistantgpt/ui@0.2.4
+
 ## 0.2.5
 
 ### Patch Changes
