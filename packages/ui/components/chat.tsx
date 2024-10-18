@@ -7,7 +7,8 @@ import { cn } from '@/lib/utils';
 
 import { useAssistant, Message } from '@openassistantgpt/react';
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { toast } from '@/components/ui/use-toast';
+import { useToast } from '@/components/ui/use-toast';
+
 import {
   Tooltip,
   TooltipContent,
@@ -48,7 +49,7 @@ export function OpenAssistantGPTChat({
   ...props
 }: ChatbotProps) {
   let inputFileRef = useRef<HTMLInputElement>(null);
-
+  const { toast } = useToast()
   const { formRef, onKeyDown } = useEnterSubmit();
 
   const {
@@ -167,6 +168,12 @@ export function OpenAssistantGPTChat({
           name: pathname,
           contentType: contentType,
         };
+      } else if (response.status === 413) {
+        toast({
+          title: 'Error',
+          description: 'File size is too large, please try a smaller file.',
+          variant: 'destructive',
+        });
       } else {
         const { error } = await response.json();
         toast({
