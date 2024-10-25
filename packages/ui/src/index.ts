@@ -4,5 +4,4 @@ import { ChatbotConfig } from './chatbot';
 
 export { type ChatbotConfig };
 export { OpenAssistantGPTChat };
-export { useToast } from "@/components/ui/use-toast"
-
+export { useToast } from '@/components/ui/use-toast';

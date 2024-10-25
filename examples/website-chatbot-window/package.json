@@ -11,7 +11,7 @@
   "dependencies": {
     "@openassistantgpt/assistant": "^0.2.0",
     "@openassistantgpt/react": "latest",
-    "@openassistantgpt/ui": "latest",
+    "@openassistantgpt/ui": "workspace:*",
     "ai": "3.2.32",
     "buffer": "^6.0.3",
     "next": "14.2.5",

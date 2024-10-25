@@ -1,12 +1,10 @@
-'use client';
-
 import { FC, memo } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkCold } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/icons';
+import { useCopyToClipboardNoTimeout } from '@/hooks/use-copy-to-clipboard';
 
 interface Props {
   language: string;
@@ -17,7 +15,7 @@ interface languageMap {
   [key: string]: string | undefined;
 }
 
-export const programmingLanguages: languageMap = {
+const programmingLanguages: languageMap = {
   javascript: '.js',
   python: '.py',
   java: '.java',
@@ -44,22 +42,23 @@ export const programmingLanguages: languageMap = {
   // add more file extensions here, make sure the key is same as language prop in CodeBlock.tsx component
 };
 
-export const generateRandomString = (length: number, lowercase = false) => {
+function generateRandomString(length: number, lowercase = false) {
   const chars = 'ABCDEFGHJKLMNPQRSTUVWXY3456789'; // excluding similar looking characters like Z, 2, I, 1, O, 0
   let result = '';
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
   return lowercase ? result.toLowerCase() : result;
-};
+}
 
 const CodeBlock: FC<Props> = memo(({ language, value }) => {
-  const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
+  const { copyToClipboard } = useCopyToClipboardNoTimeout();
 
   const downloadAsFile = () => {
     if (typeof window === 'undefined') {
       return;
     }
+
     const fileExtension = programmingLanguages[language] || '.file';
     const suggestedFileName = `file-${generateRandomString(
       3,
@@ -85,7 +84,6 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
   };
 
   const onCopy = () => {
-    if (isCopied) return;
     copyToClipboard(value);
   };
 
@@ -111,7 +109,7 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
             className="text-xs hover:bg-white focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0"
             onClick={onCopy}
           >
-            {isCopied ? <Icons.check /> : <Icons.copy />}
+            <Icons.copy />
             <span className="sr-only">Copy code</span>
           </Button>
         </div>

@@ -148,8 +148,8 @@ importers:
         specifier: latest
         version: 0.2.0(react@18.3.1)(svelte@4.2.19)(vite@5.4.9)(vue@3.5.12)(zod@3.23.8)
       '@openassistantgpt/ui':
-        specifier: latest
-        version: 0.2.2(@types/react-dom@18.3.1)(@types/react@18.3.11)(postcss@8.4.47)(react-dom@18.3.1)(react@18.3.1)(svelte@4.2.19)(vite@5.4.9)(vue@3.5.12)(zod@3.23.8)
+        specifier: workspace:*
+        version: link:../../packages/ui
       ai:
         specifier: 3.2.32
         version: 3.2.32(openai@4.52.7)(react@18.3.1)(svelte@4.2.19)(vue@3.5.12)(zod@3.23.8)

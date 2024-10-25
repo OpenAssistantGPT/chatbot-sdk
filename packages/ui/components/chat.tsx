@@ -49,7 +49,7 @@ export function OpenAssistantGPTChat({
   ...props
 }: ChatbotProps) {
   let inputFileRef = useRef<HTMLInputElement>(null);
-  const { toast } = useToast()
+  const { toast } = useToast();
   const { formRef, onKeyDown } = useEnterSubmit();
 
   const {
