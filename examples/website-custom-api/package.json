@@ -23,7 +23,7 @@
     "zod-form-data": "^2.0.2"
   },
   "devDependencies": {
-    "@types/node": "^20.14.11",
+    "@types/node": "^22.7.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.19",
