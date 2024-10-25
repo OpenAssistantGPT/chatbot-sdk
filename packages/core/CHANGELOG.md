@@ -1,5 +1,13 @@
 # core
 
+## 0.2.7
+
+### Patch Changes
+
+- 5da68eb: fix issue when the copy in CodeBlock was breaking the page
+- Updated dependencies [5da68eb]
+  - @openassistantgpt/ui@0.2.5
+
 ## 0.2.6
 
 ### Patch Changes

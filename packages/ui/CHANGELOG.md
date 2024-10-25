@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.2.5
+
+### Patch Changes
+
+- 5da68eb: fix issue when the copy in CodeBlock was breaking the page
+
 ## 0.2.4
 
 ### Patch Changes
