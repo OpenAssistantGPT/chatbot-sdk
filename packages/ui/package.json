@@ -36,7 +36,7 @@
     "@radix-ui/react-toast": "^1.2.1",
     "@radix-ui/react-tooltip": "^1.1.2",
     "@tailwindcss/typography": "^0.5.13",
-    "autoprefixer": "^10.4.19",
+    "autoprefixer": "^10.4.20",
     "better-react-mathjax": "^2.0.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
