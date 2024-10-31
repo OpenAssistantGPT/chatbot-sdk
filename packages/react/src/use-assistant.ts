@@ -198,6 +198,7 @@ export function useAssistant({
               if (annotation && annotation.type === 'file_citation') {
                 setMessages(messages => {
                   const lastMessage = messages[messages.length - 1];
+                  // @ts-ignore - because they use JSONValue as a type
                   lastMessage.annotations = annotation;
                   return [
                     ...messages.slice(0, messages.length - 1),
