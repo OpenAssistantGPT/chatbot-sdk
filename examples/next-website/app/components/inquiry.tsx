@@ -47,7 +47,7 @@ export function SupportInquiry() {
         <LucideX className="h-4 w-4" />
       </button>
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
+        <DialogTrigger asChild={true}>
           <Button className="w-full bg-white" variant="outline">
             Contact our support
           </Button>
