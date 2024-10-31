@@ -45,6 +45,13 @@ export default function ChatPage() {
       chatbot={chatbot}
       path="/api/chat/assistant"
       defaultMessage=""
+      annotationsFiles={[
+        {
+          fileName: "google",
+          fileId: "file-GMUsHaFBkyvlAHdpCvt3Hngf",
+          downloadUrl: "https://google.com"
+        }
+      ]}
     />
   );
 }

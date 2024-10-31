@@ -144,7 +144,6 @@ export function AssistantResponse(
                 }
 
                 if (content.type == 'image_file') {
-                  console.log(content.image_file);
                   controller.enqueue(
                     textEncoder.encode(
                       formatStreamPart('assistant_message', {
