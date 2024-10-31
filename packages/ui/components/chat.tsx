@@ -261,6 +261,7 @@ export function OpenAssistantGPTChat({
               }}
               fontSize={chatbot.fontSize}
               references={[]}
+              messageSourceText={chatbot.messageSourceText}
             />
             <div className="flex-grow overflow-y-auto space-y-6 flex flex-col order-2">
               {messages.map((message: Message, index) => {
@@ -293,6 +294,7 @@ export function OpenAssistantGPTChat({
                         })
                         .filter(Boolean) as Reference[]
                     }
+                    messageSourceText={chatbot.messageSourceText}
                     //attachments={message.experimental_attachments}
                   />
                 );
@@ -309,6 +311,7 @@ export function OpenAssistantGPTChat({
                   }}
                   fontSize={chatbot.fontSize}
                   references={[]}
+                  messageSourceText={chatbot.messageSourceText}
                 />
               </div>
             )}

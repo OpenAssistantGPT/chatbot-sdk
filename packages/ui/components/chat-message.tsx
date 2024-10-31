@@ -24,6 +24,7 @@ export interface Reference {
 
 export interface ChatMessageProps {
   message: Message;
+  messageSourceText: string;
   children?: React.ReactNode;
   chatbot: ChatbotConfig;
   attachments?: Array<Attachment>;
@@ -36,6 +37,7 @@ const getDirection = (isRTL: boolean) => (isRTL ? 'rtl' : 'ltr');
 
 export function ChatMessage({
   message,
+  messageSourceText,
   children,
   chatbot,
   isFirst,
@@ -178,8 +180,8 @@ export function ChatMessage({
                   </div>
                 )}
                 {references.length > 0 && (
-                  <div className="mt-2 text-xs space-y-1">
-                    Sources:
+                  <div className="mt-2 text-muted-foreground text-xs space-y-1">
+                    {messageSourceText}
                     {references.map((ref, i) => (
                       <p key={i}>
                         🔗{' '}

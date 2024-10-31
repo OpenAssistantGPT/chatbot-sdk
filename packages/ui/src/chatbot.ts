@@ -31,4 +31,6 @@ export type ChatbotConfig = {
   displayFooterText: boolean;
   footerTextName: string;
   footerLink: string;
+
+  messageSourceText: string;
 };
