@@ -19,5 +19,5 @@ export async function GET(
     apiKey: process.env.OPENAI_API_KEY,
   });
 
-  return handleFileFunction(openai, params.fileId);
+  return handleFileFunction(openai as any, params.fileId);
 }
