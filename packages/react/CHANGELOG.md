@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.3.2
+
+### Patch Changes
+
+- 2fcbfad: Add support for multiple sources and custom text before displaying the sources
+
 ## 0.3.1
 
 ### Patch Changes

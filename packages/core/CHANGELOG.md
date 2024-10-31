@@ -1,5 +1,14 @@
 # core
 
+## 0.3.2
+
+### Patch Changes
+
+- 2fcbfad: Add support for multiple sources and custom text before displaying the sources
+- Updated dependencies [2fcbfad]
+  - @openassistantgpt/react@0.3.2
+  - @openassistantgpt/ui@0.3.2
+
 ## 0.3.1
 
 ### Patch Changes
