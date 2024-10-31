@@ -38,7 +38,7 @@ export default function ChatPage() {
     footerTextName: 'OpenAssistantGPT',
     fontSize: '15px',
 
-    messageSourceText: ''
+    messageSourceText: '',
   };
 
   return (
