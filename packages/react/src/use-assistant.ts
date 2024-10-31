@@ -202,11 +202,13 @@ export function useAssistant({
                   if (!lastMessage.annotations) {
                     lastMessage.annotations = [];
                   }
-                  // @ts-ignore - because they use JSONValue as a type
+
                   if (
                     !lastMessage.annotations?.some(
                       a =>
+                        // @ts-ignore - because they use JSONValue as a type
                         a!.file_citation.file_id ===
+                        // @ts-ignore - because they use JSONValue as a type
                         annotation.file_citation.file_id,
                     )
                   ) {
