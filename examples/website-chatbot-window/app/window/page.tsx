@@ -38,6 +38,8 @@ export default function ChatPage() {
     displayFooterText: true,
     footerLink: 'https://www.openassistantgpt.io',
     footerTextName: 'OpenAssistantGPT',
+
+    messageSourceText: "Chatbot source:"
   };
 
   return (

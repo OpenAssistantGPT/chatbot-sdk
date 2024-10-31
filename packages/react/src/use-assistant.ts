@@ -199,7 +199,13 @@ export function useAssistant({
                 setMessages(messages => {
                   const lastMessage = messages[messages.length - 1];
                   // @ts-ignore - because they use JSONValue as a type
-                  lastMessage.annotations = annotation;
+                  if (!lastMessage.annotations) {
+                    lastMessage.annotations = []
+                  }
+                  // @ts-ignore - because they use JSONValue as a type
+                  if (!lastMessage.annotations?.some(a => a!.file_citation.file_id === annotation.file_citation.file_id)) {
+                    lastMessage.annotations?.push(annotation);
+                  }
                   return [
                     ...messages.slice(0, messages.length - 1),
                     lastMessage,
