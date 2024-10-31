@@ -16,7 +16,7 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { FooterText } from '@/components/chat-footer-text';
-import { ChatMessage } from '@/components/chat-message';
+import { ChatMessage, Reference } from '@/components/chat-message';
 import { useEnterSubmit } from '@/hooks/use-enter-submit';
 import { ChatHistory } from '@/components/chat-history';
 import { ChatbotConfig } from '@/src/chatbot';
@@ -31,6 +31,11 @@ interface ChatbotProps {
   className?: string;
   withExitX?: boolean;
   clientSidePrompt?: string;
+  annotationsFiles?: Array<{
+    fileId: string;
+    fileName: string;
+    downloadUrl: string;
+  }>;
   extensions?: React.ReactNode[];
   onMessagesChange?: (messages: Message[]) => void;
   onThreadIdChange?: (threadId: string | undefined) => void;
@@ -43,6 +48,7 @@ export function OpenAssistantGPTChat({
   className,
   withExitX = false,
   clientSidePrompt,
+  annotationsFiles = [],
   onMessagesChange,
   onThreadIdChange,
   extensions,
@@ -161,7 +167,6 @@ export function OpenAssistantGPTChat({
       if (response.ok) {
         const data = await response.json();
         const { url, pathname, contentType } = data;
-        console.log(data);
 
         return {
           url,
@@ -219,6 +224,7 @@ export function OpenAssistantGPTChat({
     },
     [setAttachments],
   );
+  console.log(annotationsFiles);
 
   return (
     <>
@@ -254,15 +260,39 @@ export function OpenAssistantGPTChat({
                 content: chatbot.welcomeMessage,
               }}
               fontSize={chatbot.fontSize}
+              references={[]}
             />
             <div className="flex-grow overflow-y-auto space-y-6 flex flex-col order-2">
               {messages.map((message: Message, index) => {
+                const annotationsArray = Array.isArray(message.annotations)
+                  ? message.annotations
+                  : [message.annotations].filter(Boolean);
                 return (
                   <ChatMessage
                     chatbot={chatbot}
                     key={index}
                     message={message}
                     fontSize={chatbot.fontSize}
+                    references={
+                      annotationsArray
+                        .map(a => {
+                          if (a !== null) {
+                            const annotation = annotationsFiles.find(
+                              // @ts-ignore
+                              f => f.fileId === a.file_citation.file_id,
+                            );
+                            if (annotation) {
+                              return {
+                                id: annotation.fileId,
+                                fileName: annotation.fileName,
+                                downloadUrl: annotation.downloadUrl,
+                              };
+                            }
+                          }
+                          return null;
+                        })
+                        .filter(Boolean) as Reference[]
+                    }
                     //attachments={message.experimental_attachments}
                   />
                 );
@@ -278,6 +308,7 @@ export function OpenAssistantGPTChat({
                     content: 'loading',
                   }}
                   fontSize={chatbot.fontSize}
+                  references={[]}
                 />
               </div>
             )}

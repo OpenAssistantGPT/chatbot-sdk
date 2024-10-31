@@ -16,6 +16,12 @@ import { ChatbotConfig } from '@/src';
 import { Attachment } from '@/types/attachements';
 import { PreviewAttachment } from '@/components/preview-attachement';
 
+export interface Reference {
+  id: string;
+  fileName: string;
+  downloadUrl: string;
+}
+
 export interface ChatMessageProps {
   message: Message;
   children?: React.ReactNode;
@@ -23,6 +29,7 @@ export interface ChatMessageProps {
   attachments?: Array<Attachment>;
   isFirst?: boolean;
   fontSize: string; // Keep as string for pixel values
+  references: Reference[];
 }
 
 const getDirection = (isRTL: boolean) => (isRTL ? 'rtl' : 'ltr');
@@ -33,9 +40,11 @@ export function ChatMessage({
   chatbot,
   isFirst,
   attachments,
+  references,
   fontSize = '16px', // Default font size in pixels
   ...props
 }: ChatMessageProps) {
+  if (references.length) console.log(` HEEEREEEE ${references}`);
   return (
     <>
       {message.role === 'user' ? (
@@ -165,6 +174,24 @@ export function ChatMessage({
                         key={attachment.url}
                         attachment={attachment}
                       />
+                    ))}
+                  </div>
+                )}
+                {references.length > 0 && (
+                  <div className="mt-2 text-xs space-y-1">
+                    Sources:
+                    {references.map((ref, i) => (
+                      <p key={i}>
+                        🔗{' '}
+                        <a
+                          href={ref.downloadUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-blue-500 hover:underline"
+                        >
+                          {ref.fileName}
+                        </a>
+                      </p>
                     ))}
                   </div>
                 )}
