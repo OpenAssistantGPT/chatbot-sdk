@@ -2,7 +2,6 @@
 
 import { ChatbotConfig, Message, OpenAssistantGPTChat } from 'openassistantgpt';
 import { useEffect, useState } from 'react';
-import { SupportInquiry } from './components/inquiry';
 import { Button } from './components/ui/button';
 
 export default function ChatPage() {
@@ -106,7 +105,6 @@ export default function ChatPage() {
             What is a SDK?
           </Button>
         ),
-        count > 1 && <SupportInquiry key="5" />,
       ]}
     />
   );
