@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.2.2
+
+### Patch Changes
+
+- d020f27: update issue with types on file handle function
+
 ## 0.2.1
 
 ### Patch Changes

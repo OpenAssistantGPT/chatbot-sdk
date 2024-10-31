@@ -1,5 +1,13 @@
 # @openassistantgpt/ui
 
+## 0.3.1
+
+### Patch Changes
+
+- d020f27: update issue with types on file handle function
+- Updated dependencies [d020f27]
+  - @openassistantgpt/react@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes
