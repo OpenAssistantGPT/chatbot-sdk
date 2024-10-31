@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.3.0
+
+### Minor Changes
+
+- 8d62b91: Add support for file references. You can now display the document where the assistant chatbot got his information from.
+
 ## 0.2.0
 
 ### Minor Changes
