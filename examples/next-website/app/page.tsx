@@ -43,6 +43,8 @@ export default function ChatPage() {
     footerTextName: 'OpenAssistantGPT',
 
     fontSize: '14px',
+
+    messageSourceText: ''
   };
 
   useEffect(() => {
