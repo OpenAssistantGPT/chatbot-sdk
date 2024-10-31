@@ -1,5 +1,23 @@
 # @assistant
 
+## 0.3.0
+
+### Minor Changes
+
+- 8d62b91: Add support for file references. You can now display the document where the assistant chatbot got his information from.
+
+## 0.2.0
+
+### Minor Changes
+
+- 3f4f1d7: Support upload of multiple attachments and improve validation
+
+## 0.1.1
+
+### Patch Changes
+
+- 4b57e1e: add support for extensions in the chat and improve mobile UX
+
 ## 0.1.0
 
 ### Minor Changes

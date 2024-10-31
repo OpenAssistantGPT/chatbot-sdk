@@ -1,5 +1,29 @@
 # @assistant
 
+## 0.2.1
+
+### Patch Changes
+
+- 8d41f18: Update file type
+
+## 0.2.0
+
+### Minor Changes
+
+- 3f4f1d7: Support upload of multiple attachments and improve validation
+
+## 0.1.2
+
+### Patch Changes
+
+- b29c271: Change on error return status code when chatting
+
+## 0.1.1
+
+### Patch Changes
+
+- 4b57e1e: add support for extensions in the chat and improve mobile UX
+
 ## 0.1.0
 
 ### Minor Changes

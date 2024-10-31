@@ -1,5 +1,113 @@
 # @openassistantgpt/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- 8d62b91: Add support for file references. You can now display the document where the assistant chatbot got his information from.
+
+### Patch Changes
+
+- Updated dependencies [8d62b91]
+  - @openassistantgpt/react@0.3.0
+
+## 0.2.5
+
+### Patch Changes
+
+- 5da68eb: fix issue when the copy in CodeBlock was breaking the page
+
+## 0.2.4
+
+### Patch Changes
+
+- 0387c04: Export toast to be able to use them in app
+
+## 0.2.3
+
+### Patch Changes
+
+- 994197f: Add scroll when there is too much attachments
+
+## 0.2.2
+
+### Patch Changes
+
+- d9169e0: Add max height and width to attachment preview
+
+## 0.2.1
+
+### Patch Changes
+
+- bed19ad: Use path in file upload
+
+## 0.2.0
+
+### Minor Changes
+
+- 3f4f1d7: Support upload of multiple attachments and improve validation
+
+### Patch Changes
+
+- Updated dependencies [3f4f1d7]
+  - @openassistantgpt/react@0.2.0
+
+## 0.1.9
+
+### Patch Changes
+
+- e4d2713: add feature to configure the fontsize
+
+## 0.1.8
+
+### Patch Changes
+
+- a55c6e7: Add option to stop the message generation when it is being generated
+
+## 0.1.7
+
+### Patch Changes
+
+- dadc8fd: Update icons
+
+## 0.1.6
+
+### Patch Changes
+
+- bdafd7c: Fix frontend error while copying message
+
+## 0.1.5
+
+### Patch Changes
+
+- 2635c63: Fix type error from String to string
+
+## 0.1.4
+
+### Patch Changes
+
+- 7303695: add parameters to support threadId changes
+
+## 0.1.3
+
+### Patch Changes
+
+- 675d106: Fix more scrolling issue
+
+## 0.1.2
+
+### Patch Changes
+
+- 4e5c500: Fix issue when chat history wasnt showing all items
+
+## 0.1.1
+
+### Patch Changes
+
+- 4b57e1e: add support for extensions in the chat and improve mobile UX
+- Updated dependencies [4b57e1e]
+  - @openassistantgpt/react@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
