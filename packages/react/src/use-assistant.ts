@@ -200,10 +200,16 @@ export function useAssistant({
                   const lastMessage = messages[messages.length - 1];
                   // @ts-ignore - because they use JSONValue as a type
                   if (!lastMessage.annotations) {
-                    lastMessage.annotations = []
+                    lastMessage.annotations = [];
                   }
                   // @ts-ignore - because they use JSONValue as a type
-                  if (!lastMessage.annotations?.some(a => a!.file_citation.file_id === annotation.file_citation.file_id)) {
+                  if (
+                    !lastMessage.annotations?.some(
+                      a =>
+                        a!.file_citation.file_id ===
+                        annotation.file_citation.file_id,
+                    )
+                  ) {
                     lastMessage.annotations?.push(annotation);
                   }
                   return [

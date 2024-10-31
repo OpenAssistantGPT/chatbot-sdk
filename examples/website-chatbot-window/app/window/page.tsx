@@ -39,7 +39,7 @@ export default function ChatPage() {
     footerLink: 'https://www.openassistantgpt.io',
     footerTextName: 'OpenAssistantGPT',
 
-    messageSourceText: "Chatbot source:"
+    messageSourceText: 'Chatbot source:',
   };
 
   return (
