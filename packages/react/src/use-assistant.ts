@@ -195,10 +195,10 @@ export function useAssistant({
               }
 
               // @ts-ignore - this is a hack to make the type checker happy
-              if(annotation && annotation.type === "file_citation") {
+              if (annotation && annotation.type === 'file_citation') {
                 setMessages(messages => {
                   const lastMessage = messages[messages.length - 1];
-                  lastMessage.annotations = annotation
+                  lastMessage.annotations = annotation;
                   return [
                     ...messages.slice(0, messages.length - 1),
                     lastMessage,

@@ -24,7 +24,6 @@ import { ChatHeader } from '@/components/chat-header';
 import { PreviewAttachment } from './preview-attachement';
 import { Attachment } from '@/types/attachements';
 
-
 interface ChatbotProps {
   chatbot: ChatbotConfig;
   defaultMessage: string;
@@ -32,7 +31,11 @@ interface ChatbotProps {
   className?: string;
   withExitX?: boolean;
   clientSidePrompt?: string;
-  annotationsFiles?: Array<{ fileId: string, fileName: string; downloadUrl: string}>;
+  annotationsFiles?: Array<{
+    fileId: string;
+    fileName: string;
+    downloadUrl: string;
+  }>;
   extensions?: React.ReactNode[];
   onMessagesChange?: (messages: Message[]) => void;
   onThreadIdChange?: (threadId: string | undefined) => void;
@@ -221,7 +224,7 @@ export function OpenAssistantGPTChat({
     },
     [setAttachments],
   );
-  console.log(annotationsFiles)
+  console.log(annotationsFiles);
 
   return (
     <>
@@ -261,7 +264,9 @@ export function OpenAssistantGPTChat({
             />
             <div className="flex-grow overflow-y-auto space-y-6 flex flex-col order-2">
               {messages.map((message: Message, index) => {
-                const annotationsArray = Array.isArray(message.annotations) ? message.annotations : [message.annotations].filter(Boolean);
+                const annotationsArray = Array.isArray(message.annotations)
+                  ? message.annotations
+                  : [message.annotations].filter(Boolean);
                 return (
                   <ChatMessage
                     chatbot={chatbot}
@@ -271,11 +276,8 @@ export function OpenAssistantGPTChat({
                     references={
                       annotationsArray
                         .map(a => {
-                          if (
-                            a !== null &&
-                            'file_citation' in a
-                          ) {
-                            const annotation =  annotationsFiles.find(
+                          if (a !== null && 'file_citation' in a) {
+                            const annotation = annotationsFiles.find(
                               f => f.fileId === a.file_citation.file_id,
                             );
                             if (annotation) {

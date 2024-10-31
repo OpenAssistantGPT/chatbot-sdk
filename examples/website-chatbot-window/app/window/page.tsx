@@ -47,10 +47,10 @@ export default function ChatPage() {
       defaultMessage=""
       annotationsFiles={[
         {
-          fileName: "google",
-          fileId: "file-GMUsHaFBkyvlAHdpCvt3Hngf",
-          downloadUrl: "https://google.com"
-        }
+          fileName: 'google',
+          fileId: 'file-GMUsHaFBkyvlAHdpCvt3Hngf',
+          downloadUrl: 'https://google.com',
+        },
       ]}
     />
   );

@@ -19,7 +19,7 @@ import { PreviewAttachment } from '@/components/preview-attachement';
 export interface Reference {
   id: string;
   fileName: string;
-  downloadUrl: string
+  downloadUrl: string;
 }
 
 export interface ChatMessageProps {
@@ -29,7 +29,7 @@ export interface ChatMessageProps {
   attachments?: Array<Attachment>;
   isFirst?: boolean;
   fontSize: string; // Keep as string for pixel values
-  references: Reference[]
+  references: Reference[];
 }
 
 const getDirection = (isRTL: boolean) => (isRTL ? 'rtl' : 'ltr');
@@ -44,8 +44,7 @@ export function ChatMessage({
   fontSize = '16px', // Default font size in pixels
   ...props
 }: ChatMessageProps) {
-
-  if (references.length) console.log(` HEEEREEEE ${references}`)
+  if (references.length) console.log(` HEEEREEEE ${references}`);
   return (
     <>
       {message.role === 'user' ? (
@@ -183,7 +182,7 @@ export function ChatMessage({
                     Sources:
                     {references.map((ref, i) => (
                       <p key={i}>
-                        🔗 {" "}
+                        🔗{' '}
                         <a
                           href={ref.downloadUrl}
                           target="_blank"
