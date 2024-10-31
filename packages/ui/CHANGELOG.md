@@ -1,5 +1,16 @@
 # @openassistantgpt/ui
 
+## 0.3.0
+
+### Minor Changes
+
+- 8d62b91: Add support for file references. You can now display the document where the assistant chatbot got his information from.
+
+### Patch Changes
+
+- Updated dependencies [8d62b91]
+  - @openassistantgpt/react@0.3.0
+
 ## 0.2.5
 
 ### Patch Changes
