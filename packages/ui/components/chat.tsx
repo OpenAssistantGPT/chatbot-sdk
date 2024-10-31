@@ -276,8 +276,9 @@ export function OpenAssistantGPTChat({
                     references={
                       annotationsArray
                         .map(a => {
-                          if (a !== null && 'file_citation' in a) {
+                          if (a !== null) {
                             const annotation = annotationsFiles.find(
+                              // @ts-ignore
                               f => f.fileId === a.file_citation.file_id,
                             );
                             if (annotation) {
