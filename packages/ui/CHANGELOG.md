@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.3
+
+### Patch Changes
+
+- 0043c44: feat: remove console log that is spamming the console
+
 ## 0.3.2
 
 ### Patch Changes
