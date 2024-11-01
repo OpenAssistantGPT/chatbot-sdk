@@ -224,7 +224,6 @@ export function OpenAssistantGPTChat({
     },
     [setAttachments],
   );
-  console.log(annotationsFiles);
 
   return (
     <>
