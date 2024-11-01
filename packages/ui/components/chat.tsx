@@ -224,7 +224,6 @@ export function OpenAssistantGPTChat({
     },
     [setAttachments],
   );
-  console.log(annotationsFiles);
 
   return (
     <>
@@ -311,7 +310,7 @@ export function OpenAssistantGPTChat({
                   }}
                   fontSize={chatbot.fontSize}
                   references={[]}
-                  messageSourceText={chatbot.messageSourceText}
+                    messageSourceText={chatbot.messageSourceText}
                 />
               </div>
             )}
