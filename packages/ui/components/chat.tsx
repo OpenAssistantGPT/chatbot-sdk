@@ -310,7 +310,7 @@ export function OpenAssistantGPTChat({
                   }}
                   fontSize={chatbot.fontSize}
                   references={[]}
-                    messageSourceText={chatbot.messageSourceText}
+                  messageSourceText={chatbot.messageSourceText}
                 />
               </div>
             )}
