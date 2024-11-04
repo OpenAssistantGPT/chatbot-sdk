@@ -74,7 +74,6 @@ export const Icons: any = {
   user: User,
   arrowRight: ArrowRight,
   arrowUp: ArrowUp,
-  arrowDown: ArrowDown,
   help: HelpCircle,
   pizza: Pizza,
   sun: SunMedium,
