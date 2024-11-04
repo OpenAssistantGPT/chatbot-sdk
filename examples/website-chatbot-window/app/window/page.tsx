@@ -48,7 +48,7 @@ export default function ChatPage() {
       chatbot={chatbot}
       path="/api/chat/assistant"
       defaultMessage=""
-      extensions={[<SupportInquiry key="first"/>]}
+      extensions={[<SupportInquiry key="first" />]}
       annotationsFiles={[
         {
           fileName: 'google',
