@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { useAssistant, Message } from '@openassistantgpt/react';
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
 import { useToast } from '@/components/ui/use-toast';
+import { useScrollToBottom } from '@/hooks/use-scroll-to-buttom';
 
 import {
   Tooltip,
@@ -78,6 +79,9 @@ export function OpenAssistantGPTChat({
     clientSidePrompt: clientSidePrompt,
   });
 
+  const [messagesContainerRef, messagesEndRef, atButtom, scrollToBottom] =
+    useScrollToBottom<HTMLDivElement>(messages);
+
   function handleSubmitMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
@@ -114,10 +118,6 @@ export function OpenAssistantGPTChat({
   }, [threadId]);
 
   useEffect(() => {
-    // Scroll to the bottom of the container on messages update
-    document.documentElement.scrollTop =
-      document.getElementById('end')!.offsetTop;
-
     if (onMessagesChange) {
       onMessagesChange(messages);
     }
@@ -245,8 +245,9 @@ export function OpenAssistantGPTChat({
 
         <div className="group w-full overflow-auto pl-0 peer-[[data-state=open]]:lg:pl-[250px] peer-[[data-state=open]]:xl:pl-[300px]">
           <div
+            ref={messagesContainerRef}
             className={cn(
-              'pb-[200px] overflow-auto pl-6 sm:pl-20 pr-6 sm:pr-20 md:pb-[200px] pt-4 md:pt-10',
+              'pb-[200px] overflow-auto max-h-max pl-6 sm:pl-20 pr-6 sm:pr-20 md:pb-[100px] pt-4 md:pt-10',
               className,
             )}
           >
@@ -300,7 +301,7 @@ export function OpenAssistantGPTChat({
               })}
             </div>
             {status !== 'awaiting_message' && (
-              <div className="mt-4">
+              <div className="mt-4" id="waiting">
                 <ChatMessage
                   chatbot={chatbot}
                   message={{
@@ -314,11 +315,25 @@ export function OpenAssistantGPTChat({
                 />
               </div>
             )}
-            <div id="end" ref={containerRef}>
-              {' '}
-            </div>
+            <div
+              id="end"
+              ref={messagesEndRef}
+              className="shrink-0 min-w-[24px] min-h-[24px]"
+            />
           </div>
           <div className="fixed inset-x-0 bottom-0 w-full ease-in-out animate-in peer-[[data-state=open]]:group-[]:lg:pl-[250px] peer-[[data-state=open]]:group-[]:xl:pl-[300px]">
+            {!atButtom && (
+              <div className="flex justify-center items-center mb-2">
+                <Button
+                  size="icon"
+                  onClick={() => scrollToBottom()}
+                  variant={'outline'}
+                  className="bg-white rounded-full border-2 p-2"
+                >
+                  <Icons.arrowDown className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
             <div
               className={`mx-auto ${
                 chatbot.chatInputStyle === 'default'

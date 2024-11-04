@@ -46,7 +46,6 @@ export function ChatMessage({
   fontSize = '16px', // Default font size in pixels
   ...props
 }: ChatMessageProps) {
-  if (references.length) console.log(` HEEEREEEE ${references}`);
   return (
     <>
       {message.role === 'user' ? (

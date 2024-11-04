@@ -40,6 +40,7 @@ import {
 } from 'lucide-react';
 
 export const Icons: any = {
+  arrowDown: ArrowDown,
   lock: Lock,
   document: File,
   paperclip: Paperclip,

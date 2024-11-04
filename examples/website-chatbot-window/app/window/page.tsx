@@ -1,6 +1,7 @@
 'use client';
 
 import { OpenAssistantGPTChat, ChatbotConfig } from '@openassistantgpt/ui';
+import { SupportInquiry } from './button-extension';
 
 export default function ChatPage() {
   const chatbot: ChatbotConfig = {
@@ -47,6 +48,7 @@ export default function ChatPage() {
       chatbot={chatbot}
       path="/api/chat/assistant"
       defaultMessage=""
+      extensions={[<SupportInquiry key="first"/>]}
       annotationsFiles={[
         {
           fileName: 'google',

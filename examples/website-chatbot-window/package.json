@@ -14,10 +14,13 @@
     "@openassistantgpt/ui": "workspace:*",
     "ai": "3.2.32",
     "buffer": "^6.0.3",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "next": "14.2.5",
     "openai": "4.69.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "tailwind-merge": "^2.5.4",
     "zod": "3.23.8",
     "zod-form-data": "^2.0.2"
   },
