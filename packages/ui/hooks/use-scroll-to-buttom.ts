@@ -36,7 +36,9 @@ export function useScrollToBottom<T extends HTMLElement>(
 
     // Scroll to the end only if the user is at the bottom of the window
     if (end && shouldScroll) {
-      end.scrollIntoView({ behavior: 'instant' });
+      document.documentElement.scrollTop =
+        document.getElementById('end')!.offsetTop;
+      //end.scrollIntoView({ behavior: 'instant' });
     }
   }, [messages, shouldScroll]);
 
@@ -44,7 +46,9 @@ export function useScrollToBottom<T extends HTMLElement>(
     const end = endRef.current;
 
     if (end) {
-      end.scrollIntoView({ behavior: 'smooth' });
+      //end.scrollIntoView({ behavior: 'smooth' });
+      document.documentElement.scrollTop =
+        document.getElementById('end')!.offsetTop;
     }
   }
 
