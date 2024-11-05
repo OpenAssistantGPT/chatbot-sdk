@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.5
+
+### Patch Changes
+
+- d287b92: Fix scrolling animation that makes parent window scroll
+
 ## 0.3.4
 
 ### Patch Changes
