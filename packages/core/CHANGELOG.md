@@ -1,5 +1,13 @@
 # core
 
+## 0.3.4
+
+### Patch Changes
+
+- 4bbfa94: Improve scrolling. Disable autoscroll when user is trying to scroll up when generating a message and add a button to scroll down when you are not at the buttom
+- Updated dependencies [4bbfa94]
+  - @openassistantgpt/ui@0.3.4
+
 ## 0.3.3
 
 ### Patch Changes
