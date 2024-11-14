@@ -21,10 +21,12 @@ const FileSchema = z.object({
           'application/json', // .json
           'text/markdown', // .md
           'application/pdf', // .pdf
+          'application/octet-stream',
           'application/x-httpd-php', // .php
           'application/vnd.openxmlformats-officedocument.presentationml.presentation', // .pptx
+          'text/x-python-script', // .py
           'text/x-python', // .py
-          'application/x-ruby', // .rb
+          'application/x-ruby-script', // .rb
           'application/x-tex', // .tex
           'text/plain', // .txt
           'text/css', // .css
