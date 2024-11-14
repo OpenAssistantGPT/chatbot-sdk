@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.2.3
+
+### Patch Changes
+
+- afefea5: add more file type that we can upload and fix issue where python and ruby were not working correcltt
+
 ## 0.2.2
 
 ### Patch Changes
