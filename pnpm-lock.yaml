@@ -93,8 +93,8 @@ importers:
         specifier: 14.2.15
         version: 14.2.15(@playwright/test@1.48.2)(react-dom@18.3.1)(react@18.3.1)
       openai:
-        specifier: 4.69.0
-        version: 4.69.0(zod@3.23.8)
+        specifier: 4.73.0
+        version: 4.73.0(zod@3.23.8)
       openassistantgpt:
         specifier: latest
         version: link:../../packages/core
@@ -155,7 +155,7 @@ importers:
         version: link:../../packages/ui
       ai:
         specifier: 3.2.32
-        version: 3.2.32(openai@4.69.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
+        version: 3.2.32(openai@4.73.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
@@ -169,8 +169,8 @@ importers:
         specifier: 14.2.5
         version: 14.2.5(@playwright/test@1.48.2)(react-dom@18.3.1)(react@18.3.1)
       openai:
-        specifier: 4.69.0
-        version: 4.69.0(zod@3.23.8)
+        specifier: 4.73.0
+        version: 4.73.0(zod@3.23.8)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -228,7 +228,7 @@ importers:
         version: link:../../packages/ui
       ai:
         specifier: 3.2.32
-        version: 3.2.32(openai@4.69.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
+        version: 3.2.32(openai@4.73.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
       buffer:
         specifier: ^6.0.3
         version: 6.0.3
@@ -236,8 +236,8 @@ importers:
         specifier: 14.2.5
         version: 14.2.5(@playwright/test@1.48.2)(react-dom@18.3.1)(react@18.3.1)
       openai:
-        specifier: 4.69.0
-        version: 4.69.0(zod@3.23.8)
+        specifier: 4.73.0
+        version: 4.73.0(zod@3.23.8)
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -295,10 +295,10 @@ importers:
         version: 0.25.1
       ai:
         specifier: ^3.2.24
-        version: 3.4.10(openai@4.69.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
+        version: 3.4.10(openai@4.73.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
       openai:
-        specifier: ^4.69.0
-        version: 4.69.0(zod@3.23.8)
+        specifier: ^4.73.0
+        version: 4.73.0(zod@3.23.8)
       react:
         specifier: ^18 || ^19
         version: 18.3.1
@@ -429,10 +429,10 @@ importers:
         version: 4.3.2(vite@5.4.10)
       ai:
         specifier: ^3.2.24
-        version: 3.4.10(openai@4.52.7)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
+        version: 3.4.10(openai@4.73.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8)
       openai:
-        specifier: ^4.52.7
-        version: 4.52.7
+        specifier: ^4.73.0
+        version: 4.73.0(zod@3.23.8)
       react:
         specifier: ^18 || ^19
         version: 18.3.1
@@ -3940,7 +3940,7 @@ packages:
       humanize-ms: 1.2.1
     dev: false
 
-  /ai@3.2.32(openai@4.69.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8):
+  /ai@3.2.32(openai@4.73.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8):
     resolution: {integrity: sha512-1TmEY6jkgouP/OYLdt4rBZAUg6mFSfwLPUEwk0D7pLKy3tYB3OYz/XvZ5X8NShG3wNTv7pMzE8znM0vg5RIdoA==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -3970,7 +3970,7 @@ packages:
       json-schema: 0.4.0
       jsondiffpatch: 0.6.0
       nanoid: 3.3.6
-      openai: 4.69.0(zod@3.23.8)
+      openai: 4.73.0(zod@3.23.8)
       react: 18.3.1
       secure-json-parse: 2.7.0
       sswr: 2.1.0(svelte@5.1.9)
@@ -3982,7 +3982,7 @@ packages:
       - vue
     dev: false
 
-  /ai@3.4.10(openai@4.52.7)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8):
+  /ai@3.4.10(openai@4.73.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8):
     resolution: {integrity: sha512-K+Nm8+AsVWEJDd/DsezSlAteIvcA+HjCUDQhuXKVTBU4z+4lpyji6j9wsyaGBhwFDqGZgNzR/D0r5FQLasA4Jg==}
     engines: {node: '>=18'}
     peerDependencies:
@@ -4015,51 +4015,7 @@ packages:
       json-schema: 0.4.0
       jsondiffpatch: 0.6.0
       nanoid: 3.3.6
-      openai: 4.52.7
-      react: 18.3.1
-      secure-json-parse: 2.7.0
-      svelte: 5.1.9
-      zod: 3.23.8
-      zod-to-json-schema: 3.23.2(zod@3.23.8)
-    transitivePeerDependencies:
-      - solid-js
-      - vue
-    dev: false
-
-  /ai@3.4.10(openai@4.69.0)(react@18.3.1)(svelte@5.1.9)(vue@3.5.12)(zod@3.23.8):
-    resolution: {integrity: sha512-K+Nm8+AsVWEJDd/DsezSlAteIvcA+HjCUDQhuXKVTBU4z+4lpyji6j9wsyaGBhwFDqGZgNzR/D0r5FQLasA4Jg==}
-    engines: {node: '>=18'}
-    peerDependencies:
-      openai: ^4.42.0
-      react: ^18 || ^19
-      sswr: ^2.1.0
-      svelte: ^3.0.0 || ^4.0.0
-      zod: ^3.0.0
-    peerDependenciesMeta:
-      openai:
-        optional: true
-      react:
-        optional: true
-      sswr:
-        optional: true
-      svelte:
-        optional: true
-      zod:
-        optional: true
-    dependencies:
-      '@ai-sdk/provider': 0.0.24
-      '@ai-sdk/provider-utils': 1.0.20(zod@3.23.8)
-      '@ai-sdk/react': 0.0.62(react@18.3.1)(zod@3.23.8)
-      '@ai-sdk/solid': 0.0.49(zod@3.23.8)
-      '@ai-sdk/svelte': 0.0.51(svelte@5.1.9)(zod@3.23.8)
-      '@ai-sdk/ui-utils': 0.0.46(zod@3.23.8)
-      '@ai-sdk/vue': 0.0.54(vue@3.5.12)(zod@3.23.8)
-      '@opentelemetry/api': 1.9.0
-      eventsource-parser: 1.1.2
-      json-schema: 0.4.0
-      jsondiffpatch: 0.6.0
-      nanoid: 3.3.6
-      openai: 4.69.0(zod@3.23.8)
+      openai: 4.73.0(zod@3.23.8)
       react: 18.3.1
       secure-json-parse: 2.7.0
       svelte: 5.1.9
@@ -8323,24 +8279,8 @@ packages:
       mimic-function: 5.0.1
     dev: true
 
-  /openai@4.52.7:
-    resolution: {integrity: sha512-dgxA6UZHary6NXUHEDj5TWt8ogv0+ibH+b4pT5RrWMjiRZVylNwLcw/2ubDrX5n0oUmHX/ZgudMJeemxzOvz7A==}
-    hasBin: true
-    dependencies:
-      '@types/node': 18.19.62
-      '@types/node-fetch': 2.6.11
-      abort-controller: 3.0.0
-      agentkeepalive: 4.5.0
-      form-data-encoder: 1.7.2
-      formdata-node: 4.4.1
-      node-fetch: 2.7.0
-      web-streams-polyfill: 3.3.3
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
-  /openai@4.69.0(zod@3.23.8):
-    resolution: {integrity: sha512-S3hOHSkk609KqwgH+7dwFrSvO3Gm3Nk0YWGyPHNscoMH/Y2tH1qunMi7gtZnLbUv4/N1elqCp6bDior2401kCQ==}
+  /openai@4.73.0(zod@3.23.8):
+    resolution: {integrity: sha512-NZstV77w3CEol9KQTRBRQ15+Sw6nxVTicAULSjYO4wn9E5gw72Mtp3fAVaBFXyyVPws4241YmFG6ya4L8v03tA==}
     hasBin: true
     peerDependencies:
       zod: ^3.23.8
@@ -11060,11 +11000,6 @@ packages:
     resolution: {integrity: sha512-rpJyN222KWIvHJ/F53XSZv0Zl/accqHR8et1kpaMTD/fLCRxtV8iX8czMzY7sVZupTI3zcUTg8eycS2kNF9l6w==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
-
-  /web-streams-polyfill@3.3.3:
-    resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
-    engines: {node: '>= 8'}
     dev: false
 
   /web-streams-polyfill@4.0.0-beta.3:
