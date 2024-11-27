@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.6
+
+### Patch Changes
+
+- b7910da: Send message to parent window on message sent
+
 ## 0.3.5
 
 ### Patch Changes
