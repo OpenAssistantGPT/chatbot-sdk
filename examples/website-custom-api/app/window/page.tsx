@@ -39,7 +39,7 @@ export default function ChatPage() {
     fontSize: '15px',
 
     messageSourceText: '',
-    withChatMessageIcon: true
+    withChatMessageIcon: true,
   };
 
   return (

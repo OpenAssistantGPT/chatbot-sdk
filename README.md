@@ -117,7 +117,7 @@ export default function ChatPage() {
     footerTextName: 'OpenAssistantGPT',
 
     messageSourceText: '',
-    withChatMessageIcon: true
+    withChatMessageIcon: true,
   };
 
   return (
