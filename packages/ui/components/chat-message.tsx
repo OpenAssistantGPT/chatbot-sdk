@@ -31,6 +31,7 @@ export interface ChatMessageProps {
   isFirst?: boolean;
   fontSize: string; // Keep as string for pixel values
   references: Reference[];
+  withChatMessageIcon: boolean;
 }
 
 const getDirection = (isRTL: boolean) => (isRTL ? 'rtl' : 'ltr');
@@ -44,6 +45,7 @@ export function ChatMessage({
   attachments,
   references,
   fontSize = '16px', // Default font size in pixels
+  withChatMessageIcon = true,
   ...props
 }: ChatMessageProps) {
   return (
@@ -64,7 +66,7 @@ export function ChatMessage({
           >
             <svg
               fill={chatbot.userReplyBackgroundColor}
-              className="absolute bottom-[0px] right-11"
+              className={`absolute bottom-[0px] ${ chatbot.withChatMessageIcon ? 'right-11' : 'right-3'}`}
               height="14"
               width="13"
             >
@@ -72,39 +74,45 @@ export function ChatMessage({
             </svg>
             {message.content}
           </p>
-          <div
-            className={cn(
-              'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
-              'bg-background',
-            )}
-          >
-            <Icons.user />
-          </div>
+
+          {withChatMessageIcon &&
+            <div
+              className={cn(
+                'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
+                'bg-background',
+              )}
+            >
+              <Icons.user />
+            </div>
+          }
         </div>
       ) : (
         <div
           className={cn('pr-10 group relative mb-4 flex items-start ')}
           {...props}
         >
-          {chatbot.chatbotLogoURL ? (
-            <div className="size-8" style={{ width: '30px', height: '30px' }}>
-              <img
-                src={chatbot.chatbotLogoURL}
-                alt="chatbot logo"
-                width={50}
-                height={50}
-              />
-            </div>
-          ) : (
-            <div
-              className={cn(
-                'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
-                'bg-primary text-primary-foreground',
-              )}
-            >
-              <Icons.bot />
-            </div>
-          )}
+          {withChatMessageIcon &&
+            (chatbot.chatbotLogoURL ? (
+              <div className="size-8" style={{ width: '30px', height: '30px' }}>
+                <img
+                  src={chatbot.chatbotLogoURL}
+                  alt="chatbot logo"
+                  width={50}
+                  height={50}
+                />
+              </div>
+            ) : (
+              <div
+                className={cn(
+                  'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
+                  'bg-primary text-primary-foreground',
+                )}
+              >
+                <Icons.bot />
+              </div>
+            )
+            )
+          }
           <div className="flex-1 px-1 ml-4">
             {message.content == 'loading' ? (
               <Icons.loading className="animate-spin" />

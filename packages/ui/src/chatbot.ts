@@ -33,4 +33,6 @@ export type ChatbotConfig = {
   footerLink: string;
 
   messageSourceText: string;
+
+  withChatMessageIcon: boolean
 };
