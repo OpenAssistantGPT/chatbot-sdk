@@ -66,7 +66,9 @@ export function ChatMessage({
           >
             <svg
               fill={chatbot.userReplyBackgroundColor}
-              className={`absolute bottom-[0px] ${ chatbot.withChatMessageIcon ? 'right-14' : 'right-2'}`}
+              className={`absolute bottom-[0px] ${
+                chatbot.withChatMessageIcon ? 'right-14' : 'right-2'
+              }`}
               height="14"
               width="13"
             >
@@ -75,7 +77,7 @@ export function ChatMessage({
             {message.content}
           </p>
 
-          {withChatMessageIcon &&
+          {withChatMessageIcon && (
             <div
               className={cn(
                 'flex size-8 shrink-0 mr-4 select-none items-center justify-center rounded-md border shadow',
@@ -84,7 +86,7 @@ export function ChatMessage({
             >
               <Icons.user />
             </div>
-          }
+          )}
         </div>
       ) : (
         <div
@@ -110,9 +112,7 @@ export function ChatMessage({
               >
                 <Icons.bot />
               </div>
-            )
-            )
-          }
+            ))}
           <div className="flex-1 px-1 ml-4">
             {message.content == 'loading' ? (
               <Icons.loading className="animate-spin" />

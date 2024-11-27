@@ -34,5 +34,5 @@ export type ChatbotConfig = {
 
   messageSourceText: string;
 
-  withChatMessageIcon: boolean
+  withChatMessageIcon: boolean;
 };
