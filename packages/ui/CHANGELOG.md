@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.7
+
+### Patch Changes
+
+- 91497dc: Add feature to remove all icons from chat
+
 ## 0.3.6
 
 ### Patch Changes
