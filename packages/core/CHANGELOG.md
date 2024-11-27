@@ -1,5 +1,12 @@
 # core
 
+## 0.3.7
+
+### Patch Changes
+
+- Updated dependencies [b7910da]
+  - @openassistantgpt/ui@0.3.6
+
 ## 0.3.6
 
 ### Patch Changes
