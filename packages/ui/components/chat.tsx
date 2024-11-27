@@ -249,13 +249,14 @@ export function OpenAssistantGPTChat({
           <div
             ref={messagesContainerRef}
             className={cn(
-              'pb-[200px] overflow-auto max-h-max pl-6 sm:pl-20 pr-6 sm:pr-20 md:pb-[100px] pt-4 md:pt-10',
+              'pb-[200px] overflow-auto max-h-max pl-6 sm:pl-20 sm:pr-20 md:pb-[100px] pt-4 md:pt-10',
               className,
             )}
           >
             <ChatMessage
               isFirst={true}
               chatbot={chatbot}
+              withChatMessageIcon={chatbot.withChatMessageIcon}
               message={{
                 id: '0',
                 role: 'assistant',
@@ -276,6 +277,7 @@ export function OpenAssistantGPTChat({
                     key={index}
                     message={message}
                     fontSize={chatbot.fontSize}
+                    withChatMessageIcon={chatbot.withChatMessageIcon}
                     references={
                       annotationsArray
                         .map(a => {
@@ -306,6 +308,7 @@ export function OpenAssistantGPTChat({
               <div className="mt-4" id="waiting">
                 <ChatMessage
                   chatbot={chatbot}
+                  withChatMessageIcon={chatbot.withChatMessageIcon}
                   message={{
                     id: 'waiting',
                     role: 'assistant',

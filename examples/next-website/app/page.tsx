@@ -45,6 +45,7 @@ export default function ChatPage() {
     fontSize: '14px',
 
     messageSourceText: '',
+    withChatMessageIcon: true,
   };
 
   useEffect(() => {
