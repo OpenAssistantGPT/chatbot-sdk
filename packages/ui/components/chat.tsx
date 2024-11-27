@@ -85,6 +85,8 @@ export function OpenAssistantGPTChat({
   function handleSubmitMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
+    window.parent.postMessage('messageSent', '*');
+
     submitMessage();
   }
 
