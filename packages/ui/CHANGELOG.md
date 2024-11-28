@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.9
+
+### Patch Changes
+
+- 2626b91: Update marging and padding issue
+
 ## 0.3.8
 
 ### Patch Changes
