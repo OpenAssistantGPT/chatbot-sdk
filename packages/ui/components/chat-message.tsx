@@ -61,7 +61,9 @@ export function ChatMessage({
               background: chatbot.userReplyBackgroundColor,
               fontSize, // Apply font size in pixels here
             }}
-            className={`p-2 rounded-lg whitespace-pre-wrap ${withChatMessageIcon ? 'mr-4' : 'mr-3'}`}
+            className={`p-2 rounded-lg whitespace-pre-wrap ${
+              withChatMessageIcon ? 'mr-4' : 'mr-3'
+            }`}
             dir={getDirection(chatbot.rightToLeftLanguage)} // Set text direction
           >
             <svg
