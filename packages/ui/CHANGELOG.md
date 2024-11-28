@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.8
+
+### Patch Changes
+
+- d61426f: Adjust pading in chat window when disabeling icon.
+
 ## 0.3.7
 
 ### Patch Changes
