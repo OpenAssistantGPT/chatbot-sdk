@@ -17,7 +17,7 @@ export default function Home() {
           style={{
             overflow: 'hidden',
             height: '80vh',
-            width: '480px',
+            width: '1080px',
             bottom: '-30px',
             border: '2px solid #e2e8f0',
             borderRadius: '0.375rem',
