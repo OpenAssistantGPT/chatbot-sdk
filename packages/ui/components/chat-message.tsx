@@ -61,13 +61,13 @@ export function ChatMessage({
               background: chatbot.userReplyBackgroundColor,
               fontSize, // Apply font size in pixels here
             }}
-            className="p-2 rounded-lg mr-3 whitespace-pre-wrap"
+            className={`p-2 rounded-lg whitespace-pre-wrap ${withChatMessageIcon ? 'mr-4' : 'mr-3'}`}
             dir={getDirection(chatbot.rightToLeftLanguage)} // Set text direction
           >
             <svg
               fill={chatbot.userReplyBackgroundColor}
               className={`absolute bottom-[0px] ${
-                chatbot.withChatMessageIcon ? 'right-14' : 'right-2'
+                chatbot.withChatMessageIcon ? 'right-11' : 'right-2'
               }`}
               height="14"
               width="13"
@@ -80,7 +80,7 @@ export function ChatMessage({
           {withChatMessageIcon && (
             <div
               className={cn(
-                'flex size-8 shrink-0 mr-4 select-none items-center justify-center rounded-md border shadow',
+                'flex size-8 shrink-0 select-none items-center justify-center rounded-md border shadow',
                 'bg-background',
               )}
             >
