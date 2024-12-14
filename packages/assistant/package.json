@@ -29,7 +29,7 @@
     "@ai-sdk/ui-utils": "0.0.20",
     "@vercel/blob": "^0.25.1",
     "ai": "^3.2.24",
-    "openai": "^4.69.0",
+    "openai": "^4.76.3",
     "swr": "2.2.5",
     "zod-form-data": "^2.0.2"
   },
