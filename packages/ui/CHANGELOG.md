@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.11
+
+### Patch Changes
+
+- 116076b: Add new feature to disable chat inputs
+
 ## 0.3.10
 
 ### Patch Changes
