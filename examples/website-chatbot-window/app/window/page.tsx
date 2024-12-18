@@ -52,6 +52,7 @@ export default function ChatPage() {
       extensions={[<SupportInquiry key="first" />]}
       handleAfterChat={() => console.log('after chat')}
       handleBeforeChat={() => console.log('before chat')}
+      disableInput={true}
       annotationsFiles={[
         {
           fileName: 'google',
