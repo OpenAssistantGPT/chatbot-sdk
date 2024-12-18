@@ -42,6 +42,7 @@ interface ChatbotProps {
   onThreadIdChange?: (threadId: string | undefined) => void;
   handleBeforeChat?: () => Promise<void> | void;
   handleAfterChat?: () => Promise<void> | void;
+  disableInput?: boolean; // New option to disable the input
 }
 
 export function OpenAssistantGPTChat({
@@ -57,6 +58,7 @@ export function OpenAssistantGPTChat({
   handleBeforeChat,
   handleAfterChat,
   extensions,
+  disableInput = false, // Default value for the new option
   ...props
 }: ChatbotProps) {
   let inputFileRef = useRef<HTMLInputElement>(null);
@@ -425,6 +427,7 @@ export function OpenAssistantGPTChat({
                           multiple
                           onChange={handleFileChange}
                           tabIndex={-1}
+                          disabled={disableInput}
                         />
                       </div>
                     )}
@@ -449,6 +452,7 @@ export function OpenAssistantGPTChat({
                         rows={1}
                         value={input}
                         onChange={handleInputChange}
+                        disabled={disableInput}
                       />
                     </div>
                     <div className={`absolute top-[14px] right-0`}>
@@ -457,7 +461,7 @@ export function OpenAssistantGPTChat({
                           {status === 'awaiting_message' ? (
                             <Button
                               id="submit"
-                              disabled={input === ''}
+                              disabled={input === '' || disableInput} // Disable the send button when disableInput is true
                               type="submit"
                               size="icon"
                             >
