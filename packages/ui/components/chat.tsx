@@ -40,8 +40,8 @@ interface ChatbotProps {
   extensions?: React.ReactNode[];
   onMessagesChange?: (messages: Message[]) => void;
   onThreadIdChange?: (threadId: string | undefined) => void;
-  handleBeforeChat?: () => Promise<void> | void
-  handleAfterChat?: () => Promise<void> | void
+  handleBeforeChat?: () => Promise<void> | void;
+  handleAfterChat?: () => Promise<void> | void;
 }
 
 export function OpenAssistantGPTChat({
@@ -98,7 +98,7 @@ export function OpenAssistantGPTChat({
     await submitMessage();
 
     if (handleAfterChat) {
-      await handleAfterChat()
+      await handleAfterChat();
     }
   }
 
