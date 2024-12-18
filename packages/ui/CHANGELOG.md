@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.10
+
+### Patch Changes
+
+- 5481399: add a parameter to be able to call a function before and after submitting a message
+
 ## 0.3.9
 
 ### Patch Changes
