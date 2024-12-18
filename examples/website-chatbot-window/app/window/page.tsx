@@ -50,6 +50,8 @@ export default function ChatPage() {
       path="/api/chat/assistant"
       defaultMessage=""
       extensions={[<SupportInquiry key="first" />]}
+      handleAfterChat={() => console.log("after chat")}
+      handleBeforeChat={() => console.log("before chat")}
       annotationsFiles={[
         {
           fileName: 'google',

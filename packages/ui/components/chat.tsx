@@ -40,6 +40,8 @@ interface ChatbotProps {
   extensions?: React.ReactNode[];
   onMessagesChange?: (messages: Message[]) => void;
   onThreadIdChange?: (threadId: string | undefined) => void;
+  handleBeforeChat?: () => Promise<void> | void
+  handleAfterChat?: () => Promise<void> | void
 }
 
 export function OpenAssistantGPTChat({
@@ -52,6 +54,8 @@ export function OpenAssistantGPTChat({
   annotationsFiles = [],
   onMessagesChange,
   onThreadIdChange,
+  handleBeforeChat,
+  handleAfterChat,
   extensions,
   ...props
 }: ChatbotProps) {
@@ -82,12 +86,20 @@ export function OpenAssistantGPTChat({
   const [messagesContainerRef, messagesEndRef, atButtom, scrollToBottom] =
     useScrollToBottom<HTMLDivElement>(messages);
 
-  function handleSubmitMessage(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmitMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    if (handleBeforeChat) {
+      await handleBeforeChat();
+    }
 
     window.parent.postMessage('messageSent', '*');
 
-    submitMessage();
+    await submitMessage();
+
+    if (handleAfterChat) {
+      await handleAfterChat()
+    }
   }
 
   useEffect(() => {
