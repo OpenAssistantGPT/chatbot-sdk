@@ -50,6 +50,7 @@ export function useAssistant({
   threadId: threadIdParam,
   credentials,
   clientSidePrompt,
+  handleAfterChat,
   headers,
   body,
   onError,
@@ -285,6 +286,9 @@ export function useAssistant({
     } finally {
       abortControllerRef.current = null;
       setStatus('awaiting_message');
+      if (handleAfterChat) {
+        handleAfterChat();
+      }
     }
   };
 

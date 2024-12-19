@@ -83,6 +83,7 @@ export function OpenAssistantGPTChat({
     id: chatbot.id,
     api: path,
     clientSidePrompt: clientSidePrompt,
+    handleAfterChat: handleAfterChat,
   });
 
   const [messagesContainerRef, messagesEndRef, atButtom, scrollToBottom] =
@@ -97,11 +98,7 @@ export function OpenAssistantGPTChat({
 
     window.parent.postMessage('messageSent', '*');
 
-    await submitMessage();
-
-    if (handleAfterChat) {
-      await handleAfterChat();
-    }
+    submitMessage()
   }
 
   useEffect(() => {
@@ -313,7 +310,7 @@ export function OpenAssistantGPTChat({
                         .filter(Boolean) as Reference[]
                     }
                     messageSourceText={chatbot.messageSourceText}
-                    //attachments={message.experimental_attachments}
+                  //attachments={message.experimental_attachments}
                   />
                 );
               })}
@@ -354,11 +351,10 @@ export function OpenAssistantGPTChat({
               </div>
             )}
             <div
-              className={`mx-auto ${
-                chatbot.chatInputStyle === 'default'
+              className={`mx-auto ${chatbot.chatInputStyle === 'default'
                   ? 'sm:max-w-2xl sm:px-4'
                   : ''
-              }`}
+                }`}
             >
               <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-2 px-4 ">
                 {extensions}
@@ -404,11 +400,10 @@ export function OpenAssistantGPTChat({
                   )}
 
                   <div
-                    className={`relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background ${
-                      chatbot.chatFileAttachementEnabled
+                    className={`relative flex max-h-60 w-full grow flex-col overflow-hidden bg-background ${chatbot.chatFileAttachementEnabled
                         ? 'px-8 sm:px-12'
                         : 'px-2 sm:px-2'
-                    }`}
+                      }`}
                   >
                     {chatbot.chatFileAttachementEnabled && (
                       <div className="">
