@@ -83,6 +83,7 @@ export function OpenAssistantGPTChat({
     id: chatbot.id,
     api: path,
     clientSidePrompt: clientSidePrompt,
+    handleAfterChat: handleAfterChat,
   });
 
   const [messagesContainerRef, messagesEndRef, atButtom, scrollToBottom] =
@@ -97,11 +98,7 @@ export function OpenAssistantGPTChat({
 
     window.parent.postMessage('messageSent', '*');
 
-    await submitMessage();
-
-    if (handleAfterChat) {
-      await handleAfterChat();
-    }
+    submitMessage();
   }
 
   useEffect(() => {
