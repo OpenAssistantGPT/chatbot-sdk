@@ -1,5 +1,13 @@
 # core
 
+## 0.3.13
+
+### Patch Changes
+
+- Updated dependencies [344f91c]
+  - @openassistantgpt/react@0.3.3
+  - @openassistantgpt/ui@0.3.12
+
 ## 0.3.12
 
 ### Patch Changes
