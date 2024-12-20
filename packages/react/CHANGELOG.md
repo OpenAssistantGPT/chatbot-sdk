@@ -1,5 +1,11 @@
 # @assistant
 
+## 0.3.3
+
+### Patch Changes
+
+- 344f91c: Handle after chat to actually call the function after the chat is completed
+
 ## 0.3.2
 
 ### Patch Changes

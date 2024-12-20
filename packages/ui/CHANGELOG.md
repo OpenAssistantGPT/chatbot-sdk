@@ -1,5 +1,13 @@
 # @openassistantgpt/ui
 
+## 0.3.12
+
+### Patch Changes
+
+- 344f91c: Handle after chat to actually call the function after the chat is completed
+- Updated dependencies [344f91c]
+  - @openassistantgpt/react@0.3.3
+
 ## 0.3.11
 
 ### Patch Changes
