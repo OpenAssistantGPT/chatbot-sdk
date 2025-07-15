@@ -461,7 +461,11 @@ export function OpenAssistantGPTChat({
                         <TooltipTrigger asChild>
                           <Button
                             id="submit"
-                            disabled={input === '' || disableInput || status !== 'awaiting_message'} // Disable during generation
+                            disabled={
+                              input === '' ||
+                              disableInput ||
+                              status !== 'awaiting_message'
+                            } // Disable during generation
                             type="submit"
                             size="icon"
                           >
