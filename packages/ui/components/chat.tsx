@@ -76,7 +76,6 @@ export function OpenAssistantGPTChat({
     setThreadId,
     threads,
     deleteThreadFromHistory,
-    stop,
     attachments,
     setAttachments,
   } = useAssistant({
@@ -91,6 +90,11 @@ export function OpenAssistantGPTChat({
 
   async function handleSubmitMessage(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+
+    // Prevent submission if not awaiting message or input is empty
+    if (status !== 'awaiting_message' || input === '' || disableInput) {
+      return;
+    }
 
     if (handleBeforeChat) {
       await handleBeforeChat();
@@ -455,47 +459,24 @@ export function OpenAssistantGPTChat({
                     <div className={`absolute top-[14px] right-0`}>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          {status === 'awaiting_message' ? (
-                            <Button
-                              id="submit"
-                              disabled={input === '' || disableInput} // Disable the send button when disableInput is true
-                              type="submit"
-                              size="icon"
-                            >
-                              <Icons.arrowRight />
-                              <span className="sr-only">Send message</span>
-                            </Button>
-                          ) : (
-                            <Button
-                              id="stop"
-                              onClick={stop}
-                              size="icon"
-                              type="submit"
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                                fill="currentColor"
-                              >
-                                <rect
-                                  x="6"
-                                  y="6"
-                                  width="12"
-                                  height="12"
-                                  rx="2"
-                                  ry="2"
-                                />
-                              </svg>
-                              <span className="sr-only">Stop message</span>
-                            </Button>
-                          )}
+                          <Button
+                            id="submit"
+                            disabled={
+                              input === '' ||
+                              disableInput ||
+                              status !== 'awaiting_message'
+                            } // Disable during generation
+                            type="submit"
+                            size="icon"
+                          >
+                            <Icons.arrowRight />
+                            <span className="sr-only">Send message</span>
+                          </Button>
                         </TooltipTrigger>
                         <TooltipContent>
                           {status === 'awaiting_message'
                             ? 'Send message'
-                            : 'Stop message'}
+                            : 'Generating...'}
                         </TooltipContent>
                       </Tooltip>
                     </div>
