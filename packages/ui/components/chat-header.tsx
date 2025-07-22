@@ -125,10 +125,10 @@ export function ChatHeader({
                       style={{ color: chatbot.chatHeaderTextColor }}
                       className="h-4 w-4"
                     />
-                    <span className="sr-only">Download Transcript</span>
+                    <span className="sr-only">Download as PDF</span>
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>Download Transcript</TooltipContent>
+                <TooltipContent>Download as PDF</TooltipContent>
               </Tooltip>
               {withExitX && (
                 <Tooltip>
