@@ -1,5 +1,13 @@
 # @openassistantgpt/ui
 
+## 0.3.14
+
+### Patch Changes
+
+- 22abfe7: Fix versions
+- Updated dependencies [22abfe7]
+  - @openassistantgpt/react@0.3.4
+
 ## 0.3.13
 
 ### Patch Changes
