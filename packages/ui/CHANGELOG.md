@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.13
+
+### Patch Changes
+
+- d252e75: Remove option to stop the api and make sure a user can't send a message twice
+
 ## 0.3.12
 
 ### Patch Changes

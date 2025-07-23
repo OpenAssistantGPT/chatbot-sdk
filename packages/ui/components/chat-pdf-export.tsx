@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import {
   Document,
   Page,
@@ -175,7 +175,7 @@ const ChatPDFDocument: React.FC<ChatPDFDocumentProps> = ({
           {/* Chat Messages */}
           {messages.map((message, index) => (
             <View
-              key={index}
+              key={`message-${index}`}
               style={[
                 styles.messageContainer,
                 message.role === 'user'
@@ -235,7 +235,7 @@ export const generateChatPDF = async (
       chatbot={chatbot}
       timestamp={timestamp}
     />
-  );
+  ) as React.ReactElement;
 
   const pdfBlob = await pdf(doc).toBlob();
   return pdfBlob;
