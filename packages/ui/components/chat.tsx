@@ -24,6 +24,7 @@ import { ChatbotConfig } from '@/src/chatbot';
 import { ChatHeader } from '@/components/chat-header';
 import { PreviewAttachment } from './preview-attachement';
 import { Attachment } from '@/types/attachements';
+import { generateChatPDF } from './chat-pdf-export';
 
 interface ChatbotProps {
   chatbot: ChatbotConfig;
@@ -153,21 +154,28 @@ export function OpenAssistantGPTChat({
     window.parent.postMessage('closeChat', '*');
   }
 
-  function downloadTranscript() {
-    const transcript =
-      `assistant: ${chatbot.welcomeMessage}\n\n` +
-      messages
-        .map((msg: Message) => `${msg.role}: ${msg.content}`)
-        .join('\n\n');
-    const blob = new Blob([transcript], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'chat_transcript.txt';
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
+  async function downloadTranscript() {
+    try {
+      const pdfBlob = await generateChatPDF(messages, chatbot);
+      const url = window.URL.createObjectURL(pdfBlob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = `chat_conversation_${
+        new Date().toISOString().split('T')[0]
+      }.pdf`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to generate PDF. Please try again.',
+        variant: 'destructive',
+      });
+    }
   }
 
   // files
