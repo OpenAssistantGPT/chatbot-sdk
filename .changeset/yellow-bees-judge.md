@@ -5,4 +5,4 @@
 '@openassistantgpt/ui': patch
 ---
 
-Fix changesets
+Fix versions
