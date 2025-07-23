@@ -26,7 +26,7 @@ jobs:
       - name: Setup pnpm 9
         uses: pnpm/action-setup@v4
         with:
-          version: 9.12.1
+          version: 8.6.9
 
       - name: Setup Node.js 20.x
         uses: actions/setup-node@v2
@@ -41,8 +41,8 @@ jobs:
         uses: changesets/action@v1
         with:
           # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          version: pnpm ci:version || true
-          publish: pnpm ci:release || true
+          version: pnpm ci:version
+          publish: pnpm ci:release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN_ELEVATED }}
