@@ -48,4 +48,4 @@ declare module '@react-pdf/renderer' {
     toBlob: () => Promise<Blob>;
     toBuffer: () => Promise<Buffer>;
   };
-} 
+}
