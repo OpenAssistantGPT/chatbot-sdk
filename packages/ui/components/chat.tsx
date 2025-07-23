@@ -161,7 +161,9 @@ export function OpenAssistantGPTChat({
       const a = document.createElement('a');
       a.style.display = 'none';
       a.href = url;
-      a.download = `chat_conversation_${new Date().toISOString().split('T')[0]}.pdf`;
+      a.download = `chat_conversation_${
+        new Date().toISOString().split('T')[0]
+      }.pdf`;
       document.body.appendChild(a);
       a.click();
       window.URL.revokeObjectURL(url);
