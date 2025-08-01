@@ -4,6 +4,7 @@ import { Icons } from '@/components/icons';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { cn } from '@/lib/utils';
+import { generatePDFTranscript } from '@/lib/pdf-utils';
 
 import { useAssistant, Message } from '@openassistantgpt/react';
 import { ChangeEvent, useCallback, useEffect, useRef, useState } from 'react';
@@ -153,21 +154,17 @@ export function OpenAssistantGPTChat({
     window.parent.postMessage('closeChat', '*');
   }
 
-  function downloadTranscript() {
-    const transcript =
-      `assistant: ${chatbot.welcomeMessage}\n\n` +
-      messages
-        .map((msg: Message) => `${msg.role}: ${msg.content}`)
-        .join('\n\n');
-    const blob = new Blob([transcript], { type: 'text/plain' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'chat_transcript.txt';
-    document.body.appendChild(a);
-    a.click();
-    window.URL.revokeObjectURL(url);
+  async function downloadTranscript() {
+    try {
+      await generatePDFTranscript(messages, chatbot);
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to generate PDF transcript. Please try again.',
+        variant: 'destructive',
+      });
+    }
   }
 
   // files
