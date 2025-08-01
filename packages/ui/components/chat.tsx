@@ -446,9 +446,10 @@ export function OpenAssistantGPTChat({
                         placeholder={chatbot.chatMessagePlaceHolder}
                         className="border-0 border-gray-300 rounded-lg min-h-[60px] w-full resize-none bg-white pl-4 py-[1rem] shadow-sm focus-visible:ring-0"
                         style={{ fontSize: chatbot.fontSize }}
-                        spellCheck={false}
-                        autoComplete="off"
-                        autoCorrect="off"
+                        spellCheck={true}
+                        autoComplete="on"
+                        autoCorrect="on"
+                        autoCapitalize="sentences"
                         name="message"
                         rows={1}
                         value={input}
