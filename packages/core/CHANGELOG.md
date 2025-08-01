@@ -1,5 +1,12 @@
 # core
 
+## 0.3.16
+
+### Patch Changes
+
+- Updated dependencies [f5c7665]
+  - @openassistantgpt/ui@0.3.15
+
 ## 0.3.15
 
 ### Patch Changes

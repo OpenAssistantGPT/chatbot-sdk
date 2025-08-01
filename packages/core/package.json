@@ -1,6 +1,6 @@
 {
   "name": "openassistantgpt",
-  "version": "0.3.15",
+  "version": "0.3.16",
   "license": "Apache-2.0",
   "sideEffects": false,
   "main": "./dist/index.js",
