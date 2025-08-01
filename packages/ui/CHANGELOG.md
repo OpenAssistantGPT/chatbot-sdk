@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.15
+
+### Patch Changes
+
+- f5c7665: Dowload pdf instead of txt file for transcript
+
 ## 0.3.14
 
 ### Patch Changes
