@@ -1,5 +1,11 @@
 # @openassistantgpt/ui
 
+## 0.3.14
+
+### Patch Changes
+
+- 9882a3e: Enable spellcheck
+
 ## 0.3.13
 
 ### Patch Changes
