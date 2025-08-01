@@ -1,12 +1,12 @@
 import React from 'react';
 // @ts-ignore - Type conflicts with React 19 RC
-import { 
-  Document, 
-  Page, 
-  Text, 
-  View, 
-  StyleSheet, 
-  pdf 
+import {
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  pdf,
 } from '@react-pdf/renderer';
 import { Message } from '@openassistantgpt/react';
 import { ChatbotConfig } from '../src/chatbot';
@@ -119,75 +119,112 @@ function cleanMessageContent(content: string): string {
 // Function to generate and download PDF
 export async function generatePDFTranscript(
   messages: Message[],
-  chatbot: ChatbotConfig
+  chatbot: ChatbotConfig,
 ): Promise<void> {
   try {
     // @ts-ignore - Working around React 19 RC type conflicts
-    const PDFDocument = React.createElement(Document as any, {},
+    const PDFDocument = React.createElement(
+      Document as any,
+      {},
       // @ts-ignore
-      React.createElement(Page as any, { size: 'A4', style: styles.page },
+      React.createElement(
+        Page as any,
+        { size: 'A4', style: styles.page },
         // Header
         // @ts-ignore
-        React.createElement(Text as any, { style: styles.header }, 'Chat Transcript'),
+        React.createElement(
+          Text as any,
+          { style: styles.header },
+          'Chat Transcript',
+        ),
         // @ts-ignore
-        React.createElement(Text as any, { style: styles.subtitle }, 
-          `Generated: ${new Date().toLocaleString()}`
+        React.createElement(
+          Text as any,
+          { style: styles.subtitle },
+          `Generated: ${new Date().toLocaleString()}`,
         ),
         // @ts-ignore
         React.createElement(View as any, { style: styles.divider }),
-        
+
         // Welcome Message - styled like assistant bubble
-        ...(chatbot.welcomeMessage ? [
-          // @ts-ignore
-          React.createElement(View as any, { 
-            style: [styles.messageRow, styles.assistantRow],
-            key: 'welcome' 
-          },
-            // @ts-ignore
-            React.createElement(View as any, { style: styles.assistantBubble },
+        ...(chatbot.welcomeMessage
+          ? [
               // @ts-ignore
-              React.createElement(Text as any, { style: styles.assistantLabel }, 'Assistant:'),
-              // @ts-ignore
-              React.createElement(Text as any, { style: styles.assistantText }, 
-                cleanMessageContent(chatbot.welcomeMessage)
-              )
-            )
-          )
-        ] : []),
-        
+              React.createElement(
+                View as any,
+                {
+                  style: [styles.messageRow, styles.assistantRow],
+                  key: 'welcome',
+                },
+                // @ts-ignore
+                React.createElement(
+                  View as any,
+                  { style: styles.assistantBubble },
+                  // @ts-ignore
+                  React.createElement(
+                    Text as any,
+                    { style: styles.assistantLabel },
+                    'Assistant:',
+                  ),
+                  // @ts-ignore
+                  React.createElement(
+                    Text as any,
+                    { style: styles.assistantText },
+                    cleanMessageContent(chatbot.welcomeMessage),
+                  ),
+                ),
+              ),
+            ]
+          : []),
+
         // Messages with bubble layout
         ...messages.map((message, index) => {
           const isUser = message.role === 'user';
           // @ts-ignore
-          return React.createElement(View as any, { 
-            style: [styles.messageRow, isUser ? styles.userRow : styles.assistantRow],
-            key: index.toString()
-          },
-            // @ts-ignore
-            React.createElement(View as any, { 
-              style: isUser ? styles.userBubble : styles.assistantBubble 
+          return React.createElement(
+            View as any,
+            {
+              style: [
+                styles.messageRow,
+                isUser ? styles.userRow : styles.assistantRow,
+              ],
+              key: index.toString(),
             },
+            // @ts-ignore
+            React.createElement(
+              View as any,
+              {
+                style: isUser ? styles.userBubble : styles.assistantBubble,
+              },
               // @ts-ignore
-              React.createElement(Text as any, { 
-                style: isUser ? styles.userLabel : styles.assistantLabel 
-              }, isUser ? 'You:' : 'Assistant:'),
+              React.createElement(
+                Text as any,
+                {
+                  style: isUser ? styles.userLabel : styles.assistantLabel,
+                },
+                isUser ? 'You:' : 'Assistant:',
+              ),
               // @ts-ignore
-              React.createElement(Text as any, { 
-                style: isUser ? styles.userText : styles.assistantText 
-              }, cleanMessageContent(message.content))
-            )
+              React.createElement(
+                Text as any,
+                {
+                  style: isUser ? styles.userText : styles.assistantText,
+                },
+                cleanMessageContent(message.content),
+              ),
+            ),
           );
         }),
-        
+
         // Footer
         // @ts-ignore
         React.createElement(Text as any, {
           style: styles.footer,
-          render: ({ pageNumber, totalPages }: any) => 
+          render: ({ pageNumber, totalPages }: any) =>
             `Page ${pageNumber} of ${totalPages}`,
-          fixed: true
-        })
-      )
+          fixed: true,
+        }),
+      ),
     );
 
     // Generate PDF blob
@@ -198,12 +235,14 @@ export async function generatePDFTranscript(
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = `chat-transcript-${new Date().toISOString().split('T')[0]}.pdf`;
-    
+    link.download = `chat-transcript-${
+      new Date().toISOString().split('T')[0]
+    }.pdf`;
+
     // Trigger download
     document.body.appendChild(link);
     link.click();
-    
+
     // Cleanup
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
@@ -211,4 +250,4 @@ export async function generatePDFTranscript(
     console.error('Error generating PDF:', error);
     throw new Error('Failed to generate PDF transcript');
   }
-} 
+}
